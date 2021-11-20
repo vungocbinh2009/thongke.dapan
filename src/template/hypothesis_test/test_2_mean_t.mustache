@@ -1,18 +1,23 @@
 %! suppress = MissingImport
 Xét bài toán kiểm định giả thiết:
-$$ H_0: p = 0,7 $$
-$$ H_1: p \neq 0,7 $$
+\[ H_0: \mu_1 = \mu_2 \]
+\[ H_1: \mu \neq \mu_2 \]
+(Có thể sửa lại H1 cho phù hợp)
 &
 0.5 đ
 \\
-Ta có: $ n = 100; p_0 = 0,7; f = \dfrac{32}{100} = 0,32 $
+Ta có: $\overline{x}_1 = {{mean1}}, n_1 = {{n1}}, s_1 = {{s1}},
+    \overline{x}_2 = {{mean2}}, n_2 = {{n2}}, s_2 = {{s2}}$
 
-$$ T = \dfrac{f - p_0}{\sqrt{\dfrac{p_0(1-p_0)}{n}}} = \dfrac{0,32 - 0,7}{\sqrt{\dfrac{0,7 0,3}{100}}} = -8,2923 $$
+\[ T = \dfrac{\overline{x_1} - \overline{x_2}}{\sqrt{\dfrac{\sigma_1^2}{n_1} + \dfrac{\sigma_2^2}{n_2}}}
+    = \dfrac{ {{mean1}} - {{mean2}} }{\sqrt{\dfrac{ {{s1}} }{ {{n1}} } + \dfrac{ {{s2}} }{ {{n2}} }}}
+    = {{test}} \]
 &
 1.0 đ
 \\
-Vì $\alpha = 0,02$ nên $c = 2,33$
-Vì $|T| > c$ nên ta bác bỏ $H_0$, chấp nhận $H_1$
-Kết luận: Không thể nói rằng tỷ lệ cây có chiều cao hơn 6m là 70\%
+Vì $\alpha = {{alpha}}$ nên $c = {{c}}$
+{{conclusion}}
+% Ví dụ như bác bỏ H0 hay không đủ điều kiện bác bỏ H0
+Kết luận: (Viết kết luận vào đây)
 &
 0.5 đ

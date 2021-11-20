@@ -1,18 +1,23 @@
 %! suppress = MissingImport
 Xét bài toán kiểm định giả thiết:
-$$ H_0: p = 0,7 $$
-$$ H_1: p \neq 0,7 $$
+$$ H_0: p = {{p_0}} $$
+$$ H_1: p \neq {{p_0}} $$
+% Có thể thay đổi H1 cho phù hợp
 &
 0.5 đ
 \\
-Ta có: $ n = 100; p_0 = 0,7; f = \dfrac{32}{100} = 0,32 $
+Ta có: $f_1 = \dfrac{ {{k1}} }{ {{n1}} } = {{f1}}; n_1 = {{n1}};
+    f_2 = \dfrac{ {{k2}} }{ {{n2}} } = {{f2}}; n_1 = {{n2}};
+    f = \dfrac{ {{f1}}+{{f2}} }{ {{n1}}+{{n2}} } = {{f}}$
 
-$$ T = \dfrac{f - p_0}{\sqrt{\dfrac{p_0(1-p_0)}{n}}} = \dfrac{0,32 - 0,7}{\sqrt{\dfrac{0,7 0,3}{100}}} = -8,2923 $$
+$$ T = \dfrac{f_1 - f_2}{\sqrt{f(1-f)\left( \dfrac{1}{n_!} + \dfrac{1}{n_2}\right)}}
+     = \dfrac{ {{f1}} - {{f2}} }{\sqrt{ {{f}}.{{1_f}} \left( \dfrac{1}{ {{n1}} } + \dfrac{1}{ {{n2}} }\right)}}
+     = {{test}} $$
 &
 1.0 đ
 \\
-Vì $\alpha = 0,02$ nên $c = 2,33$
-Vì $|T| > c$ nên ta bác bỏ $H_0$, chấp nhận $H_1$
-Kết luận: Không thể nói rằng tỷ lệ cây có chiều cao hơn 6m là 70\%
+Vì $\alpha = {{alpha}}$ nên $c = {{c}}$
+{{conclusion}}
+Kết luận: (Viết kết luận vào đây)
 &
 0.5 đ
