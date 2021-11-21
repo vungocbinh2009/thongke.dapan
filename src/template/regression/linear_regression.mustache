@@ -1,21 +1,25 @@
-%! suppress = MissingImport
+\usepackage{amsmath}%! suppress = MissingImport
+{{!Các tham số: sum_xy, sum_x, sum_y, sum_x2, n, a, b, value, predict_value}}
 Ta có:
-$$ a = \dfrac{n \sum xy - (\sum x).(\sum y)}{n(\sum x^2) - (\sum x)^2}
-     = \dfrac{ {{n}}.{{sum_xy}} - {{sum_x}}.{{sum_y}} }{ {{n}}.{{sum_x2}} - {{sum_x}}^2 }
-     = {{a}} $$
-$$ b = \overline{y} - a\overline{x} = \dfrac{\sum y - a\sum x}{n}
-     = \dfrac{ {{sum_y}} - {{a}}.{{sum_x}} }{ {{n}} }
-     = {{b}} $$
+\begin{gather*}
+    a = \dfrac{n \sum xy - (\sum x).(\sum y)}{n(\sum x^2) - (\sum x)^2}
+      = \dfrac{ {{n}}.{{sum_xy}} - {{sum_x}}.{{sum_y}} }{ {{n}}.{{sum_x2}} - {{sum_x}}^2 }
+      = {{a}}\\
+    b = \overline{y} - a\overline{x} = \dfrac{\sum y - a\sum x}{n}
+      = \dfrac{ {{sum_y}} - {{a}}.{{sum_x}} }{ {{n}} }
+      = {{b}}\\
+\end{gather*}
+
 (Mỗi phần được 0,5 điểm)
 &
 1 đ
 \\
 Vậy đường thẳng hồi quy là:
-$$ y = {{a}}.x + {{b}} $$
+\[ y = {{a}}.x + {{b}} \]
 &
 0,5 đ
 \\
 (Viết lời giải và thêm đơn vị đo)
-$$ y = {{a}}.{{value}} + {{b}} = {{predict_value}}$$
+\[ y = {{a}}.{{value}} + {{b}} = {{predict_value}}\]
 &
 0,5 đ
