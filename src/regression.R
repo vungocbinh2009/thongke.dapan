@@ -9,7 +9,7 @@ answer_correlation <- function (x, y) {
     sum_x2 = data1$sum_x2,
     sum_y2 = data1$sum_y2,
     n = length(x),
-    cor = cor
+    cor = round(cor, 4)
   )
   render_template(file_name, var_list)
 }
@@ -25,10 +25,10 @@ answer_linear_regression <- function (x, y, value) {
     sum_y = data1$sum_y,
     sum_x2 = data1$sum_x2,
     n = length(x),
-    a = data2$a,
-    b = data2$b,
+    a = round(data2$a, 4),
+    b = round(data2$b, 4),
     value = value,
-    predict_value = predict_value
+    predict_value = round(predict_value, 4)
   )
   render_template(file_name, var_list)
 }
@@ -44,7 +44,7 @@ calculate_sum <- function (x, y) {
     sum_y = sum_y,
     sum_xy = sum_xy,
     sum_x2 = sum_x2,
-    sum_y2 = sum_y2,
+    sum_y2 = sum_y2
   ))
 }
 

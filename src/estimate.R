@@ -3,13 +3,13 @@ answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
   file_name <- "./R/template/estimate/estimate_mean_norm.mustache"
   data <- estimate_mean_norm(n, mean, sigma, alpha)
   var_list <- list(
-    mean = mean,
+    mean = round(mean, 4),
     n = n,
-    s = sigma,
+    s = round(sigma, 4),
     alpha = alpha,
-    z_alpha = data$z_alpha,
-    bottom = data$bottom,
-    top = data$top
+    z_alpha = round(data$z_alpha, 4),
+    bottom = round(data$bottom, 4),
+    top = round(data$top, 4)
   )
   render_template(file_name, var_list)
 }
@@ -19,13 +19,13 @@ answer_estimate_mean_t <- function (n, mean, s, alpha) {
   file_name <- "./R/template/estimate/estimate_mean_t.mustache"
   data <- estimate_mean_t(n, mean, s, alpha)
   var_list <- list(
-    mean = mean,
+    mean = round(mean, 4),
     n = n,
-    s = s,
+    s = round(s, 4),
     alpha = alpha,
-    t_alpha = data$t_alpha,
-    bottom = data$bottom,
-    top = data$top
+    t_alpha = round(data$t_alpha, 4),
+    bottom = round(data$bottom, 4),
+    top = round(data$top, 4)
   )
   render_template(file_name, var_list)
 }
@@ -35,14 +35,14 @@ answer_estimate_var <- function (n, s, alpha) {
   data <- estimate_var(n, s, alpha)
   var_list <- list(
     n = n,
-    s = s,
+    s = round(s, 4),
     alpha = alpha,
-    chi_sq_1 = data$chi_sq_1,
-    chi_sq_2 = data$chi_sq_2,
+    chi_sq_1 = round(data$chi_sq_1, 4),
+    chi_sq_2 = round(data$chi_sq_2, 4),
     n_1 = n - 1,
-    s2 = s * s,
-    bottom = data$bottom,
-    top = data$top
+    s2 = round(s*s, 4),
+    bottom = round(data$bottom, 4),
+    top = round(data$bottom, 4)
   )
   render_template(file_name, var_list)
 }
@@ -51,14 +51,14 @@ answer_estimate_prop <- function (n, f, alpha) {
   file_name <- "./R/template/estimate/estimate_prop.mustache"
   data <- estimate_prop(n, f, alpha)
   var_list <- list(
-    k = n*f,
+    k = round(n*f, 0),
     n = n,
-    f = f,
+    f = round(f, 4),
     alpha = alpha,
-    z_alpha = data$z_alpha,
-    g = 1 - f,
-    bottom = data$bottom,
-    top = data$top
+    z_alpha = round(data$z_alpha, 4),
+    g = round(1 - f, 4),
+    bottom = round(data$bottom, 4),
+    top = round(data$top, 4)
   )
   render_template(file_name, var_list)
 }
@@ -69,9 +69,9 @@ answer_sample_size_mean <- function (sigma, eps, alpha) {
   var_list <- list(
     eps = eps,
     alpha = alpha,
-    s = sigma,
-    z_alpha = data$z_alpha,
-    value = data$value
+    s = round(sigma, 4),
+    z_alpha = round(data$z_alpha, 4),
+    value = round(data$value, 4)
   )
   render_template(file_name, var_list)
 }
@@ -80,14 +80,14 @@ answer_sample_size_prop_1 <- function (n, f, eps, alpha) {
   file_name <- "./R/template/estimate/sample_size_prop_1.mustache"
   data <- sample_size_prop_1(f, eps, alpha)
   var_list <- list(
-     k = n*f,
+     k = round(n*f, 0),
      n = n,
-     f = f,
+     f = round(f, 4),
      eps = eps,
      alpha = alpha,
-     z_alpha = data$z_alpha,
-     g = 1 - f,
-     value = data$value
+     z_alpha = round(data$z_alpha, 4),
+     g = round(1-f, 4),
+     value = round(data$value, 4)
   )
   render_template(file_name, var_list)
 }
@@ -98,8 +98,8 @@ answer_sample_size_prop_2 <- function (eps, alpha) {
   var_list <- list(
     eps = eps,
     alpha = alpha,
-    z_alpha = data$z_alpha,
-    value = data$value
+    z_alpha = round(data$z_alpha, 4),
+    value = round(data$value, 4)
   )
   render_template(file_name, var_list)
 }
