@@ -1,18 +1,20 @@
 %! suppress = MissingImport
+{{!Các tham số: statement, test, alpha, c, conclusion}}
 Xét bài toán kiểm định giả thiết:
-$$ H_0: p = 0,7 $$
-$$ H_1: p \neq 0,7 $$
+\[ H_0: \textrm{ {{statement}} } \]
 &
 0.5 đ
 \\
-Ta có: $ n = 100; p_0 = 0,7; f = \dfrac{32}{100} = 0,32 $
+Ta có bảng tân số lý thuyết như sau:
+% Bảng tân số (sẽ viết sau)
 
-$$ T = \dfrac{f - p_0}{\sqrt{\dfrac{p_0(1-p_0)}{n}}} = \dfrac{0,32 - 0,7}{\sqrt{\dfrac{0,7 0,3}{100}}} = -8,2923 $$
+\[ T = \sum_{i=1}^{k} \dfrac{(n_i - \hat{n}_i)^2}{\hat{n}_i}
+     = {{test}}\]
 &
 1.0 đ
 \\
-Vì $\alpha = 0,02$ nên $c = 2,33$
-Vì $|T| > c$ nên ta bác bỏ $H_0$, chấp nhận $H_1$
-Kết luận: Không thể nói rằng tỷ lệ cây có chiều cao hơn 6m là 70\%
+Vì $\alpha = {{alpha}}$ nên $c = {{c}}$
+{{conclusion}}
+Kết luận: (Viết kết luận vào đây)
 &
 0.5 đ

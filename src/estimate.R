@@ -1,6 +1,6 @@
 #' @import thongke
 answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
-  file_name <- "template/estimate/estimate_mean_norm.mustache"
+  file_name <- "./R/template/estimate/estimate_mean_norm.mustache"
   data <- estimate_mean_norm(n, mean, sigma, alpha)
   var_list <- list(
     mean = mean,
@@ -16,7 +16,7 @@ answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
 
 #' @import thongke
 answer_estimate_mean_t <- function (n, mean, s, alpha) {
-  file_name <- "template/estimate/estimate_mean_t.mustache"
+  file_name <- "./R/template/estimate/estimate_mean_t.mustache"
   data <- estimate_mean_t(n, mean, s, alpha)
   var_list <- list(
     mean = mean,
@@ -31,7 +31,7 @@ answer_estimate_mean_t <- function (n, mean, s, alpha) {
 }
 
 answer_estimate_var <- function (n, s, alpha) {
-  file_name <- "./template/estimate/estimate_var.mustache"
+  file_name <- "./R/template/estimate/estimate_var.mustache"
   data <- estimate_var(n, s, alpha)
   var_list <- list(
     n = n,
@@ -48,7 +48,7 @@ answer_estimate_var <- function (n, s, alpha) {
 }
 
 answer_estimate_prop <- function (n, f, alpha) {
-  file_name <- "template/estimate/estimate_prop.mustache"
+  file_name <- "./R/template/estimate/estimate_prop.mustache"
   data <- estimate_prop(n, f, alpha)
   var_list <- list(
     k = n*f,
@@ -64,7 +64,7 @@ answer_estimate_prop <- function (n, f, alpha) {
 }
 
 answer_sample_size_mean <- function (sigma, eps, alpha) {
-  file_name <- "./template/estimate/sample_size_mean.mustache"
+  file_name <- "./R/template/estimate/sample_size_mean.mustache"
   data <- sample_size_mean(sigma, eps, alpha)
   var_list <- list(
     eps = eps,
@@ -77,7 +77,7 @@ answer_sample_size_mean <- function (sigma, eps, alpha) {
 }
 
 answer_sample_size_prop_1 <- function (n, f, eps, alpha) {
-  file_name <- "./template/estimate/sample_size_prop_1.mustache"
+  file_name <- "./R/template/estimate/sample_size_prop_1.mustache"
   data <- sample_size_prop_1(f, eps, alpha)
   var_list <- list(
      k = n*f,
@@ -93,7 +93,7 @@ answer_sample_size_prop_1 <- function (n, f, eps, alpha) {
 }
 
 answer_sample_size_prop_2 <- function (eps, alpha) {
-  file_name <- "./template/estimate/sample_size_prop_2.mustache"
+  file_name <- "./R/template/estimate/sample_size_prop_2.mustache"
   data <- sample_size_prop_2(eps, alpha)
   var_list <- list(
     eps = eps,
