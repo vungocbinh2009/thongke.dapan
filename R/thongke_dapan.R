@@ -150,11 +150,19 @@ answer_test_prop <- function (n, f, p_0, alpha, mode="neq") {
   render_template(file_name, var_list)
 }
 
+#' @import xtable
 answer_test_goodness_of_fit <- function (statement, actual, expected, alpha) {
   file_name <- "./R/template/hypothesis_test/test_goodness_of_fit.mustache"
   data <- test_chi_squared(actual, expected, alpha, silent = TRUE)
+  col_names <- seq_along(actual)
+  row_names <- c("Tần số quan sát", "Tần số lý thuyết")
+  matrix <- matrix(c(actual, expected), nrow = 2,
+                   byrow = TRUE, dimnames = list(row_names, col_names))
   var_list <- list(
     statement = statement,
+    # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
+    # in ra khi gọi hàm render_template.
+    table = print(xtable(matrix), print.results = FALSE),
     test = round(data$test, 4),
     alpha = alpha,
     c = round(data$c, 4),
@@ -223,8 +231,16 @@ answer_test_2_prop <- function (n1, n2, f1, f2, alpha, mode="neq") {
 answer_test_k_prop <- function (statement, m_i, n_i, alpha) {
   file_name <- "./R/template/hypothesis_test/test_k_prop.mustache"
   data <- test_n_prop(m_i, n_i, alpha, silent = TRUE)
+  row_names <- c("Có A", "Không A", "Tổng")
+  col_names <- c(seq_along(m_i), "Tổng")
+  l_i <- n_i - m_i
+  matrix <- matrix(c(m_i, data$sum_m_i, l_i, data$sum_l_i, n_i, data$sum_n_i), nrow = 3,
+                   byrow = TRUE, dimnames = list(row_names, col_names))
   var_list <- list(
     statement = statement,
+    # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
+    # in ra khi gọi hàm render_template
+    table = print(xtable(matrix), print.results = FALSE),
     test = round(data$test, 4),
     alpha = alpha,
     c = round(data$c, 4),
@@ -236,8 +252,17 @@ answer_test_k_prop <- function (statement, m_i, n_i, alpha) {
 answer_test_independent <- function (statement, matrix, alpha) {
   file_name <- "./R/template/hypothesis_test/test_independent.mustache"
   data <- test_independent(matrix, alpha, silent = TRUE)
+  row_names <- c(seq_len(nrow(matrix)), "Tổng")
+  col_names <- c(seq_len(ncol(matrix)), "Tổng")
+  matrix_2 <- rbind(matrix, data$col_sums)
+  matrix_2 <- cbind(matrix_2, c(data$row_sums, data$n))
+  colnames(matrix_2) <- col_names
+  rownames(matrix_2) <- row_names
   var_list <- list(
     statement = statement,
+    # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
+    # in ra khi gọi hàm render_template
+    table = print(xtable(matrix_2), print.results = FALSE),
     test = round(data$test, 4),
     alpha = alpha,
     c = round(data$c, 4),

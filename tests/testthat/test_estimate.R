@@ -4,7 +4,6 @@ library(testthat)
 library(magrittr)
 
 test_that("Test các trường hợp cụ thể", {
-  # In ra để không mất dòng dưới
   answer_estimate_mean_norm(sigma = 3, n = 36, alpha = 0.05,
                             mean = 66) %>% cat() %>% print()
   # Đáp số: 65,02 - 66,98

@@ -1,3 +1,6 @@
+#' Hàm này in ra đáp án cho bài toán tính hệ số tương quan
+#' @import thongke
+#' @export
 answer_correlation <- function (x, y) {
   file_name <- "./R/template/regression/correlation.mustache"
   data1 <- calculate_sum(x, y)
@@ -14,6 +17,9 @@ answer_correlation <- function (x, y) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn và tìm giá trị dự báo của Y
+#' @import thongke
+#' @export
 answer_linear_regression <- function (x, y, value) {
   file_name <- "./R/template/regression/linear_regression.mustache"
   data1 <- calculate_sum(x, y)
@@ -33,6 +39,7 @@ answer_linear_regression <- function (x, y, value) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này tính tất cả các giá trị tổng giữa x và y
 calculate_sum <- function (x, y) {
   sum_x <- sum(x)
   sum_y <- sum(y)

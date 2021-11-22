@@ -1,4 +1,6 @@
+#' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố chuẩn)
 #' @import thongke
+#' @export
 answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
   file_name <- "./R/template/estimate/estimate_mean_norm.mustache"
   data <- estimate_mean_norm(n, mean, sigma, alpha, silent = TRUE)
@@ -14,7 +16,9 @@ answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố Student)
 #' @import thongke
+#' @export
 answer_estimate_mean_t <- function (n, mean, s, alpha) {
   file_name <- "./R/template/estimate/estimate_mean_t.mustache"
   data <- estimate_mean_t(n, mean, s, alpha, silent = TRUE)
@@ -30,6 +34,9 @@ answer_estimate_mean_t <- function (n, mean, s, alpha) {
   render_template(file_name, var_list)
 }
 
+#'Hàm này in ra đáp án cho bài toán ước lượng phương sai
+#' @import thongke
+#' @export
 answer_estimate_var <- function (n, s, alpha) {
   file_name <- "./R/template/estimate/estimate_var.mustache"
   data <- estimate_var(n, s, alpha, silent = TRUE)
@@ -47,6 +54,9 @@ answer_estimate_var <- function (n, s, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán ước lượng cho tỷ lệ
+#' @import thongke
+#' @export
 answer_estimate_prop <- function (n, f, alpha) {
   file_name <- "./R/template/estimate/estimate_prop.mustache"
   data <- estimate_prop(n, f, alpha, silent = TRUE)
@@ -62,6 +72,9 @@ answer_estimate_prop <- function (n, f, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với giá trị trung bình)
+#' @import thongke
+#' @export
 answer_sample_size_mean <- function (sigma, eps, alpha) {
   file_name <- "./R/template/estimate/sample_size_mean.mustache"
   data <- sample_size_mean(sigma, eps, alpha, silent = TRUE)
@@ -75,6 +88,9 @@ answer_sample_size_mean <- function (sigma, eps, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)
+#' @import thongke
+#' @export
 answer_sample_size_prop_1 <- function (f, eps, alpha) {
   file_name <- "./R/template/estimate/sample_size_prop_1.mustache"
   data <- sample_size_prop_1(f, eps, alpha, silent = TRUE)
@@ -89,6 +105,9 @@ answer_sample_size_prop_1 <- function (f, eps, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)
+#' @import thongke
+#' @export
 answer_sample_size_prop_2 <- function (eps, alpha) {
   file_name <- "./R/template/estimate/sample_size_prop_2.mustache"
   data <- sample_size_prop_2(eps, alpha, silent = TRUE)

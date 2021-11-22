@@ -1,12 +1,13 @@
 %! suppress = MissingImport
-{{!Các tham số: statement, test, alpha, c, conclusion}}
+{{!Các tham số: statement, table, test, alpha, c, conclusion}}
 Xét bài toán kiểm định giả thiết:
 \[ H_0: \textrm{ {{statement}} } \]
 &
 0.5 đ
 \\
 Ta có bảng tân số lý thuyết như sau:
-% Bảng tân số (sẽ viết sau)
+% Người dùng tự chỉnh sửa lại các nội dung trong bảng sao cho phù hợp
+{{{table}}}
 
 \[ T = \sum_{i=1}^{k} \dfrac{(n_i - \hat{n}_i)^2}{\hat{n}_i}
      = {{test}}\]
@@ -15,6 +16,6 @@ Ta có bảng tân số lý thuyết như sau:
 \\
 Vì $\alpha = {{alpha}}$ nên $c = {{c}}$
 {{{conclusion}}}
-Kết luận: (Viết kết luận vào đây)
+Kết luận: % (Viết kết luận vào đây)
 &
 0.5 đ

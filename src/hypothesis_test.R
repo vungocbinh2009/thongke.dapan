@@ -1,3 +1,6 @@
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @export
 answer_test_mean_norm <- function (n, mean, mean_0, sigma, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_mean_norm.mustache"
   data <- test_mean_norm(n, mean, mean_0, sigma, alpha, mode, silent = TRUE)
@@ -14,6 +17,9 @@ answer_test_mean_norm <- function (n, mean, mean_0, sigma, alpha, mode="neq") {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @export
 answer_test_mean_t <- function (n, mean, mean_0, s, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_mean_t.mustache"
   data <- test_mean_t(n, mean, mean_0, s, alpha, mode, silent = TRUE)
@@ -30,6 +36,9 @@ answer_test_mean_t <- function (n, mean, mean_0, s, alpha, mode="neq") {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @export
 answer_test_prop <- function (n, f, p_0, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_prop.mustache"
   data <- test_prop(n, f, p_0, alpha, mode, silent = TRUE)
@@ -47,11 +56,22 @@ answer_test_prop <- function (n, f, p_0, alpha, mode="neq") {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @import xtable
+#' @export
 answer_test_goodness_of_fit <- function (statement, actual, expected, alpha) {
   file_name <- "./R/template/hypothesis_test/test_goodness_of_fit.mustache"
   data <- test_chi_squared(actual, expected, alpha, silent = TRUE)
+  col_names <- seq_along(actual)
+  row_names <- c("Tần số quan sát", "Tần số lý thuyết")
+  matrix <- matrix(c(actual, expected), nrow = 2,
+                   byrow = TRUE, dimnames = list(row_names, col_names))
   var_list <- list(
     statement = statement,
+    # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
+    # in ra khi gọi hàm render_template.
+    table = print(xtable(matrix), print.results = FALSE),
     test = round(data$test, 4),
     alpha = alpha,
     c = round(data$c, 4),
@@ -60,6 +80,9 @@ answer_test_goodness_of_fit <- function (statement, actual, expected, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @export
 answer_test_2_mean_norm <- function (n1, n2, mean1, mean2, sigma1, sigma2, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_2_mean_norm.mustache"
   data <- test_2_mean_norm(n1, n2, mean1, mean2, sigma1, sigma2, alpha, mode, silent = TRUE)
@@ -78,6 +101,9 @@ answer_test_2_mean_norm <- function (n1, n2, mean1, mean2, sigma1, sigma2, alpha
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @export
 answer_test_2_mean_t <- function (n1, n2, mean1, mean2, s1, s2, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_2_mean_t.mustache"
   data <- test_2_mean_t(n1, n2, mean1, mean2, s1, s2, alpha, mode, silent = TRUE)
@@ -97,6 +123,9 @@ answer_test_2_mean_t <- function (n1, n2, mean1, mean2, s1, s2, alpha, mode="neq
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @export
 answer_test_2_prop <- function (n1, n2, f1, f2, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_2_prop.mustache"
   data <- test_2_prop(n1, n2, f1, f2, alpha, mode, silent = TRUE)
@@ -117,11 +146,23 @@ answer_test_2_prop <- function (n1, n2, f1, f2, alpha, mode="neq") {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @import xtable
+#' @export
 answer_test_k_prop <- function (statement, m_i, n_i, alpha) {
   file_name <- "./R/template/hypothesis_test/test_k_prop.mustache"
   data <- test_n_prop(m_i, n_i, alpha, silent = TRUE)
+  row_names <- c("Có A", "Không A", "Tổng")
+  col_names <- c(seq_along(m_i), "Tổng")
+  l_i <- n_i - m_i
+  matrix <- matrix(c(m_i, data$sum_m_i, l_i, data$sum_l_i, n_i, data$sum_n_i), nrow = 3,
+                   byrow = TRUE, dimnames = list(row_names, col_names))
   var_list <- list(
     statement = statement,
+    # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
+    # in ra khi gọi hàm render_template
+    table = print(xtable(matrix), print.results = FALSE),
     test = round(data$test, 4),
     alpha = alpha,
     c = round(data$c, 4),
@@ -130,11 +171,24 @@ answer_test_k_prop <- function (statement, m_i, n_i, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @import xtable
+#' @export
 answer_test_independent <- function (statement, matrix, alpha) {
   file_name <- "./R/template/hypothesis_test/test_independent.mustache"
   data <- test_independent(matrix, alpha, silent = TRUE)
+  row_names <- c(seq_len(nrow(matrix)), "Tổng")
+  col_names <- c(seq_len(ncol(matrix)), "Tổng")
+  matrix_2 <- rbind(matrix, data$col_sums)
+  matrix_2 <- cbind(matrix_2, c(data$row_sums, data$n))
+  colnames(matrix_2) <- col_names
+  rownames(matrix_2) <- row_names
   var_list <- list(
     statement = statement,
+    # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
+    # in ra khi gọi hàm render_template
+    table = print(xtable(matrix_2), print.results = FALSE),
     test = round(data$test, 4),
     alpha = alpha,
     c = round(data$c, 4),
@@ -143,6 +197,7 @@ answer_test_independent <- function (statement, matrix, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này đưa ra kết luận cho bài toán kiểm định giả thiết
 get_conclusion <- function (test, c) {
   if(abs(test) > c) {
     conclusion <- "Vì |T| > c nên ta bác bỏ $H_0$, chấp nhận $H_1$"
