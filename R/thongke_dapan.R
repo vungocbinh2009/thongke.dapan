@@ -1,4 +1,6 @@
+#' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố chuẩn)
 #' @import thongke
+#' @export
 answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
   file_name <- "./R/template/estimate/estimate_mean_norm.mustache"
   data <- estimate_mean_norm(n, mean, sigma, alpha, silent = TRUE)
@@ -14,7 +16,9 @@ answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố Student)
 #' @import thongke
+#' @export
 answer_estimate_mean_t <- function (n, mean, s, alpha) {
   file_name <- "./R/template/estimate/estimate_mean_t.mustache"
   data <- estimate_mean_t(n, mean, s, alpha, silent = TRUE)
@@ -30,6 +34,9 @@ answer_estimate_mean_t <- function (n, mean, s, alpha) {
   render_template(file_name, var_list)
 }
 
+#'Hàm này in ra đáp án cho bài toán ước lượng phương sai
+#' @import thongke
+#' @export
 answer_estimate_var <- function (n, s, alpha) {
   file_name <- "./R/template/estimate/estimate_var.mustache"
   data <- estimate_var(n, s, alpha, silent = TRUE)
@@ -47,6 +54,9 @@ answer_estimate_var <- function (n, s, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán ước lượng cho tỷ lệ
+#' @import thongke
+#' @export
 answer_estimate_prop <- function (n, f, alpha) {
   file_name <- "./R/template/estimate/estimate_prop.mustache"
   data <- estimate_prop(n, f, alpha, silent = TRUE)
@@ -62,6 +72,9 @@ answer_estimate_prop <- function (n, f, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với giá trị trung bình)
+#' @import thongke
+#' @export
 answer_sample_size_mean <- function (sigma, eps, alpha) {
   file_name <- "./R/template/estimate/sample_size_mean.mustache"
   data <- sample_size_mean(sigma, eps, alpha, silent = TRUE)
@@ -75,6 +88,9 @@ answer_sample_size_mean <- function (sigma, eps, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)
+#' @import thongke
+#' @export
 answer_sample_size_prop_1 <- function (f, eps, alpha) {
   file_name <- "./R/template/estimate/sample_size_prop_1.mustache"
   data <- sample_size_prop_1(f, eps, alpha, silent = TRUE)
@@ -89,6 +105,9 @@ answer_sample_size_prop_1 <- function (f, eps, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)
+#' @import thongke
+#' @export
 answer_sample_size_prop_2 <- function (eps, alpha) {
   file_name <- "./R/template/estimate/sample_size_prop_2.mustache"
   data <- sample_size_prop_2(eps, alpha, silent = TRUE)
@@ -101,6 +120,9 @@ answer_sample_size_prop_2 <- function (eps, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @export
 answer_test_mean_norm <- function (n, mean, mean_0, sigma, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_mean_norm.mustache"
   data <- test_mean_norm(n, mean, mean_0, sigma, alpha, mode, silent = TRUE)
@@ -117,6 +139,9 @@ answer_test_mean_norm <- function (n, mean, mean_0, sigma, alpha, mode="neq") {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @export
 answer_test_mean_t <- function (n, mean, mean_0, s, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_mean_t.mustache"
   data <- test_mean_t(n, mean, mean_0, s, alpha, mode, silent = TRUE)
@@ -133,6 +158,9 @@ answer_test_mean_t <- function (n, mean, mean_0, s, alpha, mode="neq") {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @export
 answer_test_prop <- function (n, f, p_0, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_prop.mustache"
   data <- test_prop(n, f, p_0, alpha, mode, silent = TRUE)
@@ -150,7 +178,10 @@ answer_test_prop <- function (n, f, p_0, alpha, mode="neq") {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
 #' @import xtable
+#' @export
 answer_test_goodness_of_fit <- function (statement, actual, expected, alpha) {
   file_name <- "./R/template/hypothesis_test/test_goodness_of_fit.mustache"
   data <- test_chi_squared(actual, expected, alpha, silent = TRUE)
@@ -171,6 +202,9 @@ answer_test_goodness_of_fit <- function (statement, actual, expected, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @export
 answer_test_2_mean_norm <- function (n1, n2, mean1, mean2, sigma1, sigma2, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_2_mean_norm.mustache"
   data <- test_2_mean_norm(n1, n2, mean1, mean2, sigma1, sigma2, alpha, mode, silent = TRUE)
@@ -189,6 +223,9 @@ answer_test_2_mean_norm <- function (n1, n2, mean1, mean2, sigma1, sigma2, alpha
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @export
 answer_test_2_mean_t <- function (n1, n2, mean1, mean2, s1, s2, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_2_mean_t.mustache"
   data <- test_2_mean_t(n1, n2, mean1, mean2, s1, s2, alpha, mode, silent = TRUE)
@@ -208,6 +245,9 @@ answer_test_2_mean_t <- function (n1, n2, mean1, mean2, s1, s2, alpha, mode="neq
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @export
 answer_test_2_prop <- function (n1, n2, f1, f2, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_2_prop.mustache"
   data <- test_2_prop(n1, n2, f1, f2, alpha, mode, silent = TRUE)
@@ -228,6 +268,10 @@ answer_test_2_prop <- function (n1, n2, f1, f2, alpha, mode="neq") {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @import xtable
+#' @export
 answer_test_k_prop <- function (statement, m_i, n_i, alpha) {
   file_name <- "./R/template/hypothesis_test/test_k_prop.mustache"
   data <- test_n_prop(m_i, n_i, alpha, silent = TRUE)
@@ -249,6 +293,10 @@ answer_test_k_prop <- function (statement, m_i, n_i, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' @import thongke
+#' @import xtable
+#' @export
 answer_test_independent <- function (statement, matrix, alpha) {
   file_name <- "./R/template/hypothesis_test/test_independent.mustache"
   data <- test_independent(matrix, alpha, silent = TRUE)
@@ -271,6 +319,7 @@ answer_test_independent <- function (statement, matrix, alpha) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này đưa ra kết luận cho bài toán kiểm định giả thiết
 get_conclusion <- function (test, c) {
   if(abs(test) > c) {
     conclusion <- "Vì |T| > c nên ta bác bỏ $H_0$, chấp nhận $H_1$"
@@ -280,6 +329,9 @@ get_conclusion <- function (test, c) {
   return(conclusion)
 }
 
+#' Hàm này in ra đáp án cho bài toán tính hệ số tương quan
+#' @import thongke
+#' @export
 answer_correlation <- function (x, y) {
   file_name <- "./R/template/regression/correlation.mustache"
   data1 <- calculate_sum(x, y)
@@ -296,6 +348,9 @@ answer_correlation <- function (x, y) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn và tìm giá trị dự báo của Y
+#' @import thongke
+#' @export
 answer_linear_regression <- function (x, y, value) {
   file_name <- "./R/template/regression/linear_regression.mustache"
   data1 <- calculate_sum(x, y)
@@ -315,6 +370,7 @@ answer_linear_regression <- function (x, y, value) {
   render_template(file_name, var_list)
 }
 
+#' Hàm này tính tất cả các giá trị tổng giữa x và y
 calculate_sum <- function (x, y) {
   sum_x <- sum(x)
   sum_y <- sum(y)
