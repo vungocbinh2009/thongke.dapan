@@ -1,6 +1,6 @@
 answer_test_mean_norm <- function (n, mean, mean_0, sigma, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_mean_norm.mustache"
-  data <- test_mean_norm(n, mean, mean_0, sigma, alpha, mode)
+  data <- test_mean_norm(n, mean, mean_0, sigma, alpha, mode, silent = TRUE)
   var_list <- list(
     mean_0 = mean_0,
     mean = round(mean, 4),
@@ -16,7 +16,7 @@ answer_test_mean_norm <- function (n, mean, mean_0, sigma, alpha, mode="neq") {
 
 answer_test_mean_t <- function (n, mean, mean_0, s, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_mean_t.mustache"
-  data <- test_mean_t(n, mean, mean_0, s, alpha, mode)
+  data <- test_mean_t(n, mean, mean_0, s, alpha, mode, silent = TRUE)
   var_list <- list(
     mean_0 = mean_0,
     mean = round(mean, 4),
@@ -32,7 +32,7 @@ answer_test_mean_t <- function (n, mean, mean_0, s, alpha, mode="neq") {
 
 answer_test_prop <- function (n, f, p_0, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_prop.mustache"
-  data <- test_prop(n, f, p_0, alpha, mode)
+  data <- test_prop(n, f, p_0, alpha, mode, silent = TRUE)
   var_list <- list(
     k = round(n*f, 0),
     n = n,
@@ -49,7 +49,7 @@ answer_test_prop <- function (n, f, p_0, alpha, mode="neq") {
 
 answer_test_goodness_of_fit <- function (statement, actual, expected, alpha) {
   file_name <- "./R/template/hypothesis_test/test_goodness_of_fit.mustache"
-  data <- test_chi_squared(actual, expected, alpha)
+  data <- test_chi_squared(actual, expected, alpha, silent = TRUE)
   var_list <- list(
     statement = statement,
     test = round(data$test, 4),
@@ -62,7 +62,7 @@ answer_test_goodness_of_fit <- function (statement, actual, expected, alpha) {
 
 answer_test_2_mean_norm <- function (n1, n2, mean1, mean2, sigma1, sigma2, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_2_mean_norm.mustache"
-  data <- test_2_mean_norm(n1, n2, mean1, mean2, sigma1, sigma2, alpha, mode)
+  data <- test_2_mean_norm(n1, n2, mean1, mean2, sigma1, sigma2, alpha, mode, silent = TRUE)
   var_list <- list(
     mean1 = round(mean1, 4),
     n1 = n1,
@@ -80,7 +80,7 @@ answer_test_2_mean_norm <- function (n1, n2, mean1, mean2, sigma1, sigma2, alpha
 
 answer_test_2_mean_t <- function (n1, n2, mean1, mean2, s1, s2, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_2_mean_t.mustache"
-  data <- test_2_mean_t(n1, n2, mean1, mean2, s1, s2, alpha, mode)
+  data <- test_2_mean_t(n1, n2, mean1, mean2, s1, s2, alpha, mode, silent = TRUE)
   var_list <- list(
     mean1 = round(mean1, 4),
     n1 = n1,
@@ -99,7 +99,7 @@ answer_test_2_mean_t <- function (n1, n2, mean1, mean2, s1, s2, alpha, mode="neq
 
 answer_test_2_prop <- function (n1, n2, f1, f2, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_2_prop.mustache"
-  data <- test_2_prop(n1, n2, f1, f2, alpha, mode)
+  data <- test_2_prop(n1, n2, f1, f2, alpha, mode, silent = TRUE)
   var_list <- list(
     k1 = round(n1*f1, 0),
     n1 = n1,
@@ -119,7 +119,7 @@ answer_test_2_prop <- function (n1, n2, f1, f2, alpha, mode="neq") {
 
 answer_test_k_prop <- function (statement, m_i, n_i, alpha) {
   file_name <- "./R/template/hypothesis_test/test_k_prop.mustache"
-  data <- test_n_prop(m_i, n_i, alpha)
+  data <- test_n_prop(m_i, n_i, alpha, silent = TRUE)
   var_list <- list(
     statement = statement,
     test = round(data$test, 4),
@@ -132,7 +132,7 @@ answer_test_k_prop <- function (statement, m_i, n_i, alpha) {
 
 answer_test_independent <- function (statement, matrix, alpha) {
   file_name <- "./R/template/hypothesis_test/test_independent.mustache"
-  data <- test_independent(matrix, alpha)
+  data <- test_independent(matrix, alpha, silent = TRUE)
   var_list <- list(
     statement = statement,
     test = round(data$test, 4),

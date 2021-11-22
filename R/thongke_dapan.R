@@ -1,7 +1,7 @@
 #' @import thongke
 answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
   file_name <- "./R/template/estimate/estimate_mean_norm.mustache"
-  data <- estimate_mean_norm(n, mean, sigma, alpha)
+  data <- estimate_mean_norm(n, mean, sigma, alpha, silent = TRUE)
   var_list <- list(
     mean = round(mean, 4),
     n = n,
@@ -17,7 +17,7 @@ answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
 #' @import thongke
 answer_estimate_mean_t <- function (n, mean, s, alpha) {
   file_name <- "./R/template/estimate/estimate_mean_t.mustache"
-  data <- estimate_mean_t(n, mean, s, alpha)
+  data <- estimate_mean_t(n, mean, s, alpha, silent = TRUE)
   var_list <- list(
     mean = round(mean, 4),
     n = n,
@@ -32,7 +32,7 @@ answer_estimate_mean_t <- function (n, mean, s, alpha) {
 
 answer_estimate_var <- function (n, s, alpha) {
   file_name <- "./R/template/estimate/estimate_var.mustache"
-  data <- estimate_var(n, s, alpha)
+  data <- estimate_var(n, s, alpha, silent = TRUE)
   var_list <- list(
     n = n,
     s = round(s, 4),
@@ -49,9 +49,8 @@ answer_estimate_var <- function (n, s, alpha) {
 
 answer_estimate_prop <- function (n, f, alpha) {
   file_name <- "./R/template/estimate/estimate_prop.mustache"
-  data <- estimate_prop(n, f, alpha)
+  data <- estimate_prop(n, f, alpha, silent = TRUE)
   var_list <- list(
-    k = round(n*f, 0),
     n = n,
     f = round(f, 4),
     alpha = alpha,
@@ -65,7 +64,7 @@ answer_estimate_prop <- function (n, f, alpha) {
 
 answer_sample_size_mean <- function (sigma, eps, alpha) {
   file_name <- "./R/template/estimate/sample_size_mean.mustache"
-  data <- sample_size_mean(sigma, eps, alpha)
+  data <- sample_size_mean(sigma, eps, alpha, silent = TRUE)
   var_list <- list(
     eps = eps,
     alpha = alpha,
@@ -76,12 +75,10 @@ answer_sample_size_mean <- function (sigma, eps, alpha) {
   render_template(file_name, var_list)
 }
 
-answer_sample_size_prop_1 <- function (n, f, eps, alpha) {
+answer_sample_size_prop_1 <- function (f, eps, alpha) {
   file_name <- "./R/template/estimate/sample_size_prop_1.mustache"
-  data <- sample_size_prop_1(f, eps, alpha)
+  data <- sample_size_prop_1(f, eps, alpha, silent = TRUE)
   var_list <- list(
-     k = round(n*f, 0),
-     n = n,
      f = round(f, 4),
      eps = eps,
      alpha = alpha,
@@ -94,7 +91,7 @@ answer_sample_size_prop_1 <- function (n, f, eps, alpha) {
 
 answer_sample_size_prop_2 <- function (eps, alpha) {
   file_name <- "./R/template/estimate/sample_size_prop_2.mustache"
-  data <- sample_size_prop_2(eps, alpha)
+  data <- sample_size_prop_2(eps, alpha, silent = TRUE)
   var_list <- list(
     eps = eps,
     alpha = alpha,
@@ -106,7 +103,7 @@ answer_sample_size_prop_2 <- function (eps, alpha) {
 
 answer_test_mean_norm <- function (n, mean, mean_0, sigma, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_mean_norm.mustache"
-  data <- test_mean_norm(n, mean, mean_0, sigma, alpha, mode)
+  data <- test_mean_norm(n, mean, mean_0, sigma, alpha, mode, silent = TRUE)
   var_list <- list(
     mean_0 = mean_0,
     mean = round(mean, 4),
@@ -122,7 +119,7 @@ answer_test_mean_norm <- function (n, mean, mean_0, sigma, alpha, mode="neq") {
 
 answer_test_mean_t <- function (n, mean, mean_0, s, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_mean_t.mustache"
-  data <- test_mean_t(n, mean, mean_0, s, alpha, mode)
+  data <- test_mean_t(n, mean, mean_0, s, alpha, mode, silent = TRUE)
   var_list <- list(
     mean_0 = mean_0,
     mean = round(mean, 4),
@@ -138,7 +135,7 @@ answer_test_mean_t <- function (n, mean, mean_0, s, alpha, mode="neq") {
 
 answer_test_prop <- function (n, f, p_0, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_prop.mustache"
-  data <- test_prop(n, f, p_0, alpha, mode)
+  data <- test_prop(n, f, p_0, alpha, mode, silent = TRUE)
   var_list <- list(
     k = round(n*f, 0),
     n = n,
@@ -155,7 +152,7 @@ answer_test_prop <- function (n, f, p_0, alpha, mode="neq") {
 
 answer_test_goodness_of_fit <- function (statement, actual, expected, alpha) {
   file_name <- "./R/template/hypothesis_test/test_goodness_of_fit.mustache"
-  data <- test_chi_squared(actual, expected, alpha)
+  data <- test_chi_squared(actual, expected, alpha, silent = TRUE)
   var_list <- list(
     statement = statement,
     test = round(data$test, 4),
@@ -168,7 +165,7 @@ answer_test_goodness_of_fit <- function (statement, actual, expected, alpha) {
 
 answer_test_2_mean_norm <- function (n1, n2, mean1, mean2, sigma1, sigma2, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_2_mean_norm.mustache"
-  data <- test_2_mean_norm(n1, n2, mean1, mean2, sigma1, sigma2, alpha, mode)
+  data <- test_2_mean_norm(n1, n2, mean1, mean2, sigma1, sigma2, alpha, mode, silent = TRUE)
   var_list <- list(
     mean1 = round(mean1, 4),
     n1 = n1,
@@ -186,7 +183,7 @@ answer_test_2_mean_norm <- function (n1, n2, mean1, mean2, sigma1, sigma2, alpha
 
 answer_test_2_mean_t <- function (n1, n2, mean1, mean2, s1, s2, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_2_mean_t.mustache"
-  data <- test_2_mean_t(n1, n2, mean1, mean2, s1, s2, alpha, mode)
+  data <- test_2_mean_t(n1, n2, mean1, mean2, s1, s2, alpha, mode, silent = TRUE)
   var_list <- list(
     mean1 = round(mean1, 4),
     n1 = n1,
@@ -205,7 +202,7 @@ answer_test_2_mean_t <- function (n1, n2, mean1, mean2, s1, s2, alpha, mode="neq
 
 answer_test_2_prop <- function (n1, n2, f1, f2, alpha, mode="neq") {
   file_name <- "./R/template/hypothesis_test/test_2_prop.mustache"
-  data <- test_2_prop(n1, n2, f1, f2, alpha, mode)
+  data <- test_2_prop(n1, n2, f1, f2, alpha, mode, silent = TRUE)
   var_list <- list(
     k1 = round(n1*f1, 0),
     n1 = n1,
@@ -225,7 +222,7 @@ answer_test_2_prop <- function (n1, n2, f1, f2, alpha, mode="neq") {
 
 answer_test_k_prop <- function (statement, m_i, n_i, alpha) {
   file_name <- "./R/template/hypothesis_test/test_k_prop.mustache"
-  data <- test_n_prop(m_i, n_i, alpha)
+  data <- test_n_prop(m_i, n_i, alpha, silent = TRUE)
   var_list <- list(
     statement = statement,
     test = round(data$test, 4),
@@ -238,7 +235,7 @@ answer_test_k_prop <- function (statement, m_i, n_i, alpha) {
 
 answer_test_independent <- function (statement, matrix, alpha) {
   file_name <- "./R/template/hypothesis_test/test_independent.mustache"
-  data <- test_independent(matrix, alpha)
+  data <- test_independent(matrix, alpha, silent = TRUE)
   var_list <- list(
     statement = statement,
     test = round(data$test, 4),
@@ -261,7 +258,7 @@ get_conclusion <- function (test, c) {
 answer_correlation <- function (x, y) {
   file_name <- "./R/template/regression/correlation.mustache"
   data1 <- calculate_sum(x, y)
-  cor <- correlation(x, y)
+  cor <- correlation(x, y, silent = TRUE)
   var_list <- list(
     sum_xy = data1$sum_xy,
     sum_x = data1$sum_x,
@@ -277,8 +274,8 @@ answer_correlation <- function (x, y) {
 answer_linear_regression <- function (x, y, value) {
   file_name <- "./R/template/regression/linear_regression.mustache"
   data1 <- calculate_sum(x, y)
-  data2 <- linear_regression(x, y)
-  predict_value <- linear_regression_predict(x, y, value)
+  data2 <- linear_regression(x, y, silent = TRUE)
+  predict_value <- linear_regression_predict(x, y, value, silent = TRUE)
   var_list <- list(
     sum_xy = data1$sum_xy,
     sum_x = data1$sum_x,

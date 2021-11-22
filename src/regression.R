@@ -1,7 +1,7 @@
 answer_correlation <- function (x, y) {
   file_name <- "./R/template/regression/correlation.mustache"
   data1 <- calculate_sum(x, y)
-  cor <- correlation(x, y)
+  cor <- correlation(x, y, silent = TRUE)
   var_list <- list(
     sum_xy = data1$sum_xy,
     sum_x = data1$sum_x,
@@ -17,8 +17,8 @@ answer_correlation <- function (x, y) {
 answer_linear_regression <- function (x, y, value) {
   file_name <- "./R/template/regression/linear_regression.mustache"
   data1 <- calculate_sum(x, y)
-  data2 <- linear_regression(x, y)
-  predict_value <- linear_regression_predict(x, y, value)
+  data2 <- linear_regression(x, y, silent = TRUE)
+  predict_value <- linear_regression_predict(x, y, value, silent = TRUE)
   var_list <- list(
     sum_xy = data1$sum_xy,
     sum_x = data1$sum_x,

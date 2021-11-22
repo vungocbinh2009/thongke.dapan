@@ -5,8 +5,6 @@ library(magrittr)
 
 test_that("Test các trường hợp cụ thể", {
   # In ra để không mất dòng dưới
-  answer_estimate_mean_t(mean = 39.8, alpha = 0.01, n = 15,
-                         s = sqrt(0.144)) %>% cat() %>% print()
   answer_estimate_mean_norm(sigma = 3, n = 36, alpha = 0.05,
                             mean = 66) %>% cat() %>% print()
   # Đáp số: 65,02 - 66,98
@@ -25,7 +23,7 @@ test_that("Test các trường hợp cụ thể", {
                           eps = 0.5) %>% cat() %>% print()
   # Đáp số: 96.826
   print("===================================================")
-  answer_sample_size_prop_1(n = 100, f = 0.64, alpha = get_alpha(1.64),
+  answer_sample_size_prop_1(f = 0.64, alpha = get_alpha(1.64),
                             eps = 0.02) %>% cat() %>% print()
   # Đáp số: 1549.2
   print("===================================================")
