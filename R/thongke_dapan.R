@@ -2,7 +2,7 @@
 #' @import thongke
 #' @export
 answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
-  file_name <- "./R/template/estimate/estimate_mean_norm.mustache"
+  file_name <- "/R/template/estimate/estimate_mean_norm.mustache"
   data <- estimate_mean_norm(n, mean, sigma, alpha, silent = TRUE)
   var_list <- list(
     mean = round(mean, 4),
@@ -20,7 +20,7 @@ answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
 #' @import thongke
 #' @export
 answer_estimate_mean_t <- function (n, mean, s, alpha) {
-  file_name <- "./R/template/estimate/estimate_mean_t.mustache"
+  file_name <- "/R/template/estimate/estimate_mean_t.mustache"
   data <- estimate_mean_t(n, mean, s, alpha, silent = TRUE)
   var_list <- list(
     mean = round(mean, 4),
@@ -38,7 +38,7 @@ answer_estimate_mean_t <- function (n, mean, s, alpha) {
 #' @import thongke
 #' @export
 answer_estimate_var <- function (n, s, alpha) {
-  file_name <- "./R/template/estimate/estimate_var.mustache"
+  file_name <- "/R/template/estimate/estimate_var.mustache"
   data <- estimate_var(n, s, alpha, silent = TRUE)
   var_list <- list(
     n = n,
@@ -58,7 +58,7 @@ answer_estimate_var <- function (n, s, alpha) {
 #' @import thongke
 #' @export
 answer_estimate_prop <- function (n, f, alpha) {
-  file_name <- "./R/template/estimate/estimate_prop.mustache"
+  file_name <- "/R/template/estimate/estimate_prop.mustache"
   data <- estimate_prop(n, f, alpha, silent = TRUE)
   var_list <- list(
     n = n,
@@ -76,7 +76,7 @@ answer_estimate_prop <- function (n, f, alpha) {
 #' @import thongke
 #' @export
 answer_sample_size_mean <- function (sigma, eps, alpha) {
-  file_name <- "./R/template/estimate/sample_size_mean.mustache"
+  file_name <- "/R/template/estimate/sample_size_mean.mustache"
   data <- sample_size_mean(sigma, eps, alpha, silent = TRUE)
   var_list <- list(
     eps = eps,
@@ -92,7 +92,7 @@ answer_sample_size_mean <- function (sigma, eps, alpha) {
 #' @import thongke
 #' @export
 answer_sample_size_prop_1 <- function (f, eps, alpha) {
-  file_name <- "./R/template/estimate/sample_size_prop_1.mustache"
+  file_name <- "/R/template/estimate/sample_size_prop_1.mustache"
   data <- sample_size_prop_1(f, eps, alpha, silent = TRUE)
   var_list <- list(
      f = round(f, 4),
@@ -109,7 +109,7 @@ answer_sample_size_prop_1 <- function (f, eps, alpha) {
 #' @import thongke
 #' @export
 answer_sample_size_prop_2 <- function (eps, alpha) {
-  file_name <- "./R/template/estimate/sample_size_prop_2.mustache"
+  file_name <- "/R/template/estimate/sample_size_prop_2.mustache"
   data <- sample_size_prop_2(eps, alpha, silent = TRUE)
   var_list <- list(
     eps = eps,
@@ -124,7 +124,7 @@ answer_sample_size_prop_2 <- function (eps, alpha) {
 #' @import thongke
 #' @export
 answer_test_mean_norm <- function (n, mean, mean_0, sigma, alpha, mode="neq") {
-  file_name <- "./R/template/hypothesis_test/test_mean_norm.mustache"
+  file_name <- "/R/template/hypothesis_test/test_mean_norm.mustache"
   data <- test_mean_norm(n, mean, mean_0, sigma, alpha, mode, silent = TRUE)
   var_list <- list(
     mean_0 = mean_0,
@@ -143,7 +143,7 @@ answer_test_mean_norm <- function (n, mean, mean_0, sigma, alpha, mode="neq") {
 #' @import thongke
 #' @export
 answer_test_mean_t <- function (n, mean, mean_0, s, alpha, mode="neq") {
-  file_name <- "./R/template/hypothesis_test/test_mean_t.mustache"
+  file_name <- "/R/template/hypothesis_test/test_mean_t.mustache"
   data <- test_mean_t(n, mean, mean_0, s, alpha, mode, silent = TRUE)
   var_list <- list(
     mean_0 = mean_0,
@@ -162,7 +162,7 @@ answer_test_mean_t <- function (n, mean, mean_0, s, alpha, mode="neq") {
 #' @import thongke
 #' @export
 answer_test_prop <- function (n, f, p_0, alpha, mode="neq") {
-  file_name <- "./R/template/hypothesis_test/test_prop.mustache"
+  file_name <- "/R/template/hypothesis_test/test_prop.mustache"
   data <- test_prop(n, f, p_0, alpha, mode, silent = TRUE)
   var_list <- list(
     k = round(n*f, 0),
@@ -183,7 +183,7 @@ answer_test_prop <- function (n, f, p_0, alpha, mode="neq") {
 #' @import xtable
 #' @export
 answer_test_goodness_of_fit <- function (statement, actual, expected, alpha) {
-  file_name <- "./R/template/hypothesis_test/test_goodness_of_fit.mustache"
+  file_name <- "/R/template/hypothesis_test/test_goodness_of_fit.mustache"
   data <- test_chi_squared(actual, expected, alpha, silent = TRUE)
   col_names <- seq_along(actual)
   row_names <- c("Tần số quan sát", "Tần số lý thuyết")
@@ -212,7 +212,7 @@ answer_test_goodness_of_fit <- function (statement, actual, expected, alpha) {
 #' @import thongke
 #' @export
 answer_test_2_mean_norm <- function (n1, n2, mean1, mean2, sigma1, sigma2, alpha, mode="neq") {
-  file_name <- "./R/template/hypothesis_test/test_2_mean_norm.mustache"
+  file_name <- "/R/template/hypothesis_test/test_2_mean_norm.mustache"
   data <- test_2_mean_norm(n1, n2, mean1, mean2, sigma1, sigma2, alpha, mode, silent = TRUE)
   var_list <- list(
     mean1 = round(mean1, 4),
@@ -233,7 +233,7 @@ answer_test_2_mean_norm <- function (n1, n2, mean1, mean2, sigma1, sigma2, alpha
 #' @import thongke
 #' @export
 answer_test_2_mean_t <- function (n1, n2, mean1, mean2, s1, s2, alpha, mode="neq") {
-  file_name <- "./R/template/hypothesis_test/test_2_mean_t.mustache"
+  file_name <- "/R/template/hypothesis_test/test_2_mean_t.mustache"
   data <- test_2_mean_t(n1, n2, mean1, mean2, s1, s2, alpha, mode, silent = TRUE)
   var_list <- list(
     mean1 = round(mean1, 4),
@@ -255,7 +255,7 @@ answer_test_2_mean_t <- function (n1, n2, mean1, mean2, s1, s2, alpha, mode="neq
 #' @import thongke
 #' @export
 answer_test_2_prop <- function (n1, n2, f1, f2, alpha, mode="neq") {
-  file_name <- "./R/template/hypothesis_test/test_2_prop.mustache"
+  file_name <- "/R/template/hypothesis_test/test_2_prop.mustache"
   data <- test_2_prop(n1, n2, f1, f2, alpha, mode, silent = TRUE)
   var_list <- list(
     k1 = round(n1*f1, 0),
@@ -279,7 +279,7 @@ answer_test_2_prop <- function (n1, n2, f1, f2, alpha, mode="neq") {
 #' @import xtable
 #' @export
 answer_test_k_prop <- function (statement, m_i, n_i, alpha) {
-  file_name <- "./R/template/hypothesis_test/test_k_prop.mustache"
+  file_name <- "/R/template/hypothesis_test/test_k_prop.mustache"
   data <- test_n_prop(m_i, n_i, alpha, silent = TRUE)
   row_names <- c("Có A", "Không A", "Tổng")
   col_names <- c(seq_along(m_i), "Tổng")
@@ -311,7 +311,7 @@ answer_test_k_prop <- function (statement, m_i, n_i, alpha) {
 #' @import xtable
 #' @export
 answer_test_independent <- function (statement, matrix, alpha) {
-  file_name <- "./R/template/hypothesis_test/test_independent.mustache"
+  file_name <- "/R/template/hypothesis_test/test_independent.mustache"
   data <- test_independent(matrix, alpha, silent = TRUE)
   row_names <- c(seq_len(nrow(matrix)), "Tổng")
   col_names <- c(seq_len(ncol(matrix)), "Tổng")
@@ -355,7 +355,7 @@ get_conclusion <- function (test, c) {
 #' @import thongke
 #' @export
 answer_correlation <- function (x, y) {
-  file_name <- "./R/template/regression/correlation.mustache"
+  file_name <- "/R/template/regression/correlation.mustache"
   data1 <- calculate_sum(x, y)
   cor <- correlation(x, y, silent = TRUE)
   var_list <- list(
@@ -374,7 +374,7 @@ answer_correlation <- function (x, y) {
 #' @import thongke
 #' @export
 answer_linear_regression <- function (x, y, value) {
-  file_name <- "./R/template/regression/linear_regression.mustache"
+  file_name <- "/R/template/regression/linear_regression.mustache"
   data1 <- calculate_sum(x, y)
   data2 <- linear_regression(x, y, silent = TRUE)
   predict_value <- linear_regression_predict(x, y, value, silent = TRUE)
