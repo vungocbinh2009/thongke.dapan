@@ -2,7 +2,7 @@
 #' @import thongke
 #' @export
 answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
-  file_name <- "/R/template/estimate/estimate_mean_norm.mustache"
+  file_name <- file.path("template", "estimate", "estimate_mean_t.mustache")
   data <- estimate_mean_norm(n, mean, sigma, alpha, silent = TRUE)
   var_list <- list(
     mean = round(mean, 4),
