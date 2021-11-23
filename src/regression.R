@@ -2,7 +2,7 @@
 #' @import thongke
 #' @export
 answer_correlation <- function (x, y) {
-  file_name <- "/R/template/regression/correlation.mustache"
+  file_name <- get_file_path("template", "regression", "correlation.mustache")
   data1 <- calculate_sum(x, y)
   cor <- correlation(x, y, silent = TRUE)
   var_list <- list(
@@ -21,7 +21,7 @@ answer_correlation <- function (x, y) {
 #' @import thongke
 #' @export
 answer_linear_regression <- function (x, y, value) {
-  file_name <- "/R/template/regression/linear_regression.mustache"
+  file_name <- get_file_path("template", "regression", "linear_regression.mustache")
   data1 <- calculate_sum(x, y)
   data2 <- linear_regression(x, y, silent = TRUE)
   predict_value <- linear_regression_predict(x, y, value, silent = TRUE)
