@@ -2,6 +2,6 @@
 #' @import whisker
 #' @import here
 render_template <- function (file_name, var_list) {
-  template <- readLines(system.file(file_name, package="thongke.dapan"))
+  template <- readLines(paste0(system.file(package = "thongke.dapan"), file_name))
   return(whisker.render(template, var_list))
 }
