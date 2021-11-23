@@ -1,8 +1,9 @@
 #' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố chuẩn)
 #' @import thongke
+#' @import here
 #' @export
 answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
-  file_name <- file.path("template", "estimate", "estimate_mean_t.mustache")
+  file_name <- here("R", "template", "estimate", "estimate_mean_t.mustache")
   data <- estimate_mean_norm(n, mean, sigma, alpha, silent = TRUE)
   var_list <- list(
     mean = round(mean, 4),
@@ -410,7 +411,6 @@ calculate_sum <- function (x, y) {
 
 #' Hàm này dùng thư viện whisker để render file
 #' @import whisker
-#' @import here
 render_template <- function (file_name, var_list) {
   template <- readLines(paste0(system.file(package = "thongke.dapan"), file_name))
   return(whisker.render(template, var_list))

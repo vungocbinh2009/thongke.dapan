@@ -5,7 +5,7 @@ Authors@R:
     person("Vu Ngọc", "Bình", , "vungocbinh@protonmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "no Id"))
 Description: Gói lệnh tạo mẫu đáp án các câu hỏi thống kê dưới dạng mã nguồn latex để copy vào mẫu đáp án có sẵn
-Imports: thongke, whisker, xtable
+Imports: thongke, whisker, here, xtable
 License: `use_mit_license()`
 Encoding: UTF-8
 LazyData: true
