@@ -3,7 +3,7 @@
 #' @import here
 #' @export
 answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
-  file_name <- here("R", "template", "estimate", "estimate_mean_t.mustache")
+  file_name <- here("template", "estimate", "estimate_mean_t.mustache")
   data <- estimate_mean_norm(n, mean, sigma, alpha, silent = TRUE)
   var_list <- list(
     mean = round(mean, 4),
