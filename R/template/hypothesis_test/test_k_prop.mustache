@@ -1,5 +1,6 @@
 %! suppress = MissingImport
-{{!Các tham số: statement, test, alpha, c, conclusion}}
+{{!Các tham số: statement, table, sum_n_i, sum_m_i, sum_l_i, m_1, m_2, n_1, n_2,
+ test, alpha, c, conclusion}}
 Xét bài toán kiểm định giả thiết:
 \[ H_0: \textrm{ {{statement}} } \]
 &
@@ -10,6 +11,9 @@ Ta có bảng sau:
 {{{table}}}
 
 \[ T = \dfrac{N^2}{ml} \sum_{i=1}^{k} \dfrac{m_i^2}{n_i} - N\dfrac{m}{l}
+     = \dfrac{ {{sum_n_i}}^2 }{ {{sum_m_i}}.{{sum_l_i}} } \left( \dfrac{ {{m_1}}^2}{ {{n_1}} }
+        + \dfrac{ {{m_2}}^2}{ {{n_2}} } + \ldots \right)
+        - {{sum_n_i}}\dfrac{ {{sum_m_i}} }{ {{sum_l_i}} }
      = {{test}}\]
 &
 1.0 đ

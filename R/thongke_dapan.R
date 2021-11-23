@@ -194,6 +194,12 @@ answer_test_goodness_of_fit <- function (statement, actual, expected, alpha) {
     # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
     # in ra khi gọi hàm render_template.
     table = print(xtable(matrix), print.results = FALSE),
+    a_1 = actual[1],
+    a_2 = actual[2],
+    a_k = actual[length[actual]],
+    e_1 = expected[1],
+    e_2 = expected[2],
+    e_k = expected[length[expected]],
     test = round(data$test, 4),
     alpha = alpha,
     c = round(data$c, 4),
@@ -285,6 +291,13 @@ answer_test_k_prop <- function (statement, m_i, n_i, alpha) {
     # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
     # in ra khi gọi hàm render_template
     table = print(xtable(matrix), print.results = FALSE),
+    sum_n_i = data$sum_n_i,
+    sum_m_i = data$sum_m_i,
+    sum_l_i = data$sum_l_i,
+    m_1 = m_i[1],
+    m_2 = m_i[2],
+    n_1 = n_i[1],
+    n_2 = n_i[2],
     test = round(data$test, 4),
     alpha = alpha,
     c = round(data$c, 4),
@@ -311,6 +324,15 @@ answer_test_independent <- function (statement, matrix, alpha) {
     # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
     # in ra khi gọi hàm render_template
     table = print(xtable(matrix_2), print.results = FALSE),
+    n = data$n,
+    n_11 = matrix[1, 1],
+    n_10 = data$row_sums[1],
+    n_01 = data$col_sums[1],
+    n_12 = matrix[1, 2],
+    n_02 = data$col_sums[2],
+    n_rk = matrix[length[data$row_sums], length[data$col_sums]],
+    n_r0 = data$row_sums[length[data$row_sums]],
+    n_0k = data$col_sums[length[data$col_sums]],
     test = round(data$test, 4),
     alpha = alpha,
     c = round(data$c, 4),
