@@ -412,6 +412,6 @@ calculate_sum <- function (x, y) {
 #' @import whisker
 #' @import here
 render_template <- function (file_name, var_list) {
-  template <- readLines(here(file_name))
+  template <- readLines(system.file(file_name, package="thongke.dapan"))
   return(whisker.render(template, var_list))
 }
