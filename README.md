@@ -73,5 +73,12 @@ answer_estimate_mean_norm(sigma = 3, n = 36, alpha = 0.05,
                     y = c(44, 47, 48, 48, 43, 46), value = 700) %>% cat() %>% print()
   # Đáp số: y=0.02x + 36, giá trị sách 700 trang là 50 nghìn
 ```
+# Note
++ If you want to set comma as decimal seperator, add this code
+```r
+options(OutDec=",")
+```
++ In latex, use ``icomma`` package to display number with comma as decimal seperator
+
 
 License: MIT License
