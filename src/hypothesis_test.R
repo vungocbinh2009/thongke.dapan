@@ -228,4 +228,3 @@ get_conclusion <- function (test, c) {
   }
   return(conclusion)
 }
-

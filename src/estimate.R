@@ -119,4 +119,3 @@ answer_sample_size_prop_2 <- function (eps, alpha) {
   )
   render_template(file_name, var_list)
 }
-

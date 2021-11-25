@@ -10,7 +10,8 @@ install.packages("devtools")
 devtools::install_github("vungocbinh2009/thongke")
 # Install thongke.dapan
 devtools::install_github("vungocbinh2009/thongke_dapan")
-# Others package dependency: whisker, here, xtable
+# Others package dependency: whisker, xtable
+# If you want to run build.R to build package, install "here" package
 ```
 # How to use
 ```r

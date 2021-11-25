@@ -120,6 +120,7 @@ answer_sample_size_prop_2 <- function (eps, alpha) {
   render_template(file_name, var_list)
 }
 
+
 #' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
 #' @import thongke
 #' @export
@@ -351,6 +352,7 @@ get_conclusion <- function (test, c) {
   return(conclusion)
 }
 
+
 #' Hàm này in ra đáp án cho bài toán tính hệ số tương quan
 #' @import thongke
 #' @export
@@ -408,6 +410,7 @@ calculate_sum <- function (x, y) {
   ))
 }
 
+
 #' Hàm này dùng thư viện whisker để render file
 #' @import whisker
 render_template <- function (file_name, var_list) {
@@ -419,3 +422,5 @@ render_template <- function (file_name, var_list) {
 get_file_path <- function (...) {
   return(file.path(system.file(package = "thongke.dapan"), ...))
 }
+
+

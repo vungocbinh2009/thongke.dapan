@@ -54,4 +54,3 @@ calculate_sum <- function (x, y) {
     sum_y2 = sum_y2
   ))
 }
-
