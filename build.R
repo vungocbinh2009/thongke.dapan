@@ -1,5 +1,6 @@
 library(devtools)
 library(here)
+library(magrittr)
 
 merge_files <- function(file_list, output) {
   output_file <- NULL
@@ -11,12 +12,9 @@ merge_files <- function(file_list, output) {
 }
 
 ### BEGIN SCRIPT
-file_list <- c(
-  here("src", "estimate.R"),
-  here("src", "hypothesis_test.R"),
-  here("src", "regression.R"),
-  here("src", "util.R")
-)
+# Thực hiện các bước: Tìm folder src -> lấy danh sách các
+# file trong folder -> lấy path các file.
+file_list <- here("src") %>% list.files() %>% here("src", .)
 
 merge_files(file_list, here("R", "thongke_dapan.R"))
 
