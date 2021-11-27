@@ -1,126 +1,3 @@
-#' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố chuẩn)
-#' @import thongke
-#' @export
-answer_estimate_mean_norm <- function (n, mean, sigma, alpha) {
-  file_name <- get_file_path("template", "estimate", "estimate_mean_norm.mustache")
-  data <- estimate_mean_norm(n, mean, sigma, alpha, silent = TRUE)
-  var_list <- list(
-    mean = round(mean, 4),
-    n = n,
-    s = round(sigma, 4),
-    alpha = alpha,
-    z_alpha = round(data$z_alpha, 4),
-    bottom = round(data$bottom, 4),
-    top = round(data$top, 4)
-  )
-  render_template(file_name, var_list)
-}
-
-#' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố Student)
-#' @import thongke
-#' @export
-answer_estimate_mean_t <- function (n, mean, s, alpha) {
-  file_name <- get_file_path("template", "estimate", "estimate_mean_t.mustache")
-  data <- estimate_mean_t(n, mean, s, alpha, silent = TRUE)
-  var_list <- list(
-    mean = round(mean, 4),
-    n = n,
-    s = round(s, 4),
-    alpha = alpha,
-    t_alpha = round(data$t_alpha, 4),
-    bottom = round(data$bottom, 4),
-    top = round(data$top, 4)
-  )
-  render_template(file_name, var_list)
-}
-
-#'Hàm này in ra đáp án cho bài toán ước lượng phương sai
-#' @import thongke
-#' @export
-answer_estimate_var <- function (n, s, alpha) {
-  file_name <- get_file_path("template", "estimate", "estimate_var.mustache")
-  data <- estimate_var(n, s, alpha, silent = TRUE)
-  var_list <- list(
-    n = n,
-    s = round(s, 4),
-    alpha = alpha,
-    chi_sq_1 = round(data$chi_sq_1, 4),
-    chi_sq_2 = round(data$chi_sq_2, 4),
-    n_1 = n - 1,
-    s2 = round(s*s, 4),
-    bottom = round(data$bottom, 4),
-    top = round(data$bottom, 4)
-  )
-  render_template(file_name, var_list)
-}
-
-#' Hàm này in ra đáp án cho bài toán ước lượng cho tỷ lệ
-#' @import thongke
-#' @export
-answer_estimate_prop <- function (n, f, alpha) {
-  file_name <- get_file_path("template", "estimate", "estimate_prop.mustache")
-  data <- estimate_prop(n, f, alpha, silent = TRUE)
-  var_list <- list(
-    n = n,
-    f = round(f, 4),
-    alpha = alpha,
-    z_alpha = round(data$z_alpha, 4),
-    g = round(1 - f, 4),
-    bottom = round(data$bottom, 4),
-    top = round(data$top, 4)
-  )
-  render_template(file_name, var_list)
-}
-
-#' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với giá trị trung bình)
-#' @import thongke
-#' @export
-answer_sample_size_mean <- function (sigma, eps, alpha) {
-  file_name <- get_file_path("template", "estimate", "sample_size_mean.mustache")
-  data <- sample_size_mean(sigma, eps, alpha, silent = TRUE)
-  var_list <- list(
-    eps = eps,
-    alpha = alpha,
-    s = round(sigma, 4),
-    z_alpha = round(data$z_alpha, 4),
-    value = round(data$value, 4)
-  )
-  render_template(file_name, var_list)
-}
-
-#' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)
-#' @import thongke
-#' @export
-answer_sample_size_prop_1 <- function (f, eps, alpha) {
-  file_name <- get_file_path("template", "estimate", "sample_size_prop_1.mustache")
-  data <- sample_size_prop_1(f, eps, alpha, silent = TRUE)
-  var_list <- list(
-     f = round(f, 4),
-     eps = eps,
-     alpha = alpha,
-     z_alpha = round(data$z_alpha, 4),
-     g = round(1-f, 4),
-     value = round(data$value, 4)
-  )
-  render_template(file_name, var_list)
-}
-
-#' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)
-#' @import thongke
-#' @export
-answer_sample_size_prop_2 <- function (eps, alpha) {
-  file_name <- get_file_path("template", "estimate", "sample_size_prop_2.mustache")
-  data <- sample_size_prop_2(eps, alpha, silent = TRUE)
-  var_list <- list(
-    eps = eps,
-    alpha = alpha,
-    z_alpha = round(data$z_alpha, 4),
-    value = round(data$value, 4)
-  )
-  render_template(file_name, var_list)
-}
-
-
 #' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
 #' @import thongke
 #' @export
@@ -197,10 +74,10 @@ answer_test_goodness_of_fit <- function (statement, actual, expected, alpha) {
     table = print(xtable(matrix), print.results = FALSE),
     a_1 = actual[1],
     a_2 = actual[2],
-    a_k = actual[length[actual]],
+    a_k = actual[length(actual)],
     e_1 = expected[1],
     e_2 = expected[2],
-    e_k = expected[length[expected]],
+    e_k = expected[length(expected)],
     test = round(data$test, 4),
     alpha = alpha,
     c = round(data$c, 4),
@@ -331,9 +208,9 @@ answer_test_independent <- function (statement, matrix, alpha) {
     n_01 = data$col_sums[1],
     n_12 = matrix[1, 2],
     n_02 = data$col_sums[2],
-    n_rk = matrix[length[data$row_sums], length[data$col_sums]],
-    n_r0 = data$row_sums[length[data$row_sums]],
-    n_0k = data$col_sums[length[data$col_sums]],
+    n_rk = matrix[length(data$row_sums), length(data$col_sums)],
+    n_r0 = data$row_sums[length(data$row_sums)],
+    n_0k = data$col_sums[length(data$col_sums)],
     test = round(data$test, 4),
     alpha = alpha,
     c = round(data$c, 4),
@@ -351,76 +228,3 @@ get_conclusion <- function (test, c) {
   }
   return(conclusion)
 }
-
-
-#' Hàm này in ra đáp án cho bài toán tính hệ số tương quan
-#' @import thongke
-#' @export
-answer_correlation <- function (x, y) {
-  file_name <- get_file_path("template", "regression", "correlation.mustache")
-  data1 <- calculate_sum(x, y)
-  cor <- correlation(x, y, silent = TRUE)
-  var_list <- list(
-    sum_xy = data1$sum_xy,
-    sum_x = data1$sum_x,
-    sum_y = data1$sum_y,
-    sum_x2 = data1$sum_x2,
-    sum_y2 = data1$sum_y2,
-    n = length(x),
-    cor = round(cor, 4)
-  )
-  render_template(file_name, var_list)
-}
-
-#' Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn và tìm giá trị dự báo của Y
-#' @import thongke
-#' @export
-answer_linear_regression <- function (x, y, value) {
-  file_name <- get_file_path("template", "regression", "linear_regression.mustache")
-  data1 <- calculate_sum(x, y)
-  data2 <- linear_regression(x, y, silent = TRUE)
-  predict_value <- linear_regression_predict(x, y, value, silent = TRUE)
-  var_list <- list(
-    sum_xy = data1$sum_xy,
-    sum_x = data1$sum_x,
-    sum_y = data1$sum_y,
-    sum_x2 = data1$sum_x2,
-    n = length(x),
-    a = round(data2$a, 4),
-    b = round(data2$b, 4),
-    value = value,
-    predict_value = round(predict_value, 4)
-  )
-  render_template(file_name, var_list)
-}
-
-#' Hàm này tính tất cả các giá trị tổng giữa x và y
-calculate_sum <- function (x, y) {
-  sum_x <- sum(x)
-  sum_y <- sum(y)
-  sum_x2 <- sum(x*x)
-  sum_y2 <- sum(y*y)
-  sum_xy <- sum(x*y)
-  return(list(
-    sum_x = sum_x,
-    sum_y = sum_y,
-    sum_xy = sum_xy,
-    sum_x2 = sum_x2,
-    sum_y2 = sum_y2
-  ))
-}
-
-
-#' Hàm này dùng thư viện whisker để render file
-#' @import whisker
-render_template <- function (file_name, var_list) {
-  template <- readLines(file_name)
-  return(whisker.render(template, var_list))
-}
-
-#' Hàm này lấy đường dẫn các file trong package
-get_file_path <- function (...) {
-  return(file.path(system.file(package = "thongke.dapan"), ...))
-}
-
-
