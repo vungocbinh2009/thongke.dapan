@@ -13,5 +13,3 @@ build(
 )
 
 document(pkg = ".", roclets = NULL, quiet = FALSE)
-
-### END SCRIPT

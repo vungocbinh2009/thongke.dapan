@@ -62,7 +62,7 @@ answer_test_prop <- function (n, f, p_0, alpha, mode="neq") {
 #' @export
 answer_test_goodness_of_fit <- function (statement, actual, expected, alpha) {
   file_name <- get_file_path("template", "hypothesis_test", "test_goodness_of_fit.mustache")
-  data <- test_chi_squared(actual, expected, alpha, silent = TRUE)
+  data <- test_goodness_of_fit(actual, expected, alpha, silent = TRUE)
   col_names <- seq_along(actual)
   row_names <- c("Tần số quan sát", "Tần số lý thuyết")
   matrix <- matrix(c(actual, expected), nrow = 2,
@@ -158,7 +158,7 @@ answer_test_2_prop <- function (n1, n2, f1, f2, alpha, mode="neq") {
 #' @export
 answer_test_k_prop <- function (statement, m_i, n_i, alpha) {
   file_name <- get_file_path("template", "hypothesis_test", "test_k_prop.mustache")
-  data <- test_n_prop(m_i, n_i, alpha, silent = TRUE)
+  data <- test_k_prop(m_i, n_i, alpha, silent = TRUE)
   row_names <- c("Có A", "Không A", "Tổng")
   col_names <- c(seq_along(m_i), "Tổng")
   l_i <- n_i - m_i
