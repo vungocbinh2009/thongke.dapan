@@ -1,0 +1,49 @@
+---
+title: "R Notebook"
+output:
+  md_document:
+    variant: gfm
+---
+
+# thongke.dapan
+
+My R package, generate latex code to add to my exam template :)
+
+# Install
+```r
+# Install devtools
+install.packages("devtools")
+# Install thongke before thongke_dapan
+devtools::install_github("vungocbinh2009/thongke")
+# Install thongke.dapan
+devtools::install_github("vungocbinh2009/thongke_dapan")
+# Others package dependency: whisker, xtable
+```
+# How to use
+
+### Parameter estimation
+```{r, code = readLines("./tests/testthat/test_estimate.R"), results = FALSE}
+
+```
+
+### Hypothesis testing
+```{r, code = readLines("./tests/testthat/test_hypothesis.R"), results = FALSE}
+
+```
+
+### Correlation and simple linear regression
+```{r, code = readLines("./tests/testthat/test_regression.R"), results = FALSE}
+
+```
+
+# Note
++ If you want to set comma as decimal seperator, add this code
+```r
+options(OutDec=",")
+```
++ In latex, use ``icomma`` package to display number with comma as decimal seperator
+
+# License
+```{r results="asis", echo=FALSE}
+cat(readLines('LICENSE'), sep = '\n')
+```
