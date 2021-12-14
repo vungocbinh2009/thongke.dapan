@@ -73,6 +73,7 @@ answer_calculate_sum <- function(data) {
 }
 
 #' Hàm này tính tất cả các giá trị tổng giữa x và y
+#' @export
 calculate_sum <- function (x, y) {
   sum_x <- sum(x)
   sum_y <- sum(y)
