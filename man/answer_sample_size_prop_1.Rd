@@ -4,7 +4,7 @@
 \alias{answer_sample_size_prop_1}
 \title{Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)}
 \usage{
-answer_sample_size_prop_1(f, eps, alpha)
+answer_sample_size_prop_1(data)
 }
 \description{
 Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)

@@ -4,7 +4,7 @@
 \alias{answer_sample_size_mean}
 \title{Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với giá trị trung bình)}
 \usage{
-answer_sample_size_mean(sigma, eps, alpha)
+answer_sample_size_mean(data)
 }
 \description{
 Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với giá trị trung bình)

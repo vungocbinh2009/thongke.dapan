@@ -4,7 +4,7 @@
 \alias{get_conclusion}
 \title{Hàm này đưa ra kết luận cho bài toán kiểm định giả thiết}
 \usage{
-get_conclusion(test, c)
+get_conclusion(rejected)
 }
 \description{
 Hàm này đưa ra kết luận cho bài toán kiểm định giả thiết

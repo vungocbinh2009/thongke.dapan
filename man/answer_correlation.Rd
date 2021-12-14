@@ -4,7 +4,7 @@
 \alias{answer_correlation}
 \title{Hàm này in ra đáp án cho bài toán tính hệ số tương quan}
 \usage{
-answer_correlation(x, y)
+answer_correlation(data)
 }
 \description{
 Hàm này in ra đáp án cho bài toán tính hệ số tương quan

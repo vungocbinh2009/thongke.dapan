@@ -4,7 +4,7 @@
 \alias{answer_test_goodness_of_fit}
 \title{Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)}
 \usage{
-answer_test_goodness_of_fit(statement, actual, expected, alpha)
+answer_test_goodness_of_fit(data, statement)
 }
 \description{
 Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)

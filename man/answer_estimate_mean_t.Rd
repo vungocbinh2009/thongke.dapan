@@ -4,7 +4,7 @@
 \alias{answer_estimate_mean_t}
 \title{Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố Student)}
 \usage{
-answer_estimate_mean_t(n, mean, s, alpha)
+answer_estimate_mean_t(data)
 }
 \description{
 Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố Student)

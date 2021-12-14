@@ -4,7 +4,7 @@
 \alias{answer_estimate_var}
 \title{Hàm này in ra đáp án cho bài toán ước lượng phương sai}
 \usage{
-answer_estimate_var(n, s, alpha)
+answer_estimate_var(data)
 }
 \description{
 Hàm này in ra đáp án cho bài toán ước lượng phương sai
