@@ -51,7 +51,7 @@ answer_linear_regression_predict <- function(data) {
     a = round(model$coefficients[2], 4),
     b = round(model$coefficients[1], 4),
     value = params$value,
-    predict_value = result
+    predict_value = round(result, 4)
   )
   render_template(file_name, var_list)
 }
