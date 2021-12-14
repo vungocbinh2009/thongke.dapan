@@ -75,7 +75,7 @@ answer_test_goodness_of_fit <- function(data, statement) {
     statement = statement,
     # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
     # in ra khi gọi hàm render_template.
-    table = print(xtable(matrix), print.results = FALSE),
+    table = print(xtable(matrix), print.results = FALSE, floating = FALSE),
     a_1 = params$actual[1],
     a_2 = params$actual[2],
     a_k = params$actual[length(params$actual)],
@@ -176,7 +176,7 @@ answer_test_k_prop <- function(data, statement) {
     statement = statement,
     # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
     # in ra khi gọi hàm render_template
-    table = print(xtable(matrix), print.results = FALSE),
+    table = print(xtable(matrix), print.results = FALSE, floating = FALSE),
     sum_n_i = result$sum_n_i,
     sum_m_i = result$sum_m_i,
     sum_l_i = result$sum_l_i,
@@ -210,7 +210,7 @@ answer_test_independent <- function(data, statement) {
     statement = statement,
     # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
     # in ra khi gọi hàm render_template
-    table = print(xtable(matrix_2), print.results = FALSE),
+    table = print(xtable(matrix_2), print.results = FALSE, floating = FALSE),
     n = result$n,
     n_11 = params$matrix[1, 1],
     n_10 = result$row_sums[1],
