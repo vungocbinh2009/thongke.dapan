@@ -74,12 +74,19 @@ answer_calculate_sum <- function(data) {
 
 #' Hàm này tính tất cả các giá trị tổng giữa x và y
 #' @export
-calculate_sum <- function (x, y) {
+calculate_sum <- function (x, y, silent=FALSE) {
   sum_x <- sum(x)
   sum_y <- sum(y)
   sum_x2 <- sum(x*x)
   sum_y2 <- sum(y*y)
   sum_xy <- sum(x*y)
+  if(!silent) {
+    print(sprintf("Tổng x: %.4f", sum_x))
+    print(sprintf("Tổng y: %.4f", sum_y))
+    print(sprintf("Tổng xy: %.4f", sum_xy))
+    print(sprintf("Tổng x2: %.4f", sum_x2))
+    print(sprintf("Tổng y2: %.4f", sum_y2))
+  }
   return(list(
     sum_x = sum_x,
     sum_y = sum_y,
