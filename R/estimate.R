@@ -1,7 +1,7 @@
 #' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố chuẩn)
 #' @import thongke
 #' @export
-answer_estimate_mean_norm <- function(data) {
+answer_estimate_mean_norm <- function(data, sd_symbol, conclusion) {
   file_name <- get_file_path("template", "estimate", "estimate_mean_norm.mustache")
   params <- data$params
   result <- data$result
@@ -9,6 +9,8 @@ answer_estimate_mean_norm <- function(data) {
     mean = round(params$mean, 4),
     n = params$n,
     s = round(params$sigma, 4),
+    sd_symbol = sd_symbol,
+    conclusion = conclusion,
     alpha = params$alpha,
     z_alpha = round(result$z_alpha, 4),
     bottom = round(result$bottom, 4),
@@ -20,13 +22,14 @@ answer_estimate_mean_norm <- function(data) {
 #' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố Student)
 #' @import thongke
 #' @export
-answer_estimate_mean_t <- function(data) {
+answer_estimate_mean_t <- function(data, conclusion) {
   file_name <- get_file_path("template", "estimate", "estimate_mean_t.mustache")
   params <- data$params
   result <- data$result
   var_list <- list(
     mean = round(params$mean, 4),
     n = params$n,
+    conclusion = conclusion,
     s = round(params$s, 4),
     alpha = params$alpha,
     t_alpha = round(result$t_alpha, 4),
@@ -39,7 +42,7 @@ answer_estimate_mean_t <- function(data) {
 #'Hàm này in ra đáp án cho bài toán ước lượng phương sai
 #' @import thongke
 #' @export
-answer_estimate_var <- function(data) {
+answer_estimate_var <- function(data, conclusion) {
   file_name <- get_file_path("template", "estimate", "estimate_var.mustache")
   params <- data$params
   result <- data$result
@@ -47,6 +50,7 @@ answer_estimate_var <- function(data) {
     n = params$n,
     s = round(params$s, 4),
     alpha = params$alpha,
+    conclusion = conclusion,
     chi_sq_1 = round(result$chi_sq_1, 4),
     chi_sq_2 = round(result$chi_sq_2, 4),
     n_1 = params$n - 1,
@@ -60,7 +64,7 @@ answer_estimate_var <- function(data) {
 #' Hàm này in ra đáp án cho bài toán ước lượng cho tỷ lệ
 #' @import thongke
 #' @export
-answer_estimate_prop <- function(data) {
+answer_estimate_prop <- function(data, conclusion) {
   file_name <- get_file_path("template", "estimate", "estimate_prop.mustache")
   params <- data$params
   result <- data$result
@@ -69,6 +73,7 @@ answer_estimate_prop <- function(data) {
     f = round(params$f, 4),
     alpha = params$alpha,
     z_alpha = round(result$z_alpha, 4),
+    conclusion = conclusion,
     g = round(1 - params$f, 4),
     bottom = round(result$bottom, 4),
     top = round(result$top, 4)
@@ -79,11 +84,12 @@ answer_estimate_prop <- function(data) {
 #' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với giá trị trung bình)
 #' @import thongke
 #' @export
-answer_sample_size_mean <- function(data) {
+answer_sample_size_mean <- function(data, sd_symbol) {
   file_name <- get_file_path("template", "estimate", "sample_size_mean.mustache")
   params <- data$params
   result <- data$result
   var_list <- list(
+    sd_symbol = sd_symbol,
     eps = params$eps,
     alpha = params$alpha,
     s = round(params$sigma, 4),

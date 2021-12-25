@@ -1,21 +1,20 @@
 %! suppress = MissingImport
-{{!Các tham số: mean, n, s, alpha, z_alpha, bottom, top }}
-Ta có: $\overline{x} = {{mean}}, n = {{n}}, \sigma = {{s}}$
-% Có thể sửa lại \sigma bằng s
+{{!Các tham số: mean, n, s, alpha, z_alpha, bottom, top, sd_symbol, conclusion}}
+Ta có: $\overline{x} = {{mean}}, n = {{n}}, {{sd_symbol}} = {{s}}$
 
 Vì $\alpha = {{alpha}}$ nên $u_{\alpha / 2} = {{z_alpha}}$
 &
 0.5 đ
 \\
-(Viết lời giải vào đây)
+{{conclusion}}
 \begin{gather*}
-    \mu \in \left( \overline{x} - u_{\alpha / 2} \dfrac{\sigma}{\sqrt{n}};
-        \overline{x} + u_{\alpha / 2} \dfrac{\sigma}{\sqrt{n}} \right)\\
+    \mu \in \left( \overline{x} - u_{\alpha / 2} \dfrac{ {{sd_symbol}} }{\sqrt{n}};
+        \overline{x} + u_{\alpha / 2} \dfrac{ {{sd_symbol}} }{\sqrt{n}} \right)\\
     \mu \in \left( {{mean}} - {{z_alpha}} \dfrac{ {{s}} }{\sqrt{ {{n}} }};
         {{mean}} + {{z_alpha}} \dfrac{ {{s}} }{\sqrt{ {{n}} }} \right)\\
     \mu \in ({{bottom}}; {{top}})\\
 \end{gather*}
-% Có thể sửa lại \sigma bằng s
+
 
 (Viết công thức đúng được 0,5 điểm, tính toán đúng được 1 đ)
 &

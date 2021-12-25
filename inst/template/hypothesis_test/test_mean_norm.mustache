@@ -2,26 +2,22 @@
 {{!Các tham số: mean_0, mean, n, sigma, test, alpha, c, conclusion}}
 Xét bài toán kiểm định giả thiết:
 \[ H_0: \mu = {{mean_0}} \]
-\[ H_1: \mu \neq {{mean_0}} \]
-(Có thể sửa lại H1 cho phù hợp)
+\[ H_1: \mu {{operator}} {{mean_0}} \]
 &
 0.5 đ
 \\
-Ta có: $\overline{x} = {{mean}}, n = {{n}}, \sigma = {{sigma}}$
-% Có thẻ thay \sigma bằng s cho phù hợp
+Ta có: $\overline{x} = {{mean}}, n = {{n}}, {{sd_symbol}} = {{sigma}}$
 
-\[ T = \dfrac{\overline{x} - \mu_0}{\dfrac{\sigma}{\sqrt{n}}}
+\[ T = \dfrac{\overline{x} - \mu_0}{\dfrac{ {{sd_symbol}} }{\sqrt{n}}}
      = \dfrac{ {{mean}} - {{mean_0}} }{\dfrac{ {{sigma}} }{\sqrt{ {{n}} }}}
      = {{test}} \]
-% Có thẻ thay \sigma bằng s cho phù hợp
 &
 1.0 đ
 \\
 Vì $\alpha = {{alpha}}$ nên $c = {{c}}$
 
 {{{conclusion}}}
-% Ví dụ như bác bỏ H0 hay không đủ điều kiện bác bỏ H0
 
-Kết luận: (Viết kết luận vào đây)
+Kết luận: % (Viết kết luận vào đây)
 &
 0.5 đ
