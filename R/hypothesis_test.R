@@ -31,7 +31,6 @@ answer_test_mean_t <- function(data) {
   operator <- get_operator(params$mode)
   var_list <- list(
     operator = operator,
-    sd_symbol = sd_symbol,
     mean_0 = params$mean_0,
     mean = round(params$mean, 4),
     n = params$n,
@@ -82,8 +81,8 @@ answer_test_goodness_of_fit <- function(data, h0, col_names) {
   var_list <- list(
     h0 = h0,
     # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
-    # in ra khi gọi hàm render_template.
-    table = print(xtable(matrix), print.results = FALSE, floating = FALSE),
+    # in ra khi gọi hàm render_template, digits loại bỏ phần thập phân khi in bảng.
+    table = print(xtable(matrix, digits = 0), print.results = FALSE, floating = FALSE),
     a_1 = params$actual[1],
     a_2 = params$actual[2],
     a_k = params$actual[length(params$actual)],
@@ -133,7 +132,6 @@ answer_test_2_mean_t <- function(data) {
   operator <- get_operator(params$mode)
   var_list <- list(
     operator = operator,
-    sd_symbol = sd_symbol,
     mean1 = round(params$mean1, 4),
     n1 = params$n1,
     s1 = round(params$s1, 4),
@@ -191,8 +189,8 @@ answer_test_k_prop <- function(data, h0, row_names, col_names) {
   var_list <- list(
     h0 = h0,
     # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
-    # in ra khi gọi hàm render_template
-    table = print(xtable(matrix), print.results = FALSE, floating = FALSE),
+    # in ra khi gọi hàm render_template, digits loại bỏ phần thập phân khi in bảng.
+    table = print(xtable(matrix, digits = 0), print.results = FALSE, floating = FALSE),
     sum_n_i = result$sum_n_i,
     sum_m_i = result$sum_m_i,
     sum_l_i = result$sum_l_i,
@@ -225,8 +223,8 @@ answer_test_independent <- function(data, h0, row_names, col_names) {
   var_list <- list(
     h0 = h0,
     # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
-    # in ra khi gọi hàm render_template
-    table = print(xtable(matrix_2), print.results = FALSE, floating = FALSE),
+    # in ra khi gọi hàm render_template, digits loại bỏ phần thập phân khi in bảng.
+    table = print(xtable(matrix_2, digits = 0), print.results = FALSE, floating = FALSE),
     n = result$n,
     n_11 = params$matrix[1, 1],
     n_10 = result$row_sums[1],
@@ -246,7 +244,7 @@ answer_test_independent <- function(data, h0, row_names, col_names) {
 
 get_operator <- function (mode) {
   return(switch(
-    params$mode,
+    mode,
     "neq" = "\\neq",
     "less" = "\\leqslant",
     "greater" = "\\geqslant"

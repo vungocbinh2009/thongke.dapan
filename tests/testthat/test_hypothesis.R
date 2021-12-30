@@ -7,7 +7,9 @@ test_that("Test các hàm answer_test_*", {
   generate_data(test_mean_norm,
                 list(sigma = 5.2, alpha = 0.05, n = 100,
                  mean = 27.56, mean_0 = 26, mode = "neq")) %>%
-    answer_test_mean_norm() %>%
+    answer_test_mean_norm(
+      sd_symbol = "\\sigma"
+    ) %>%
     cat() %>%
     print()
   # Đáp số: T=3 - c=1.96 - Bác bỏ
@@ -32,7 +34,10 @@ test_that("Test các hàm answer_test_*", {
                 list(expected = c(100, 100, 100, 100, 100, 100),
                   actual = c(106, 92, 97, 105, 88, 112),
                   alpha = 0.05)) %>%
-    answer_test_goodness_of_fit(statement = "Nội dung của $H_0$") %>%
+    answer_test_goodness_of_fit(
+      h0 = "Nội dung của $H_0$",
+      col_names = c("Mặt 1", "Mặt 2", "Mặt 3", "Mặt 4", "Mặt 5", "Mặt 6")
+    ) %>%
     cat() %>%
     print()
   # Đáp số: T=4.22, c=11.070, Chấp nhận
@@ -41,7 +46,9 @@ test_that("Test các hàm answer_test_*", {
                 list(n1 = 40, n2 = 50, mean1 = 130, mean2 = 140,
                    sigma1 = sqrt(80), sigma2 = sqrt(100),
                    alpha = 0.01, mode = "neq")) %>%
-    answer_test_2_mean_norm() %>%
+    answer_test_2_mean_norm(
+      sd_symbol = "\\sigma"
+    ) %>%
     cat() %>%
     print()
   # Đáp số: T=5, c=2.58, Bác bỏ
@@ -66,7 +73,11 @@ test_that("Test các hàm answer_test_*", {
                 list(m_i = c(79, 82, 77, 83, 76, 81),
                   n_i = c(100, 100, 100, 100, 100, 100),
                   alpha = 0.05)) %>%
-    answer_test_k_prop(statement = "Nội dung của $H_0$") %>%
+    answer_test_k_prop(
+      h0 = "Nội dung của $H_0$",
+      col_names = c("A", "B", "C", "D", "E", "F"),
+      row_names = c("Có A", "Không A")
+    ) %>%
     cat() %>%
     print()
   # Đáp số: T=2.42. c=11.07. Chấp nhận
@@ -74,7 +85,11 @@ test_that("Test các hàm answer_test_*", {
   generate_data(test_independent,
                 list(matrix = matrix(data = c(328, 122, 77, 33), ncol = 2, nrow = 2),
                   alpha = 0.05)) %>%
-    answer_test_independent(statement = "Nội dung của $H_0$") %>%
+    answer_test_independent(
+      h0 = "Nội dung của $H_0$",
+      col_names = c("Loại 1", "Loại 2"),
+      row_names = c("Loại A", "Loại B")
+    ) %>%
     cat() %>%
     print()
   # Đáp số: T=0.368, c=3.841, Chấp nhận

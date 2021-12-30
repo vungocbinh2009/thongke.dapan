@@ -6,35 +6,46 @@ library(magrittr)
 test_that("Test các hàm answer_estimate_*, answer_sample_*", {
   generate_data(estimate_mean_norm,
                 list(sigma = 3, n = 36, alpha = 0.05, mean = 66)) %>%
-    answer_estimate_mean_norm() %>%
+    answer_estimate_mean_norm(
+      sd_symbol = "\\sigma",
+      conclusion = "Khoảng tin cậy 95\\% là:"
+    ) %>%
     cat() %>%
     print()
   # Đáp số: 65,02 - 66,98
   print("===================================================")
   generate_data(estimate_mean_t,
                 list(mean = 39.8, alpha = 0.01, n = 15, s = sqrt(0.144))) %>%
-    answer_estimate_mean_t() %>%
+    answer_estimate_mean_t(
+      conclusion = "Khoảng tin cậy 99\\% là"
+    ) %>%
     cat() %>%
     print()
   # Đáp số: 39,5023 - 40,0977
   print("===================================================")
   generate_data(estimate_var,
                 list(n = 30, s = 0.032, alpha = 0.025)) %>%
-    answer_estimate_var() %>%
+    answer_estimate_var(
+      conclusion = "Khoảng tin cậy 97,5\\% là:"
+    ) %>%
     cat() %>%
     print()
   # Đáp số: 0.000649 - 0.001851
   print("===================================================")
   generate_data(estimate_prop,
                 list(n = 100, f = 0.6, alpha = 0.1)) %>%
-    answer_estimate_prop() %>%
+    answer_estimate_prop(
+      conclusion = "Khoảng tin cậy 99\\% là:"
+    ) %>%
     cat() %>%
     print()
   # Đáp số: 0.52 - 0.68
   print("===================================================")
   generate_data(sample_size_mean,
                 list(sigma = 3, alpha = get_alpha(1.64), eps = 0.5)) %>%
-    answer_sample_size_mean() %>%
+    answer_sample_size_mean(
+      sd_symbol = "\\sigma"
+    ) %>%
     cat() %>%
     print()
   # Đáp số: 96.826
