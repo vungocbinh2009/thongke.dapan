@@ -4,7 +4,7 @@
 \alias{answer_test_k_prop}
 \title{Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)}
 \usage{
-answer_test_k_prop(data, statement)
+answer_test_k_prop(data, h0, row_names, col_names)
 }
 \description{
 Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
