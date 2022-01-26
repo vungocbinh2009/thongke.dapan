@@ -16,7 +16,7 @@ answer_test_mean_norm <- function(data, sd_symbol) {
     test = round(result$test, 4),
     alpha = params$alpha,
     c = round(result$c, 4),
-    conclusion = get_conclusion(result$rejected)
+    conclusion = get_conclusion(result$rejected, operator)
   )
   render_template(file_name, var_list)
 }
@@ -38,7 +38,7 @@ answer_test_mean_t <- function(data) {
     test = round(result$test, 4),
     alpha = params$alpha,
     c = round(result$c, 4),
-    conclusion = get_conclusion(result$rejected)
+    conclusion = get_conclusion(result$rejected, operator)
   )
   render_template(file_name, var_list)
 }
@@ -61,7 +61,7 @@ answer_test_prop <- function(data) {
     test = round(result$test, 4),
     alpha = params$alpha,
     c = round(result$c, 4),
-    conclusion = get_conclusion(result$rejected)
+    conclusion = get_conclusion(result$rejected, operator)
   )
   render_template(file_name, var_list)
 }
@@ -92,7 +92,7 @@ answer_test_goodness_of_fit <- function(data, h0, col_names) {
     test = round(result$test, 4),
     alpha = params$alpha,
     c = round(result$c, 4),
-    conclusion = get_conclusion(result$rejected)
+    conclusion = get_conclusion(result$rejected, "greater")
   )
   render_template(file_name, var_list)
 }
@@ -117,7 +117,7 @@ answer_test_2_mean_norm <- function(data, sd_symbol) {
     test = round(result$test, 4),
     alpha = params$alpha,
     c = round(result$c, 4),
-    conclusion = get_conclusion(result$rejected)
+    conclusion = get_conclusion(result$rejected, operator)
   )
   render_template(file_name, var_list)
 }
@@ -142,7 +142,7 @@ answer_test_2_mean_t <- function(data) {
     test = round(result$test, 4),
     alpha = params$alpha,
     c = round(result$c, 4),
-    conclusion = get_conclusion(result$rejected)
+    conclusion = get_conclusion(result$rejected, operator)
   )
   render_template(file_name, var_list)
 }
@@ -168,7 +168,7 @@ answer_test_2_prop <- function(data) {
     test = round(result$test, 4),
     alpha = params$alpha,
     c = round(result$c, 4),
-    conclusion = get_conclusion(result$rejected)
+    conclusion = get_conclusion(result$rejected, operator)
   )
   render_template(file_name, var_list)
 }
@@ -201,7 +201,7 @@ answer_test_k_prop <- function(data, h0, row_names, col_names) {
     test = round(result$test, 4),
     alpha = params$alpha,
     c = round(result$c, 4),
-    conclusion = get_conclusion(result$rejected)
+    conclusion = get_conclusion(result$rejected, "greater")
   )
   render_template(file_name, var_list)
 }
@@ -237,7 +237,7 @@ answer_test_independent <- function(data, h0, row_names, col_names) {
     test = round(result$test, 4),
     alpha = params$alpha,
     c = round(result$c, 4),
-    conclusion = get_conclusion(result$rejected)
+    conclusion = get_conclusion(result$rejected, "greater")
   )
   render_template(file_name, var_list)
 }
@@ -252,11 +252,23 @@ get_operator <- function (mode) {
 }
 
 #' Hàm này đưa ra kết luận cho bài toán kiểm định giả thiết
-get_conclusion <- function(rejected) {
+get_conclusion <- function(rejected, operator) {
   if (rejected) {
-    conclusion <- "Vì |T| > c nên ta bác bỏ $H_0$, chấp nhận $H_1$"
+    if (operator == "neq") {
+      conclusion <- "Vì $|T| > c$ nên ta bác bỏ $H_0$, chấp nhận $H_1$"
+    } else if (operator == "less") {
+      conclusion <- "Vì $T < -c$ nên ta bác bỏ $H_0$, chấp nhận $H_1$"
+    } else {
+      conclusion <- "Vì $T > c$ nên ta bác bỏ $H_0$, chấp nhận $H_1$"
+    }
   } else {
-    conclusion <- "Vì |T| < c nên ta chưa đủ cơ sở để bác bỏ $H_0$"
+    if (operator == "neq") {
+      conclusion <- "Vì $|T| < c$ nên ta chưa đủ cơ sở để bác bỏ $H_0$"
+    } else if (operator == "less") {
+      conclusion <- "Vì $T > -c$ nên ta chưa đủ cơ sở để bác bỏ $H_0$"
+    } else {
+      conclusion <- "Vì $T < c$ nên ta chưa đủ cơ sở để bác bỏ $H_0$"
+    }
   }
   return(conclusion)
 }
