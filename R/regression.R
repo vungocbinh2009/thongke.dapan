@@ -1,7 +1,7 @@
 #' Hàm này in ra đáp án cho bài toán tính hệ số tương quan
 #' @import thongke
 #' @export
-answer_correlation <- function(data, score = 1) {
+answer_correlation <- function(data, score = 1, round_digits = 4) {
   file_name <- get_file_path("template", "regression", "correlation.mustache")
   params <- data$params
   cor <- data$result
@@ -13,7 +13,7 @@ answer_correlation <- function(data, score = 1) {
     sum_x2 = sum$sum_x2,
     sum_y2 = sum$sum_y2,
     n = length(params$x),
-    cor = round(cor, 4),
+    cor = round(cor, round_digits),
     score = score
   )
   render_template(file_name, var_list)
@@ -22,7 +22,7 @@ answer_correlation <- function(data, score = 1) {
 #' Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn và tìm giá trị dự báo của Y
 #' @import thongke
 #' @export
-answer_linear_regression <- function(data, score=c(1, 0.5)) {
+answer_linear_regression <- function(data, score=c(1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "regression", "linear_regression.mustache")
   params <- data$params
   sum <- calculate_sum(params$x, params$y)
@@ -33,8 +33,8 @@ answer_linear_regression <- function(data, score=c(1, 0.5)) {
     sum_y = sum$sum_y,
     sum_x2 = sum$sum_x2,
     n = length(params$x),
-    a = round(result$a, 4),
-    b = round(result$b, 4),
+    a = round(result$a, round_digits),
+    b = round(result$b, round_digits),
     score_1 = score[1],
     score_2 = score[2]
   )
@@ -44,18 +44,18 @@ answer_linear_regression <- function(data, score=c(1, 0.5)) {
 #' Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn và tìm giá trị dự báo của Y
 #' @import thongke
 #' @export
-answer_linear_regression_predict <- function(data, conclusion, value_unit, score) {
+answer_linear_regression_predict <- function(data, conclusion, value_unit, score = 0.5, round_digits = 4) {
   file_name <- get_file_path("template", "regression", "linear_regression_predict.mustache")
   params <- data$params
   result <- data$result
   df <- data.frame(X = params$x, Y = params$y)
   model <- lm(Y ~ X, data = df)
   var_list <- list(
-    a = round(model$coefficients[2], 4),
-    b = round(model$coefficients[1], 4),
+    a = round(model$coefficients[2], round_digits),
+    b = round(model$coefficients[1], round_digits),
     conclusion = conclusion,
     value = params$value,
-    predict_value = round(result, 4),
+    predict_value = round(result, round_digits),
     value_unit = value_unit,
     score = score
   )

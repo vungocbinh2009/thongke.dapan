@@ -4,7 +4,7 @@
 \alias{answer_sample_size_mean}
 \title{Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với giá trị trung bình)}
 \usage{
-answer_sample_size_mean(data, sd_symbol)
+answer_sample_size_mean(data, sd_symbol, score = c(0.5, 1, 0.5))
 }
 \description{
 Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với giá trị trung bình)

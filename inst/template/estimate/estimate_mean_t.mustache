@@ -2,19 +2,47 @@
 {{!Các tham số: mean, n, s, alpha, t_alpha, bottom, top}}
 Ta có: $\overline{x} = {{mean}}, n = {{n}}, s = {{s}}$
 
-Vì $\alpha = {{alpha}}$ nên $t_{\alpha / 2} = {{t_alpha}}$
+
+{{#two_side}}
+Vì $\alpha = {{alpha}}$ nên $t_{\alpha / 2} = {{t_alpha_2}}$
+{{/two_side}}
+{{#min}}
+Vì $\alpha = {{alpha}}$ nên $t_{\alpha} = {{t_alpha}}$
+{{/min}}
+{{#max}}
+Vì $\alpha = {{alpha}}$ nên $t_{\alpha} = {{t_alpha}}$
+{{/max}}
 &
 {{score_1}} đ
 \\
 {{conclusion}}
-%! suppress = MissingImport
+{{#two_side}}
 \begin{gather*}
     \mu \in \left( \overline{x} - t_{\alpha / 2} \dfrac{s}{\sqrt{n}};
         \overline{x} + t_{\alpha / 2} \dfrac{s}{\sqrt{n}} \right)\\
-    \mu \in \left( {{mean}} - {{ t_alpha }} \dfrac{ {{s}} }{\sqrt{ {{n}} }};
-        {{mean}} + {{ t_alpha }} \dfrac{ {{s}} }{\sqrt{ {{n}} } } \right)\\
+    \mu \in \left( {{mean}} - {{ t_alpha_2 }} \dfrac{ {{s}} }{\sqrt{ {{n}} }};
+        {{mean}} + {{ t_alpha_2 }} \dfrac{ {{s}} }{\sqrt{ {{n}} } } \right)\\
     \mu \in ({{bottom}}; {{top}})\\
 \end{gather*}
+{{/two_side}}
+{{#min}}
+\begin{gather*}
+    \mu \in \left( \overline{x} - t_{\alpha} \dfrac{s}{\sqrt{n}};
+        +\infty \right)\\
+    \mu \in \left( {{mean}} - {{ t_alpha }} \dfrac{ {{s}} }{\sqrt{ {{n}} }};
+        +\infty \right)\\
+    \mu \in ({{min_value}}; +\infty)\\
+\end{gather*}
+{{/min}}
+{{#max}}
+\begin{gather*}
+    \mu \in \left( -\infty;
+        \overline{x} + t_{\alpha} \dfrac{s}{\sqrt{n}} \right)\\
+    \mu \in \left( -\infty;
+        {{mean}} + {{ t_alpha }} \dfrac{ {{s}} }{\sqrt{ {{n}} } } \right)\\
+    \mu \in (-\infty; {{max_value}})\\
+\end{gather*}
+{{/max}}
 (Viết công thức đúng được 0,5 điểm, tính toán đúng được 1 đ)
 &
 {{score_2}} đ

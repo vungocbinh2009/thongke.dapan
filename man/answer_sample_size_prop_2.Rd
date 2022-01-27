@@ -4,7 +4,7 @@
 \alias{answer_sample_size_prop_2}
 \title{Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)}
 \usage{
-answer_sample_size_prop_2(data)
+answer_sample_size_prop_2(data, score = c(0.5, 1, 0.5))
 }
 \description{
 Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)

@@ -4,7 +4,7 @@
 \alias{answer_estimate_mean_norm}
 \title{Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố chuẩn)}
 \usage{
-answer_estimate_mean_norm(data, sd_symbol, conclusion)
+answer_estimate_mean_norm(data, sd_symbol, conclusion, score = c(0.5, 1.5))
 }
 \description{
 Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố chuẩn)

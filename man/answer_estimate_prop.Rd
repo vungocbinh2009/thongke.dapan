@@ -4,7 +4,7 @@
 \alias{answer_estimate_prop}
 \title{Hàm này in ra đáp án cho bài toán ước lượng cho tỷ lệ}
 \usage{
-answer_estimate_prop(data, conclusion)
+answer_estimate_prop(data, conclusion, score = c(0.5, 1.5))
 }
 \description{
 Hàm này in ra đáp án cho bài toán ước lượng cho tỷ lệ

@@ -4,7 +4,7 @@
 \alias{answer_test_mean_t}
 \title{Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)}
 \usage{
-answer_test_mean_t(data)
+answer_test_mean_t(data, score = c(0.5, 1, 0.5))
 }
 \description{
 Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)

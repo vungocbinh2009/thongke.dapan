@@ -4,7 +4,7 @@
 \alias{answer_test_2_prop}
 \title{Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)}
 \usage{
-answer_test_2_prop(data)
+answer_test_2_prop(data, score = c(0.5, 1, 0.5))
 }
 \description{
 Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)

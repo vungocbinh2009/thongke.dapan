@@ -4,7 +4,7 @@
 \alias{answer_estimate_var}
 \title{Hàm này in ra đáp án cho bài toán ước lượng phương sai}
 \usage{
-answer_estimate_var(data, conclusion)
+answer_estimate_var(data, conclusion, score = c(0.5, 1.5))
 }
 \description{
 Hàm này in ra đáp án cho bài toán ước lượng phương sai

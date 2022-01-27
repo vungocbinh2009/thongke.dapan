@@ -1,7 +1,7 @@
 #' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
 #' @import thongke
 #' @export
-answer_test_mean_norm <- function(data, sd_symbol, score=c(0.5, 1, 0.5)) {
+answer_test_mean_norm <- function(data, sd_symbol, score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_mean_norm.mustache")
   params <- data$params
   result <- data$result
@@ -10,12 +10,12 @@ answer_test_mean_norm <- function(data, sd_symbol, score=c(0.5, 1, 0.5)) {
     operator = operator,
     sd_symbol = sd_symbol,
     mean_0 = params$mean_0,
-    mean = round(params$mean, 4),
+    mean = round(params$mean, round_digits),
     n = params$n,
-    sigma = round(params$sigma, 4),
-    test = round(result$test, 4),
+    sigma = round(params$sigma, round_digits),
+    test = round(result$test, round_digits),
     alpha = params$alpha,
-    c = round(result$c, 4),
+    c = round(result$c, round_digits),
     conclusion = get_conclusion(result$rejected, operator),
     score_1 = score[1],
     score_2 = score[2],
@@ -27,7 +27,7 @@ answer_test_mean_norm <- function(data, sd_symbol, score=c(0.5, 1, 0.5)) {
 #' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
 #' @import thongke
 #' @export
-answer_test_mean_t <- function(data, score=c(0.5, 1, 0.5)) {
+answer_test_mean_t <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_mean_t.mustache")
   params <- data$params
   result <- data$result
@@ -35,12 +35,12 @@ answer_test_mean_t <- function(data, score=c(0.5, 1, 0.5)) {
   var_list <- list(
     operator = operator,
     mean_0 = params$mean_0,
-    mean = round(params$mean, 4),
+    mean = round(params$mean, round_digits),
     n = params$n,
-    s = round(params$s, 4),
-    test = round(result$test, 4),
+    s = round(params$s, round_digits),
+    test = round(result$test, round_digits),
     alpha = params$alpha,
-    c = round(result$c, 4),
+    c = round(result$c, round_digits),
     conclusion = get_conclusion(result$rejected, operator),
     score_1 = score[1],
     score_2 = score[2],
@@ -52,7 +52,7 @@ answer_test_mean_t <- function(data, score=c(0.5, 1, 0.5)) {
 #' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
 #' @import thongke
 #' @export
-answer_test_prop <- function(data, score=c(0.5, 1, 0.5)) {
+answer_test_prop <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_prop.mustache")
   params <- data$params
   result <- data$result
@@ -61,12 +61,12 @@ answer_test_prop <- function(data, score=c(0.5, 1, 0.5)) {
     operator = operator,
     k = round(params$n * params$f, 0),
     n = params$n,
-    f = round(params$f, 4),
+    f = round(params$f, round_digits),
     p_0 = params$p_0,
     g_0 = 1 - params$p_0,
-    test = round(result$test, 4),
+    test = round(result$test, round_digits),
     alpha = params$alpha,
-    c = round(result$c, 4),
+    c = round(result$c, round_digits),
     conclusion = get_conclusion(result$rejected, operator),
     score_1 = score[1],
     score_2 = score[2],
@@ -79,7 +79,7 @@ answer_test_prop <- function(data, score=c(0.5, 1, 0.5)) {
 #' @import thongke
 #' @import xtable
 #' @export
-answer_test_goodness_of_fit <- function(data, h0, col_names, score=c(0.5, 1, 0.5)) {
+answer_test_goodness_of_fit <- function(data, h0, col_names, score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_goodness_of_fit.mustache")
   params <- data$params
   result <- data$result
@@ -98,9 +98,9 @@ answer_test_goodness_of_fit <- function(data, h0, col_names, score=c(0.5, 1, 0.5
     e_1 = params$expected[1],
     e_2 = params$expected[2],
     e_k = params$expected[length(params$expected)],
-    test = round(result$test, 4),
+    test = round(result$test, round_digits),
     alpha = params$alpha,
-    c = round(result$c, 4),
+    c = round(result$c, round_digits),
     conclusion = get_conclusion(result$rejected, "greater"),
     score_1 = score[1],
     score_2 = score[2],
@@ -112,7 +112,7 @@ answer_test_goodness_of_fit <- function(data, h0, col_names, score=c(0.5, 1, 0.5
 #' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
 #' @import thongke
 #' @export
-answer_test_2_mean_norm <- function(data, sd_symbol, score=c(0.5, 1, 0.5)) {
+answer_test_2_mean_norm <- function(data, sd_symbol, score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_2_mean_norm.mustache")
   params <- data$params
   result <- data$result
@@ -120,15 +120,15 @@ answer_test_2_mean_norm <- function(data, sd_symbol, score=c(0.5, 1, 0.5)) {
   var_list <- list(
     operator = operator,
     sd_symbol = sd_symbol,
-    mean1 = round(params$mean1, 4),
+    mean1 = round(params$mean1, round_digits),
     n1 = params$n1,
-    sigma1 = round(params$sigma1, 4),
-    mean2 = round(params$mean2, 4),
+    sigma1 = round(params$sigma1, round_digits),
+    mean2 = round(params$mean2, round_digits),
     n2 = params$n2,
-    sigma2 = round(params$sigma2, 4),
-    test = round(result$test, 4),
+    sigma2 = round(params$sigma2, round_digits),
+    test = round(result$test, round_digits),
     alpha = params$alpha,
-    c = round(result$c, 4),
+    c = round(result$c, round_digits),
     conclusion = get_conclusion(result$rejected, operator),
     score_1 = score[1],
     score_2 = score[2],
@@ -140,23 +140,23 @@ answer_test_2_mean_norm <- function(data, sd_symbol, score=c(0.5, 1, 0.5)) {
 #' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
 #' @import thongke
 #' @export
-answer_test_2_mean_t <- function(data, score=c(0.5, 1, 0.5)) {
+answer_test_2_mean_t <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_2_mean_t.mustache")
   params <- data$params
   result <- data$result
   operator <- get_operator(params$mode)
   var_list <- list(
     operator = operator,
-    mean1 = round(params$mean1, 4),
+    mean1 = round(params$mean1, round_digits),
     n1 = params$n1,
-    s1 = round(params$s1, 4),
-    mean2 = round(params$mean2, 4),
+    s1 = round(params$s1, round_digits),
+    mean2 = round(params$mean2, round_digits),
     n2 = params$n2,
-    s2 = round(params$s2, 4),
-    s = round(sqrt(result$s), 4),
-    test = round(result$test, 4),
+    s2 = round(params$s2, round_digits),
+    s = round(sqrt(result$s), round_digits),
+    test = round(result$test, round_digits),
     alpha = params$alpha,
-    c = round(result$c, 4),
+    c = round(result$c, round_digits),
     conclusion = get_conclusion(result$rejected, operator),
     score_1 = score[1],
     score_2 = score[2],
@@ -168,7 +168,7 @@ answer_test_2_mean_t <- function(data, score=c(0.5, 1, 0.5)) {
 #' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
 #' @import thongke
 #' @export
-answer_test_2_prop <- function(data, score=c(0.5, 1, 0.5)) {
+answer_test_2_prop <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_2_prop.mustache")
   params <- data$params
   result <- data$result
@@ -177,15 +177,15 @@ answer_test_2_prop <- function(data, score=c(0.5, 1, 0.5)) {
     operator = operator,
     k1 = round(params$n1 * params$f1, 0),
     n1 = params$n1,
-    f1 = round(params$f1, 4),
+    f1 = round(params$f1, round_digits),
     k2 = round(params$n2 * params$f2, 0),
     n2 = params$n2,
-    f2 = round(params$f2, 4),
-    f = round(result$f, 4),
-    g = round(1 - result$f, 4),
-    test = round(result$test, 4),
+    f2 = round(params$f2, round_digits),
+    f = round(result$f, round_digits),
+    g = round(1 - result$f, round_digits),
+    test = round(result$test, round_digits),
     alpha = params$alpha,
-    c = round(result$c, 4),
+    c = round(result$c, round_digits),
     conclusion = get_conclusion(result$rejected, operator),
     score_1 = score[1],
     score_2 = score[2],
@@ -198,7 +198,7 @@ answer_test_2_prop <- function(data, score=c(0.5, 1, 0.5)) {
 #' @import thongke
 #' @import xtable
 #' @export
-answer_test_k_prop <- function(data, h0, row_names, col_names, score=c(0.5, 1, 0.5)) {
+answer_test_k_prop <- function(data, h0, row_names, col_names, score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_k_prop.mustache")
   params <- data$params
   result <- data$result
@@ -219,9 +219,9 @@ answer_test_k_prop <- function(data, h0, row_names, col_names, score=c(0.5, 1, 0
     m_2 = params$m_i[2],
     n_1 = params$n_i[1],
     n_2 = params$n_i[2],
-    test = round(result$test, 4),
+    test = round(result$test, round_digits),
     alpha = params$alpha,
-    c = round(result$c, 4),
+    c = round(result$c, round_digits),
     conclusion = get_conclusion(result$rejected, "greater"),
     score_1 = score[1],
     score_2 = score[2],
@@ -234,7 +234,7 @@ answer_test_k_prop <- function(data, h0, row_names, col_names, score=c(0.5, 1, 0
 #' @import thongke
 #' @import xtable
 #' @export
-answer_test_independent <- function(data, h0, row_names, col_names, score=c(0.5, 1, 0.5)) {
+answer_test_independent <- function(data, h0, row_names, col_names, score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_independent.mustache")
   params <- data$params
   result <- data$result
@@ -258,9 +258,9 @@ answer_test_independent <- function(data, h0, row_names, col_names, score=c(0.5,
     n_rk = params$matrix[length(result$row_sums), length(result$col_sums)],
     n_r0 = result$row_sums[length(result$row_sums)],
     n_0k = result$col_sums[length(result$col_sums)],
-    test = round(result$test, 4),
+    test = round(result$test, round_digits),
     alpha = params$alpha,
-    c = round(result$c, 4),
+    c = round(result$c, round_digits),
     conclusion = get_conclusion(result$rejected, "greater"),
     score_1 = score[1],
     score_2 = score[2],

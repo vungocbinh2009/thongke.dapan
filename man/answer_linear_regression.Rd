@@ -4,7 +4,7 @@
 \alias{answer_linear_regression}
 \title{Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn và tìm giá trị dự báo của Y}
 \usage{
-answer_linear_regression(data)
+answer_linear_regression(data, score = c(1, 0.5))
 }
 \description{
 Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn và tìm giá trị dự báo của Y

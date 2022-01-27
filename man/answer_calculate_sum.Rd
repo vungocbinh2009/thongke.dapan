@@ -4,7 +4,7 @@
 \alias{answer_calculate_sum}
 \title{Hàm này tính tất cả các giá trị tổng giữa x và y}
 \usage{
-answer_calculate_sum(data)
+answer_calculate_sum(data, score = 1)
 }
 \description{
 Hàm này tính tất cả các giá trị tổng giữa x và y
