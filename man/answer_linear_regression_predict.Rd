@@ -2,10 +2,16 @@
 % Please edit documentation in R/regression.R
 \name{answer_linear_regression_predict}
 \alias{answer_linear_regression_predict}
-\title{Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn và tìm giá trị dự báo của Y}
+\title{Trình bày bài toán dự đoán dựa trên mô hình hồi quy.}
 \usage{
-answer_linear_regression_predict(data, conclusion, value_unit, score)
+answer_linear_regression_predict(
+  data,
+  conclusion,
+  value_unit,
+  score = 0.5,
+  round_digits = 4
+)
 }
 \description{
-Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn và tìm giá trị dự báo của Y
+Hàm này in ra đáp án cho bài toán tìm giá trị dự báo của Y dựa trên mô hình hồi quy tuyến tính.
 }

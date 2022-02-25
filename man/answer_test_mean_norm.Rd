@@ -2,9 +2,14 @@
 % Please edit documentation in R/hypothesis_test.R
 \name{answer_test_mean_norm}
 \alias{answer_test_mean_norm}
-\title{Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)}
+\title{Trình bày bài toán KĐGT về giá trị trung bình (phân bố chuẩn)}
 \usage{
-answer_test_mean_norm(data, sd_symbol, score = c(0.5, 1, 0.5))
+answer_test_mean_norm(
+  data,
+  sd_symbol,
+  score = c(0.5, 1, 0.5),
+  round_digits = 4
+)
 }
 \description{
 Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)

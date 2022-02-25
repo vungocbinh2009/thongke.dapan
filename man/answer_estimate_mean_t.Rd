@@ -2,9 +2,9 @@
 % Please edit documentation in R/estimate.R
 \name{answer_estimate_mean_t}
 \alias{answer_estimate_mean_t}
-\title{Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố Student)}
+\title{Trình bày bài toán ước lượng khoảng cho trung bình (phân bố Student)}
 \usage{
-answer_estimate_mean_t(data, conclusion, score = c(0.5, 1.5))
+answer_estimate_mean_t(data, conclusion, score = c(0.5, 1.5), round_digits = 4)
 }
 \description{
 Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố Student)

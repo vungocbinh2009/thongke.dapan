@@ -1,3 +1,5 @@
+#' Trình bày bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#'
 #' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
 #' @import thongke
 #' @export
@@ -24,7 +26,9 @@ answer_test_mean_norm <- function(data, sd_symbol, score=c(0.5, 1, 0.5), round_d
   render_template(file_name, var_list)
 }
 
-#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' Trình bày bài toán KĐGT về giá trị trung bình (phân bố Student)
+#'
+#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố Student)
 #' @import thongke
 #' @export
 answer_test_mean_t <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {
@@ -49,7 +53,9 @@ answer_test_mean_t <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {
   render_template(file_name, var_list)
 }
 
-#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' Trình bày bài toán KĐGT về tỷ lệ
+#'
+#' Hàm này in ra đáp án cho bài toán KĐGT về tỷ lệ
 #' @import thongke
 #' @export
 answer_test_prop <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {
@@ -75,7 +81,9 @@ answer_test_prop <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {
   render_template(file_name, var_list)
 }
 
-#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' Trình bày bài toán kiểm định khi bình phương
+#'
+#' Hàm này in ra đáp án cho bài toán kiểm định sự phù hợp của k tỷ lệ.
 #' @import thongke
 #' @import xtable
 #' @export
@@ -109,7 +117,9 @@ answer_test_goodness_of_fit <- function(data, h0, col_names, score=c(0.5, 1, 0.5
   render_template(file_name, var_list)
 }
 
-#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' Trình bày bài toán KĐGT về so sánh 2 giá trị trung bình (phân bố chuẩn)
+#'
+#' Hàm này in ra đáp án cho bài toán KĐGT về so sánh 2 giá trị trung bình (phân bố chuẩn)
 #' @import thongke
 #' @export
 answer_test_2_mean_norm <- function(data, sd_symbol, score=c(0.5, 1, 0.5), round_digits = 4) {
@@ -137,7 +147,9 @@ answer_test_2_mean_norm <- function(data, sd_symbol, score=c(0.5, 1, 0.5), round
   render_template(file_name, var_list)
 }
 
-#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' Trình bày bài toán KĐGT về so sánh 2 giá trị trung bình (phân bố Student)
+#'
+#' Hàm này in ra đáp án cho bài toán KĐGT về so sánh 2 giá trị trung bình (phân bố Student)
 #' @import thongke
 #' @export
 answer_test_2_mean_t <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {
@@ -165,7 +177,9 @@ answer_test_2_mean_t <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {
   render_template(file_name, var_list)
 }
 
-#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' Trình bày bài toán KĐGT về so sánh 2 tỷ lệ.
+#'
+#' Hàm này in ra đáp án cho bài toán KĐGT về so sánh 2 tỷ lệ.
 #' @import thongke
 #' @export
 answer_test_2_prop <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {
@@ -194,7 +208,9 @@ answer_test_2_prop <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {
   render_template(file_name, var_list)
 }
 
-#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' Trình bày bài toán KĐGT về so sánh k tỷ lệ.
+#'
+#' Hàm này in ra đáp án cho bài toán KĐGT về so sánh k tỷ lệ.
 #' @import thongke
 #' @import xtable
 #' @export
@@ -230,7 +246,9 @@ answer_test_k_prop <- function(data, h0, row_names, col_names, score=c(0.5, 1, 0
   render_template(file_name, var_list)
 }
 
-#' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+#' Trình bày bài toán kiểm định tính độc lập.
+#'
+#' Hàm này in ra đáp án cho bài toán kiểm định tính độc lập.
 #' @import thongke
 #' @import xtable
 #' @export
@@ -269,6 +287,7 @@ answer_test_independent <- function(data, h0, row_names, col_names, score=c(0.5,
   render_template(file_name, var_list)
 }
 
+#' Hàm này dựa vào mode để chọn dấu thích hợp cho H1.
 get_operator <- function (mode) {
   return(switch(
     mode,

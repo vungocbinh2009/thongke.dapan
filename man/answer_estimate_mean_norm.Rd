@@ -2,9 +2,15 @@
 % Please edit documentation in R/estimate.R
 \name{answer_estimate_mean_norm}
 \alias{answer_estimate_mean_norm}
-\title{Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố chuẩn)}
+\title{Trình bày bài toán ước lượng khoảng cho trung bình (phân bố chuẩn)}
 \usage{
-answer_estimate_mean_norm(data, sd_symbol, conclusion, score = c(0.5, 1.5))
+answer_estimate_mean_norm(
+  data,
+  sd_symbol,
+  conclusion,
+  score = c(0.5, 1.5),
+  round_digits = 4
+)
 }
 \description{
 Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố chuẩn)

@@ -2,9 +2,14 @@
 % Please edit documentation in R/estimate.R
 \name{answer_sample_size_mean}
 \alias{answer_sample_size_mean}
-\title{Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với giá trị trung bình)}
+\title{Trình bày bài toán xác định kích thước mẫu (TH cho giá trị trung bình)}
 \usage{
-answer_sample_size_mean(data, sd_symbol, score = c(0.5, 1, 0.5))
+answer_sample_size_mean(
+  data,
+  sd_symbol,
+  score = c(0.5, 1, 0.5),
+  round_digits = 4
+)
 }
 \description{
 Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với giá trị trung bình)

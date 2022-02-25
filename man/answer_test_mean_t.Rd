@@ -2,10 +2,10 @@
 % Please edit documentation in R/hypothesis_test.R
 \name{answer_test_mean_t}
 \alias{answer_test_mean_t}
-\title{Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)}
+\title{Trình bày bài toán KĐGT về giá trị trung bình (phân bố Student)}
 \usage{
-answer_test_mean_t(data, score = c(0.5, 1, 0.5))
+answer_test_mean_t(data, score = c(0.5, 1, 0.5), round_digits = 4)
 }
 \description{
-Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố Student)
 }

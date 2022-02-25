@@ -2,9 +2,9 @@
 % Please edit documentation in R/regression.R
 \name{answer_correlation}
 \alias{answer_correlation}
-\title{Hàm này in ra đáp án cho bài toán tính hệ số tương quan}
+\title{Trình bày bài toán tính hệ số tương quan.}
 \usage{
-answer_correlation(data, score = 1)
+answer_correlation(data, score = 1, round_digits = 4)
 }
 \description{
 Hàm này in ra đáp án cho bài toán tính hệ số tương quan

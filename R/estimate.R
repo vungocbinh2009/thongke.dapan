@@ -1,3 +1,5 @@
+#' Trình bày bài toán ước lượng khoảng cho trung bình (phân bố chuẩn)
+#'
 #' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố chuẩn)
 #' @import thongke
 #' @export
@@ -27,6 +29,8 @@ answer_estimate_mean_norm <- function(data, sd_symbol, conclusion, score=c(0.5, 
   render_template(file_name, var_list)
 }
 
+#' Trình bày bài toán ước lượng khoảng cho trung bình (phân bố Student)
+#'
 #' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố Student)
 #' @import thongke
 #' @export
@@ -55,7 +59,9 @@ answer_estimate_mean_t <- function(data, conclusion, score=c(0.5, 1.5), round_di
   render_template(file_name, var_list)
 }
 
-#'Hàm này in ra đáp án cho bài toán ước lượng phương sai
+#' Trình bày bài toán ước lượng khoảng cho phương sai.
+#'
+#' Hàm này in ra đáp án cho bài toán ước lượng phương sai
 #' @import thongke
 #' @export
 answer_estimate_var <- function(data, conclusion, score=c(0.5, 1.5), round_digits = 4) {
@@ -86,6 +92,8 @@ answer_estimate_var <- function(data, conclusion, score=c(0.5, 1.5), round_digit
   render_template(file_name, var_list)
 }
 
+#' Trình bày bài toán ước lượng cho tỷ lệ.
+#'
 #' Hàm này in ra đáp án cho bài toán ước lượng cho tỷ lệ
 #' @import thongke
 #' @export
@@ -114,6 +122,8 @@ answer_estimate_prop <- function(data, conclusion, score=c(0.5, 1.5), round_digi
   render_template(file_name, var_list)
 }
 
+#' Trình bày bài toán xác định kích thước mẫu (TH cho giá trị trung bình)
+#'
 #' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với giá trị trung bình)
 #' @import thongke
 #' @export
@@ -135,6 +145,8 @@ answer_sample_size_mean <- function(data, sd_symbol, score=c(0.5, 1, 0.5), round
   render_template(file_name, var_list)
 }
 
+#' Trình bày bài toán xác định kích thước mẫu (cho tỷ lệ, đã biết f)
+#'
 #' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)
 #' @import thongke
 #' @export
@@ -156,7 +168,9 @@ answer_sample_size_prop_1 <- function(data, score=c(0.5, 1, 0.5), round_digits =
   render_template(file_name, var_list)
 }
 
-#' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)
+#' Trình bày bài toán xác định kích thước mẫu (cho tỷ lệ, không biết f)
+#'
+#' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi chưa biết f)
 #' @import thongke
 #' @export
 answer_sample_size_prop_2 <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {

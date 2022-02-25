@@ -2,10 +2,17 @@
 % Please edit documentation in R/hypothesis_test.R
 \name{answer_test_independent}
 \alias{answer_test_independent}
-\title{Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)}
+\title{Trình bày bài toán kiểm định tính độc lập.}
 \usage{
-answer_test_independent(data, h0, row_names, col_names, score = c(0.5, 1, 0.5))
+answer_test_independent(
+  data,
+  h0,
+  row_names,
+  col_names,
+  score = c(0.5, 1, 0.5),
+  round_digits = 4
+)
 }
 \description{
-Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+Hàm này in ra đáp án cho bài toán kiểm định tính độc lập.
 }

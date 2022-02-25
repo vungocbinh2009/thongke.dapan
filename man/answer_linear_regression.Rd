@@ -2,10 +2,10 @@
 % Please edit documentation in R/regression.R
 \name{answer_linear_regression}
 \alias{answer_linear_regression}
-\title{Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn và tìm giá trị dự báo của Y}
+\title{Trình bày bài toán hồi quy tuyến tính đơn.}
 \usage{
-answer_linear_regression(data, score = c(1, 0.5))
+answer_linear_regression(data, score = c(1, 0.5), round_digits = 4)
 }
 \description{
-Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn và tìm giá trị dự báo của Y
+Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn
 }

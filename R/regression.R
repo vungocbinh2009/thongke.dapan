@@ -1,3 +1,5 @@
+#' Trình bày bài toán tính hệ số tương quan.
+#'
 #' Hàm này in ra đáp án cho bài toán tính hệ số tương quan
 #' @import thongke
 #' @export
@@ -19,7 +21,9 @@ answer_correlation <- function(data, score = 1, round_digits = 4) {
   render_template(file_name, var_list)
 }
 
-#' Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn và tìm giá trị dự báo của Y
+#' Trình bày bài toán hồi quy tuyến tính đơn.
+#'
+#' Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn
 #' @import thongke
 #' @export
 answer_linear_regression <- function(data, score=c(1, 0.5), round_digits = 4) {
@@ -41,7 +45,9 @@ answer_linear_regression <- function(data, score=c(1, 0.5), round_digits = 4) {
   render_template(file_name, var_list)
 }
 
-#' Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn và tìm giá trị dự báo của Y
+#' Trình bày bài toán dự đoán dựa trên mô hình hồi quy.
+#'
+#' Hàm này in ra đáp án cho bài toán tìm giá trị dự báo của Y dựa trên mô hình hồi quy tuyến tính.
 #' @import thongke
 #' @export
 answer_linear_regression_predict <- function(data, conclusion, value_unit, score = 0.5, round_digits = 4) {
@@ -62,6 +68,8 @@ answer_linear_regression_predict <- function(data, conclusion, value_unit, score
   render_template(file_name, var_list)
 }
 
+#' Tính các giá trị tổng và tích giữa X và Y.
+#'
 #' Hàm này tính tất cả các giá trị tổng giữa x và y
 #' @export
 answer_calculate_sum <- function(data, score = 1) {

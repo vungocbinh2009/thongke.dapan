@@ -2,10 +2,10 @@
 % Please edit documentation in R/hypothesis_test.R
 \name{answer_test_prop}
 \alias{answer_test_prop}
-\title{Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)}
+\title{Trình bày bài toán KĐGT về tỷ lệ}
 \usage{
-answer_test_prop(data, score = c(0.5, 1, 0.5))
+answer_test_prop(data, score = c(0.5, 1, 0.5), round_digits = 4)
 }
 \description{
-Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
+Hàm này in ra đáp án cho bài toán KĐGT về tỷ lệ
 }

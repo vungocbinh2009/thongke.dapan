@@ -2,10 +2,10 @@
 % Please edit documentation in R/estimate.R
 \name{answer_sample_size_prop_2}
 \alias{answer_sample_size_prop_2}
-\title{Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)}
+\title{Trình bày bài toán xác định kích thước mẫu (cho tỷ lệ, không biết f)}
 \usage{
-answer_sample_size_prop_2(data, score = c(0.5, 1, 0.5))
+answer_sample_size_prop_2(data, score = c(0.5, 1, 0.5), round_digits = 4)
 }
 \description{
-Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)
+Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi chưa biết f)
 }
