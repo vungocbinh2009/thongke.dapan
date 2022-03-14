@@ -1,0 +1,28 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{vietnam}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{array}
+\usepackage[left=2.00cm, right=2.00cm, top=2.00cm, bottom=2.00cm]{geometry}
+\author{Vũ Ngọc Bình}
+\usepackage{booktabs}
+\usepackage{longtable}
+\newcommand*{\thead}[1]{\multicolumn{1}{c}{\bfseries #1}}
+\usepackage{array}
+\usepackage{icomma}
+\begin{document}
+	{{answer_title}}
+
+	\begin{longtable}{b{.9\textwidth} c}
+		\toprule
+		\thead{Đáp án}
+		& \thead{Điểm}
+		{{#answer_list}}
+		{{{.}}}
+		{{/answer_list}}
+		\\ \bottomrule
+	\end{longtable}
+\end{document}

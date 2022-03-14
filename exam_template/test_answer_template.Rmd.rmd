@@ -1,0 +1,115 @@
+---
+title: "Mẫu viết đề thi thống kê bằng thongke.dapan"
+author: "Vũ Ngọc Bình"
+date: "14/03/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+set.seed(123)
+```
+
+## Mục đích viết file này
+
+File này được viết ra để tự động hóa việc xây dựng đáp án của một đề thi môn xác suất thống kê, sử dụng thongke.dapan và mẫu đáp án hiện có trên github. Ưu điểm của việc này là giúp giảm bớt sai số trong tính toán và tiết kiệm được nhiều công sức
+
+## Nội dung đề thi
+
+Trước khi thực hiện tạo đáp án, hãy viết lại nội dung đề thi vào mục này và dùng thư viện thongke để giải thử. Lưu ý.
+- Muốn thay đổi cách máy tính random, hãy thay đổi lại seed trong hàm set.seed() ở phía trên.
+- Nếu đã ưng ý với dữ liệu và đáp án của đề thi thì hãy tiếp tục :smile:
+
+## Cách sử dụng
+
+0. Tải về các thư viện cần thiết và import:
+```{r}
+# Install devtools
+# install.packages("devtools")
+# Install thongke before thongke_dapan
+library(devtools)
+devtools::install_github("vungocbinh2009/thongke")
+# Install thongke.dapan
+devtools::install_github("vungocbinh2009/thongke_dapan")
+# 2 thư viện này có dependency là whisker, nên không cần tải whisker nữa.
+# install.packages("magrittr")
+# install.packages("stringr")
+```
+
+```{r}
+library(thongke.dapan)
+library(thongke)
+library(whisker)
+library(magrittr)
+library(stringr)
+```
+
+1. Lấy đề thi và dùng thư viện thongke.dapan để giải (Có thể copy câu lệnh của thongke vào đây luôn cho tiện theo dõi)
+```{r}
+# Đặt tên các câu hỏi ở đây
+questions <- c("Câu 1", "Câu 2") %>% sprintf("\\textbf{%s}", .)
+
+# Tạo lời giải cho câu hỏi
+answer_1 <- generate_data(
+  estimate_mean_norm,
+  list(sigma = 3, n = 36, alpha = 0.05, mean = 66, mode = "two.side")
+) %>%
+  answer_estimate_mean_norm(
+    sd_symbol = "\\sigma",
+    answer = "Khoảng tin cậy 95\\% là:",
+  )
+
+answer_2 <- generate_data(
+  test_mean_norm,
+  list(sigma = 5.2, alpha = 0.05, n = 100, mean = 27.56, mean_0 = 26, mode = "neq")
+) %>%
+  answer_test_mean_norm(
+    sd_symbol = "\\sigma",
+    conclusion_h0 = "Chưa đủ cơ sở để cho rằng ...",
+    conclusion_h1 = "Có thể cho rằng ..."
+  )
+
+# Thêm câu trả lời vào biến answer, theo đúng thứ tự câu hỏi trong biến question.
+answers <- c(answer_1, answer_2)
+```
+
+2. Đặt tên file tex ở đây
+```{r}
+output_file <- "output.tex"
+```
+3. Đặt tiêu đề cho phần đáp án của đề kiểm tra.
+Lưu ý: Đoạn code dưới đây dùng raw string trong R và yêu cầu tối thiểu R 4.0.0
+
+```{r}
+answer_title <- r"[
+\begin{center}
+    \textbf{\large Đáp án đề thi một môn học nào đó}
+    Môn học: Một môn học nào đó - Mã lớp học: 123456 - Thời gian: Ngày tận thế.
+\end{center}
+]"
+```
+4. Bấm nút knit (phím tắt Ctrl + Shift + K) để đoạn code dưới đây làm nốt những công việc còn lại và tạo ra file tex (mọi thứ có thể hơi lâu một chút, vì cần tải khá nhiều gói lệnh)
+
+```{r}
+answer_list_template <- readLines("https://raw.githubusercontent.com/vungocbinh2009/latex-lesson-plan-template/master/thongke-answer-template/answer_list_template.mustache")
+answer_template <- readLines("https://raw.githubusercontent.com/vungocbinh2009/latex-lesson-plan-template/master/thongke-answer-template/answer_template.mustache")
+rendered_answer_list <- NULL
+for(i in seq_along(questions)) {
+  data <- list(
+    question = questions[i],
+    answer = answers[i]
+  )
+  rendered_answer <- whisker.render(answer_template, data)
+  rendered_answer <- str_replace_all(rendered_answer, "\n\t\t", "\n")
+  rendered_answer <- str_replace_all(rendered_answer, "\n", "\n\t\t")
+  rendered_answer_list <- c(rendered_answer_list, rendered_answer)
+}
+print(rendered_answer_list)
+data <- list(
+  answer_list = iteratelist(rendered_answer_list),
+  answer_title = answer_title
+)
+rendered_exam <- whisker.render(answer_list_template, data)
+writeLines(rendered_exam, output_file)
+```
+
+5. Tuyệt vời, bạn đã hoàn thành việc tạo đáp án đề thi. Bạn có thể kiểm tra lại trong nội dung file tex và file pdf trước khi đưa cho người học. :tada:
