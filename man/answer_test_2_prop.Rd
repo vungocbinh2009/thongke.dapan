@@ -4,7 +4,13 @@
 \alias{answer_test_2_prop}
 \title{Trình bày bài toán KĐGT về so sánh 2 tỷ lệ.}
 \usage{
-answer_test_2_prop(data, score = c(0.5, 1, 0.5), round_digits = 4)
+answer_test_2_prop(
+  data,
+  conclusion_h0,
+  conclusion_h1,
+  score = c(0.5, 1, 0.5),
+  round_digits = 4
+)
 }
 \description{
 Hàm này in ra đáp án cho bài toán KĐGT về so sánh 2 tỷ lệ.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/regression.R
 \name{answer_calculate_sum}
 \alias{answer_calculate_sum}
-\title{Hàm này tính tất cả các giá trị tổng giữa x và y}
+\title{Tính các giá trị tổng và tích giữa X và Y.}
 \usage{
 answer_calculate_sum(data, score = 1)
 }

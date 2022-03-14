@@ -4,8 +4,14 @@
 \alias{answer_sample_size_prop_1}
 \title{Trình bày bài toán xác định kích thước mẫu (cho tỷ lệ, đã biết f)}
 \usage{
-answer_sample_size_prop_1(data, score = c(0.5, 1, 0.5), round_digits = 4)
+answer_sample_size_prop_1(
+  data,
+  score = c(0.5, 1, 0.5),
+  conclusion = "\%d",
+  round_digits = 4
+)
 }
 \description{
 Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)
+conclusion là kết luận cuối cùng của bài toán, trong đó có \%d để hàm thêm kết quả vào đó.
 }

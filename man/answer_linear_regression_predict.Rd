@@ -6,7 +6,7 @@
 \usage{
 answer_linear_regression_predict(
   data,
-  conclusion,
+  answer,
   value_unit,
   score = 0.5,
   round_digits = 4

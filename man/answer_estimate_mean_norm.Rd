@@ -7,11 +7,12 @@
 answer_estimate_mean_norm(
   data,
   sd_symbol,
-  conclusion,
+  answer,
   score = c(0.5, 1.5),
   round_digits = 4
 )
 }
 \description{
 Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố chuẩn)
+conclusion là lời giải của bài toán.
 }

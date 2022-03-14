@@ -7,6 +7,8 @@
 answer_test_2_mean_norm(
   data,
   sd_symbol,
+  conclusion_h0,
+  conclusion_h1,
   score = c(0.5, 1, 0.5),
   round_digits = 4
 )

@@ -8,6 +8,8 @@ answer_test_goodness_of_fit(
   data,
   h0,
   col_names,
+  conclusion_h0,
+  conclusion_h1,
   score = c(0.5, 1, 0.5),
   round_digits = 4
 )
