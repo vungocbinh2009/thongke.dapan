@@ -1,21 +1,22 @@
 #' Trình bày bài toán ước lượng khoảng cho trung bình (phân bố chuẩn)
 #'
 #' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố chuẩn)
+#' conclusion là lời giải của bài toán.
 #' @import thongke
 #' @export
-answer_estimate_mean_norm <- function(data, sd_symbol, conclusion, score=c(0.5, 1.5), round_digits = 4) {
+answer_estimate_mean_norm <- function(data, sd_symbol, answer, score=c(0.5, 1.5), round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "estimate_mean_norm.mustache")
   params <- data$params
   result <- data$result
   var_list <- list(
-    two_side = params$mode == "two.side",
+    two_side = params$mode == "two.side" | params$mode == "two_side",
     min = params$mode == "min",
     max = params$mode == "max",
     mean = round(params$mean, round_digits),
     n = params$n,
     s = round(params$sigma, round_digits),
     sd_symbol = sd_symbol,
-    conclusion = conclusion,
+    answer = answer,
     alpha = params$alpha,
     z_alpha = round(result$z_alpha, round_digits),
     z_alpha_2 = round(result$z_alpha_2, round_digits),
@@ -32,19 +33,20 @@ answer_estimate_mean_norm <- function(data, sd_symbol, conclusion, score=c(0.5, 
 #' Trình bày bài toán ước lượng khoảng cho trung bình (phân bố Student)
 #'
 #' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố Student)
+#' conclusion là lời giải của bài toán.
 #' @import thongke
 #' @export
-answer_estimate_mean_t <- function(data, conclusion, score=c(0.5, 1.5), round_digits = 4) {
+answer_estimate_mean_t <- function(data, answer, score=c(0.5, 1.5), round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "estimate_mean_t.mustache")
   params <- data$params
   result <- data$result
   var_list <- list(
-    two_side = params$mode == "two.side",
+    two_side = params$mode == "two.side" | params$mode == "two_side",
     min = params$mode == "min",
     max = params$mode == "max",
     mean = round(params$mean, round_digits),
     n = params$n,
-    conclusion = conclusion,
+    answer = answer,
     s = round(params$s, round_digits),
     alpha = params$alpha,
     t_alpha = round(result$t_alpha, round_digits),
@@ -62,20 +64,21 @@ answer_estimate_mean_t <- function(data, conclusion, score=c(0.5, 1.5), round_di
 #' Trình bày bài toán ước lượng khoảng cho phương sai.
 #'
 #' Hàm này in ra đáp án cho bài toán ước lượng phương sai
+#' conclusion là lời giải của bài toán.
 #' @import thongke
 #' @export
-answer_estimate_var <- function(data, conclusion, score=c(0.5, 1.5), round_digits = 4) {
+answer_estimate_var <- function(data, answer, score=c(0.5, 1.5), round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "estimate_var.mustache")
   params <- data$params
   result <- data$result
   var_list <- list(
-    two_side = params$mode == "two.side",
+    two_side = params$mode == "two.side" | params$mode == "two_side",
     min = params$mode == "min",
     max = params$mode == "max",
     n = params$n,
     s = round(params$s, round_digits),
     alpha = params$alpha,
-    conclusion = conclusion,
+    answer = answer,
     chi_sq_1 = round(result$chi_sq_1, round_digits),
     chi_sq_2 = round(result$chi_sq_2, round_digits),
     chi_sq_1_2 = round(result$chi_sq_1_2, round_digits),
@@ -95,14 +98,15 @@ answer_estimate_var <- function(data, conclusion, score=c(0.5, 1.5), round_digit
 #' Trình bày bài toán ước lượng cho tỷ lệ.
 #'
 #' Hàm này in ra đáp án cho bài toán ước lượng cho tỷ lệ
+#' conclusion là lời giải của bài toán.
 #' @import thongke
 #' @export
-answer_estimate_prop <- function(data, conclusion, score=c(0.5, 1.5), round_digits = 4) {
+answer_estimate_prop <- function(data, answer, score=c(0.5, 1.5), round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "estimate_prop.mustache")
   params <- data$params
   result <- data$result
   var_list <- list(
-    two_side = params$mode == "two.side",
+    two_side = params$mode == "two.side" | params$mode == "two_side",
     min = params$mode == "min",
     max = params$mode == "max",
     n = params$n,
@@ -110,7 +114,7 @@ answer_estimate_prop <- function(data, conclusion, score=c(0.5, 1.5), round_digi
     alpha = params$alpha,
     z_alpha = round(result$z_alpha, round_digits),
     z_alpha_2 = round(result$z_alpha_2, round_digits),
-    conclusion = conclusion,
+    answer = answer,
     g = round(1 - params$f, round_digits),
     bottom = round(result$bottom, round_digits),
     top = round(result$top, round_digits),
@@ -125,9 +129,10 @@ answer_estimate_prop <- function(data, conclusion, score=c(0.5, 1.5), round_digi
 #' Trình bày bài toán xác định kích thước mẫu (TH cho giá trị trung bình)
 #'
 #' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với giá trị trung bình)
+#' conclusion là kết luận cuối cùng của bài toán, trong đó có %d để hàm thêm kết quả vào đó.
 #' @import thongke
 #' @export
-answer_sample_size_mean <- function(data, sd_symbol, score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_sample_size_mean <- function(data, sd_symbol, conclusion = "%d", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "sample_size_mean.mustache")
   params <- data$params
   result <- data$result
@@ -138,6 +143,7 @@ answer_sample_size_mean <- function(data, sd_symbol, score=c(0.5, 1, 0.5), round
     s = round(params$sigma, round_digits),
     z_alpha = round(result$z_alpha, round_digits),
     value = round(result$value, round_digits),
+    conclusion = sprintf(conclusion, ceiling(result$value)),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]
@@ -148,9 +154,10 @@ answer_sample_size_mean <- function(data, sd_symbol, score=c(0.5, 1, 0.5), round
 #' Trình bày bài toán xác định kích thước mẫu (cho tỷ lệ, đã biết f)
 #'
 #' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)
+#'  conclusion là kết luận cuối cùng của bài toán, trong đó có %d để hàm thêm kết quả vào đó.
 #' @import thongke
 #' @export
-answer_sample_size_prop_1 <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_sample_size_prop_1 <- function(data, score=c(0.5, 1, 0.5), conclusion = "%d", round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "sample_size_prop_1.mustache")
   params <- data$params
   result <- data$result
@@ -161,6 +168,7 @@ answer_sample_size_prop_1 <- function(data, score=c(0.5, 1, 0.5), round_digits =
     z_alpha = round(result$z_alpha, round_digits),
     g = round(1 - params$f, round_digits),
     value = round(result$value, round_digits),
+    conclusion = sprintf(conclusion, ceiling(result$value)),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]
@@ -171,9 +179,10 @@ answer_sample_size_prop_1 <- function(data, score=c(0.5, 1, 0.5), round_digits =
 #' Trình bày bài toán xác định kích thước mẫu (cho tỷ lệ, không biết f)
 #'
 #' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi chưa biết f)
+#'  conclusion là kết luận cuối cùng của bài toán, trong đó có %d để hàm thêm kết quả vào đó.
 #' @import thongke
 #' @export
-answer_sample_size_prop_2 <- function(data, score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_sample_size_prop_2 <- function(data, score=c(0.5, 1, 0.5), conclusion = "%d", round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "sample_size_prop_2.mustache")
   params <- data$params
   result <- data$result
@@ -182,6 +191,7 @@ answer_sample_size_prop_2 <- function(data, score=c(0.5, 1, 0.5), round_digits =
     alpha = params$alpha,
     z_alpha = round(result$z_alpha, round_digits),
     value = round(result$value, round_digits),
+    conclusion = sprintf(conclusion, ceiling(result$value)),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]
