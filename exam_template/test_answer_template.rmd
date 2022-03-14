@@ -90,8 +90,8 @@ answer_title <- r"[
 4. Bấm nút knit (phím tắt Ctrl + Shift + K) để đoạn code dưới đây làm nốt những công việc còn lại và tạo ra file tex (mọi thứ có thể hơi lâu một chút, vì cần tải khá nhiều gói lệnh)
 
 ```{r}
-answer_list_template <- readLines("https://raw.githubusercontent.com/vungocbinh2009/latex-lesson-plan-template/master/thongke-answer-template/answer_list_template.mustache")
-answer_template <- readLines("https://raw.githubusercontent.com/vungocbinh2009/latex-lesson-plan-template/master/thongke-answer-template/answer_template.mustache")
+answer_list_template <- readLines("https://raw.githubusercontent.com/vungocbinh2009/thongke.dapan/master/exam_template/answer_list_template.mustache")
+answer_template <- readLines("https://raw.githubusercontent.com/vungocbinh2009/thongke.dapan/master/exam_template/answer_template.mustache")
 rendered_answer_list <- NULL
 for(i in seq_along(questions)) {
   data <- list(
