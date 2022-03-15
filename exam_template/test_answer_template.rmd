@@ -22,9 +22,10 @@ Trước khi thực hiện tạo đáp án, hãy viết lại nội dung đề t
 ## Cách sử dụng
 
 0. Tải về các thư viện cần thiết và import:
-```{r}
+Lưu ý: Đoạn code dưới đây có thể chạy trong RStudio nhưng không chạy được trong PyCharm. Để chạy, đặt eval = TRUE
+```{r, eval = FALSE}
 # Install devtools
-# install.packages("devtools")
+install.packages("devtools")
 # Install thongke before thongke_dapan
 library(devtools)
 devtools::install_github("vungocbinh2009/thongke")
@@ -83,6 +84,7 @@ Lưu ý: Đoạn code dưới đây dùng raw string trong R và yêu cầu tố
 answer_title <- r"[
 \begin{center}
     \textbf{\large Đáp án đề thi một môn học nào đó}
+
     Môn học: Một môn học nào đó - Mã lớp học: 123456 - Thời gian: Ngày tận thế.
 \end{center}
 ]"
@@ -103,13 +105,15 @@ for(i in seq_along(questions)) {
   rendered_answer <- str_replace_all(rendered_answer, "\n", "\n\t\t")
   rendered_answer_list <- c(rendered_answer_list, rendered_answer)
 }
-print(rendered_answer_list)
 data <- list(
   answer_list = iteratelist(rendered_answer_list),
   answer_title = answer_title
 )
 rendered_exam <- whisker.render(answer_list_template, data)
 writeLines(rendered_exam, output_file)
+
+# Compile latex file to pdf
+tools::texi2dvi(output_file, pdf = TRUE, clean = TRUE)
 ```
 
 5. Tuyệt vời, bạn đã hoàn thành việc tạo đáp án đề thi. Bạn có thể kiểm tra lại trong nội dung file tex và file pdf trước khi đưa cho người học. :tada:
