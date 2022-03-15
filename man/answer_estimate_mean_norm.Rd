@@ -14,5 +14,5 @@ answer_estimate_mean_norm(
 }
 \description{
 Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố chuẩn)
-conclusion là lời giải của bài toán.
+answer là lời giải của bài toán.
 }

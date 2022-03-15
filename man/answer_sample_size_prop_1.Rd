@@ -7,11 +7,11 @@
 answer_sample_size_prop_1(
   data,
   score = c(0.5, 1, 0.5),
-  conclusion = "\%d",
+  conclusion = function(value) {     return(sprintf("\%d", value)) },
   round_digits = 4
 )
 }
 \description{
 Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)
-conclusion là kết luận cuối cùng của bài toán, trong đó có \%d để hàm thêm kết quả vào đó.
+conclusion là một hàm in ra kết quả cuối cùng của bài toán, với 1 tham số chính là kết quả của phép tính.
 }
