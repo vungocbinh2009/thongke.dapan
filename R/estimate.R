@@ -1,7 +1,7 @@
 #' Trình bày bài toán ước lượng khoảng cho trung bình (phân bố chuẩn)
 #'
 #' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố chuẩn)
-#' conclusion là lời giải của bài toán.
+#' answer là lời giải của bài toán.
 #' @import thongke
 #' @export
 answer_estimate_mean_norm <- function(data, sd_symbol, answer, score=c(0.5, 1.5), round_digits = 4) {
@@ -33,7 +33,7 @@ answer_estimate_mean_norm <- function(data, sd_symbol, answer, score=c(0.5, 1.5)
 #' Trình bày bài toán ước lượng khoảng cho trung bình (phân bố Student)
 #'
 #' Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố Student)
-#' conclusion là lời giải của bài toán.
+#' answer là lời giải của bài toán.
 #' @import thongke
 #' @export
 answer_estimate_mean_t <- function(data, answer, score=c(0.5, 1.5), round_digits = 4) {
@@ -64,7 +64,7 @@ answer_estimate_mean_t <- function(data, answer, score=c(0.5, 1.5), round_digits
 #' Trình bày bài toán ước lượng khoảng cho phương sai.
 #'
 #' Hàm này in ra đáp án cho bài toán ước lượng phương sai
-#' conclusion là lời giải của bài toán.
+#' answer là lời giải của bài toán.
 #' @import thongke
 #' @export
 answer_estimate_var <- function(data, answer, score=c(0.5, 1.5), round_digits = 4) {
@@ -98,7 +98,7 @@ answer_estimate_var <- function(data, answer, score=c(0.5, 1.5), round_digits = 
 #' Trình bày bài toán ước lượng cho tỷ lệ.
 #'
 #' Hàm này in ra đáp án cho bài toán ước lượng cho tỷ lệ
-#' conclusion là lời giải của bài toán.
+#' answer là lời giải của bài toán.
 #' @import thongke
 #' @export
 answer_estimate_prop <- function(data, answer, score=c(0.5, 1.5), round_digits = 4) {
@@ -129,10 +129,10 @@ answer_estimate_prop <- function(data, answer, score=c(0.5, 1.5), round_digits =
 #' Trình bày bài toán xác định kích thước mẫu (TH cho giá trị trung bình)
 #'
 #' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với giá trị trung bình)
-#' conclusion là kết luận cuối cùng của bài toán, trong đó có %d để hàm thêm kết quả vào đó.
+#' conclusion là một hàm in ra kết quả cuối cùng của bài toán, với 1 tham số chính là kết quả của phép tính.
 #' @import thongke
 #' @export
-answer_sample_size_mean <- function(data, sd_symbol, conclusion = "%d", score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_sample_size_mean <- function(data, sd_symbol, conclusion = function (value) {return(sprintf("%d", value))}, score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "sample_size_mean.mustache")
   params <- data$params
   result <- data$result
@@ -143,7 +143,7 @@ answer_sample_size_mean <- function(data, sd_symbol, conclusion = "%d", score=c(
     s = round(params$sigma, round_digits),
     z_alpha = round(result$z_alpha, round_digits),
     value = round(result$value, round_digits),
-    conclusion = sprintf(conclusion, ceiling(result$value)),
+    conclusion = conclusion(result$value),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]
@@ -154,10 +154,10 @@ answer_sample_size_mean <- function(data, sd_symbol, conclusion = "%d", score=c(
 #' Trình bày bài toán xác định kích thước mẫu (cho tỷ lệ, đã biết f)
 #'
 #' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi đã biết f)
-#'  conclusion là kết luận cuối cùng của bài toán, trong đó có %d để hàm thêm kết quả vào đó.
+#' conclusion là một hàm in ra kết quả cuối cùng của bài toán, với 1 tham số chính là kết quả của phép tính.
 #' @import thongke
 #' @export
-answer_sample_size_prop_1 <- function(data, score=c(0.5, 1, 0.5), conclusion = "%d", round_digits = 4) {
+answer_sample_size_prop_1 <- function(data, score=c(0.5, 1, 0.5), conclusion = function (value) {return(sprintf("%d", value))}, round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "sample_size_prop_1.mustache")
   params <- data$params
   result <- data$result
@@ -168,7 +168,7 @@ answer_sample_size_prop_1 <- function(data, score=c(0.5, 1, 0.5), conclusion = "
     z_alpha = round(result$z_alpha, round_digits),
     g = round(1 - params$f, round_digits),
     value = round(result$value, round_digits),
-    conclusion = sprintf(conclusion, ceiling(result$value)),
+    conclusion = conclusion(result$value),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]
@@ -179,10 +179,10 @@ answer_sample_size_prop_1 <- function(data, score=c(0.5, 1, 0.5), conclusion = "
 #' Trình bày bài toán xác định kích thước mẫu (cho tỷ lệ, không biết f)
 #'
 #' Hàm này in ra đáp án cho bài toán xác định kích thước mẫu (với tỷ lệ, khi chưa biết f)
-#'  conclusion là kết luận cuối cùng của bài toán, trong đó có %d để hàm thêm kết quả vào đó.
+#' conclusion là một hàm in ra kết quả cuối cùng của bài toán, với 1 tham số chính là kết quả của phép tính.
 #' @import thongke
 #' @export
-answer_sample_size_prop_2 <- function(data, score=c(0.5, 1, 0.5), conclusion = "%d", round_digits = 4) {
+answer_sample_size_prop_2 <- function(data, score=c(0.5, 1, 0.5), conclusion = function (value) {return(sprintf("%d", value))}, round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "sample_size_prop_2.mustache")
   params <- data$params
   result <- data$result
@@ -191,7 +191,7 @@ answer_sample_size_prop_2 <- function(data, score=c(0.5, 1, 0.5), conclusion = "
     alpha = params$alpha,
     z_alpha = round(result$z_alpha, round_digits),
     value = round(result$value, round_digits),
-    conclusion = sprintf(conclusion, ceiling(result$value)),
+    conclusion = conclusion(result$value),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]

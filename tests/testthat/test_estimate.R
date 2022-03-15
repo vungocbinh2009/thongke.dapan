@@ -137,7 +137,9 @@ test_that("Test các hàm answer_estimate_*, answer_sample_*", {
   ) %>%
     answer_sample_size_mean(
       sd_symbol = "\\sigma",
-      conclusion = "Vậy kích thước mẫu tối thiểu để thỏa mãn yêu cầu đề bài là %d"
+      conclusion = function(value) {
+        return(sprintf("Vậy kích thước mẫu tối thiểu để thỏa mãn yêu cầu đề bài là %d", ceiling(value)))
+      }
     ) %>%
     cat() %>%
     print()
@@ -148,7 +150,9 @@ test_that("Test các hàm answer_estimate_*, answer_sample_*", {
     list(f = 0.64, alpha = get_alpha(1.64), eps = 0.02)
   ) %>%
     answer_sample_size_prop_1(
-      conclusion = "Vậy kích thước mẫu tối thiểu để thỏa mãn yêu cầu đề bài là %d"
+      conclusion = function(value) {
+        return(sprintf("Vậy kích thước mẫu tối thiểu để thỏa mãn yêu cầu đề bài là %d", ceiling(value)))
+      }
     ) %>%
     cat() %>%
     print()
@@ -159,7 +163,9 @@ test_that("Test các hàm answer_estimate_*, answer_sample_*", {
     list(eps = 0.02, alpha = get_alpha(1.64))
   ) %>%
     answer_sample_size_prop_2(
-      conclusion = "Vậy kích thước mẫu tối thiểu để thỏa mãn yêu cầu đề bài là %d"
+      conclusion = function(value) {
+        return(sprintf("Vậy kích thước mẫu tối thiểu để thỏa mãn yêu cầu đề bài là %d", ceiling(value)))
+      }
     ) %>%
     cat() %>%
     print()
