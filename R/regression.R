@@ -26,12 +26,13 @@ answer_correlation <- function(data, score = 1, round_digits = 4) {
 #' Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn
 #' @import thongke
 #' @export
-answer_linear_regression <- function(data, score=c(1, 0.5), round_digits = 4) {
+answer_linear_regression <- function(data, intro = "", score=c(1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "regression", "linear_regression.mustache")
   params <- data$params
   sum <- calculate_sum(params$x, params$y)
   result <- data$result
   var_list <- list(
+    intro = intro,
     sum_xy = sum$sum_xy,
     sum_x = sum$sum_x,
     sum_y = sum$sum_y,
@@ -72,11 +73,12 @@ answer_linear_regression_predict <- function(data, answer, value_unit, score = 0
 #'
 #' Hàm này tính tất cả các giá trị tổng giữa x và y
 #' @export
-answer_calculate_sum <- function(data, score = 1) {
+answer_calculate_sum <- function(data, intro = "", score = 1) {
   file_name <- get_file_path("template", "regression", "calculate_sum.mustache")
   #params <- data$params
   result <- data$result
   var_list <- list(
+    intro = intro,
     sum_xy = result$sum_xy,
     sum_x = result$sum_x,
     sum_y = result$sum_y,

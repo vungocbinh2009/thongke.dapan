@@ -3,12 +3,13 @@
 #' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
 #' @import thongke
 #' @export
-answer_test_mean_norm <- function(data, sd_symbol, conclusion_h0, conclusion_h1, score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_mean_norm <- function(data, sd_symbol, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_mean_norm.mustache")
   params <- data$params
   result <- data$result
   operator <- get_operator(params$mode)
   var_list <- list(
+    intro = intro,
     operator = operator,
     sd_symbol = sd_symbol,
     mean_0 = params$mean_0,
@@ -32,12 +33,13 @@ answer_test_mean_norm <- function(data, sd_symbol, conclusion_h0, conclusion_h1,
 #' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố Student)
 #' @import thongke
 #' @export
-answer_test_mean_t <- function(data, conclusion_h0, conclusion_h1, score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_mean_t <- function(data, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_mean_t.mustache")
   params <- data$params
   result <- data$result
   operator <- get_operator(params$mode)
   var_list <- list(
+    intro = intro,
     operator = operator,
     mean_0 = params$mean_0,
     mean = round(params$mean, round_digits),
@@ -60,12 +62,13 @@ answer_test_mean_t <- function(data, conclusion_h0, conclusion_h1, score=c(0.5, 
 #' Hàm này in ra đáp án cho bài toán KĐGT về tỷ lệ
 #' @import thongke
 #' @export
-answer_test_prop <- function(data, conclusion_h0, conclusion_h1, score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_prop <- function(data, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_prop.mustache")
   params <- data$params
   result <- data$result
   operator <- get_operator(params$mode)
   var_list <- list(
+    intro = intro,
     operator = operator,
     k = round(params$n * params$f, 0),
     n = params$n,
@@ -126,12 +129,13 @@ answer_test_goodness_of_fit <- function(data, h0, col_names, conclusion_h0, conc
 #' Hàm này in ra đáp án cho bài toán KĐGT về so sánh 2 giá trị trung bình (phân bố chuẩn)
 #' @import thongke
 #' @export
-answer_test_2_mean_norm <- function(data, sd_symbol, conclusion_h0, conclusion_h1, score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_2_mean_norm <- function(data, sd_symbol, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_2_mean_norm.mustache")
   params <- data$params
   result <- data$result
   operator <- get_operator(params$mode)
   var_list <- list(
+    intro = intro,
     operator = operator,
     sd_symbol = sd_symbol,
     mean1 = round(params$mean1, round_digits),
@@ -157,12 +161,13 @@ answer_test_2_mean_norm <- function(data, sd_symbol, conclusion_h0, conclusion_h
 #' Hàm này in ra đáp án cho bài toán KĐGT về so sánh 2 giá trị trung bình (phân bố Student)
 #' @import thongke
 #' @export
-answer_test_2_mean_t <- function(data, conclusion_h0, conclusion_h1, score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_2_mean_t <- function(data, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_2_mean_t.mustache")
   params <- data$params
   result <- data$result
   operator <- get_operator(params$mode)
   var_list <- list(
+    intro = intro,
     operator = operator,
     mean1 = round(params$mean1, round_digits),
     n1 = params$n1,
@@ -188,12 +193,13 @@ answer_test_2_mean_t <- function(data, conclusion_h0, conclusion_h1, score=c(0.5
 #' Hàm này in ra đáp án cho bài toán KĐGT về so sánh 2 tỷ lệ.
 #' @import thongke
 #' @export
-answer_test_2_prop <- function(data, conclusion_h0, conclusion_h1, score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_2_prop <- function(data, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_2_prop.mustache")
   params <- data$params
   result <- data$result
   operator <- get_operator(params$mode)
   var_list <- list(
+    intro = intro,
     operator = operator,
     k1 = round(params$n1 * params$f1, 0),
     n1 = params$n1,
