@@ -4,7 +4,7 @@
 \alias{answer_linear_regression}
 \title{Trình bày bài toán hồi quy tuyến tính đơn.}
 \usage{
-answer_linear_regression(data, score = c(1, 0.5), round_digits = 4)
+answer_linear_regression(data, intro = "", score = c(1, 0.5), round_digits = 4)
 }
 \description{
 Hàm này in ra đáp án cho bài toán hồi quy tuyến tính đơn
