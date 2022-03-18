@@ -9,6 +9,7 @@ test_that("Test các hàm answer_test_*", {
     list(sigma = 5.2, alpha = 0.05, n = 100, mean = 27.56, mean_0 = 26, mode = "neq")
   ) %>%
     answer_test_mean_norm(
+      intro = "Gọi $\\mu$ là ...",
       sd_symbol = "\\sigma",
       conclusion_h0 = "Chưa đủ cơ sở để cho rằng ...",
       conclusion_h1 = "Có thể cho rằng ..."
@@ -23,6 +24,7 @@ test_that("Test các hàm answer_test_*", {
     list(mean = mean(data), mean_0 = 21.5, mode = "neq", n = 6, alpha = 0.05, s = sqrt(var(data)))
   ) %>%
     answer_test_mean_t(
+      intro = "Gọi $\\mu$ là ...",
       conclusion_h0 = "Chưa đủ cơ sở để cho rằng ...",
       conclusion_h1 = "Có thể cho rằng ..."
     ) %>%
@@ -35,6 +37,7 @@ test_that("Test các hàm answer_test_*", {
     list(f = 0.4, p_0 = 0.45, alpha = 0.05, n = 200, mode = "neq")
   ) %>%
     answer_test_prop(
+      intro = "Gọi $p$ là ...",
       conclusion_h0 = "Chưa đủ cơ sở để cho rằng ...",
       conclusion_h1 = "Có thể cho rằng ..."
     ) %>%
@@ -69,6 +72,7 @@ test_that("Test các hàm answer_test_*", {
     )
   ) %>%
     answer_test_2_mean_norm(
+      intro = "Gọi $\\mu_1$ và $\\mu_2$ lần lượt là ...",
       sd_symbol = "\\sigma",
       conclusion_h0 = "Chưa đủ cơ sở để cho rằng ...",
       conclusion_h1 = "Có thể cho rằng ..."
@@ -85,6 +89,7 @@ test_that("Test các hàm answer_test_*", {
     )
   ) %>%
     answer_test_2_mean_t(
+      intro = "Gọi $\\mu_1$ và $\\mu_2$ lần lượt là ...",
       conclusion_h0 = "Chưa đủ cơ sở để cho rằng ...",
       conclusion_h1 = "Có thể cho rằng ..."
     ) %>%
@@ -100,6 +105,7 @@ test_that("Test các hàm answer_test_*", {
     )
   ) %>%
     answer_test_2_prop(
+      intro = "Gọi $p_1$ và $p_2$ lần lượt là ...",
       conclusion_h0 = "Chưa đủ cơ sở để cho rằng ...",
       conclusion_h1 = "Có thể cho rằng ..."
     ) %>%

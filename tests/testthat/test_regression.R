@@ -11,7 +11,9 @@ test_that("Test 2 hàm trong file regression.R", {
       y = c(2.4, 2.8, 3.3, 3.1, 3.7, 3, 2.5, 2.3, 2.8, 3.1)
     )
   ) %>%
-    answer_calculate_sum() %>%
+    answer_calculate_sum(
+      intro = "Gọi $X$ và $Y$ lần lượt là ..."
+    ) %>%
     cat() %>%
     print()
 
@@ -34,7 +36,9 @@ test_that("Test 2 hàm trong file regression.R", {
       y = c(44, 47, 48, 48, 43, 46)
     )
   ) %>%
-    answer_linear_regression() %>%
+    answer_linear_regression(
+      intro = "Gọi $X$ và $Y$ lần lượt là ..."
+    ) %>%
     cat() %>%
     print()
   # Đáp số: y=0.02x + 36, giá trị sách 700 trang là 50 nghìn
