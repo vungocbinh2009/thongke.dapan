@@ -218,6 +218,7 @@ test_that("Test các hàm answer_test_*", {
     list(sigma = 5.2, alpha = 0.05, n = 100, mean = 27.56, mean_0 = 26, mode = "neq")
   ) %>%
     answer_test_mean_norm(
+      intro = "Gọi $\\mu$ là ...",
       sd_symbol = "\\sigma",
       conclusion_h0 = "Chưa đủ cơ sở để cho rằng ...",
       conclusion_h1 = "Có thể cho rằng ..."
@@ -232,6 +233,7 @@ test_that("Test các hàm answer_test_*", {
     list(mean = mean(data), mean_0 = 21.5, mode = "neq", n = 6, alpha = 0.05, s = sqrt(var(data)))
   ) %>%
     answer_test_mean_t(
+      intro = "Gọi $\\mu$ là ...",
       conclusion_h0 = "Chưa đủ cơ sở để cho rằng ...",
       conclusion_h1 = "Có thể cho rằng ..."
     ) %>%
@@ -244,6 +246,7 @@ test_that("Test các hàm answer_test_*", {
     list(f = 0.4, p_0 = 0.45, alpha = 0.05, n = 200, mode = "neq")
   ) %>%
     answer_test_prop(
+      intro = "Gọi $p$ là ...",
       conclusion_h0 = "Chưa đủ cơ sở để cho rằng ...",
       conclusion_h1 = "Có thể cho rằng ..."
     ) %>%
@@ -278,6 +281,7 @@ test_that("Test các hàm answer_test_*", {
     )
   ) %>%
     answer_test_2_mean_norm(
+      intro = "Gọi $\\mu_1$ và $\\mu_2$ lần lượt là ...",
       sd_symbol = "\\sigma",
       conclusion_h0 = "Chưa đủ cơ sở để cho rằng ...",
       conclusion_h1 = "Có thể cho rằng ..."
@@ -294,6 +298,7 @@ test_that("Test các hàm answer_test_*", {
     )
   ) %>%
     answer_test_2_mean_t(
+      intro = "Gọi $\\mu_1$ và $\\mu_2$ lần lượt là ...",
       conclusion_h0 = "Chưa đủ cơ sở để cho rằng ...",
       conclusion_h1 = "Có thể cho rằng ..."
     ) %>%
@@ -309,6 +314,7 @@ test_that("Test các hàm answer_test_*", {
     )
   ) %>%
     answer_test_2_prop(
+      intro = "Gọi $p_1$ và $p_2$ lần lượt là ...",
       conclusion_h0 = "Chưa đủ cơ sở để cho rằng ...",
       conclusion_h1 = "Có thể cho rằng ..."
     ) %>%
@@ -372,7 +378,9 @@ test_that("Test 2 hàm trong file regression.R", {
       y = c(2.4, 2.8, 3.3, 3.1, 3.7, 3, 2.5, 2.3, 2.8, 3.1)
     )
   ) %>%
-    answer_calculate_sum() %>%
+    answer_calculate_sum(
+      intro = "Gọi $X$ và $Y$ lần lượt là ..."
+    ) %>%
     cat() %>%
     print()
 
@@ -395,7 +403,9 @@ test_that("Test 2 hàm trong file regression.R", {
       y = c(44, 47, 48, 48, 43, 46)
     )
   ) %>%
-    answer_linear_regression() %>%
+    answer_linear_regression(
+      intro = "Gọi $X$ và $Y$ lần lượt là ..."
+    ) %>%
     cat() %>%
     print()
   # Đáp số: y=0.02x + 36, giá trị sách 700 trang là 50 nghìn
