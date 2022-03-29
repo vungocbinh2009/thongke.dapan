@@ -21,6 +21,11 @@ devtools::install_github("vungocbinh2009/thongke_dapan")
 ```
 # How to use
 
+### Descriptive statistics
+```{r, code = readLines("./tests/testthat/test_descriptive.R"), results = FALSE}
+
+```
+
 ### Parameter estimation
 ```{r, code = readLines("./tests/testthat/test_estimate.R"), results = FALSE}
 
