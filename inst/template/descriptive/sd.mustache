@@ -1,0 +1,22 @@
+{{answer}}
+
+{{#with_mean}}
+    $$ s^2 = \dfrac{\sum(x_i-\overline{x})^2 \dot r_i}{n-1}
+            = \dfrac{ ({{x_1}} - {{mean}})^2 \dot {{r_1}} +
+            ({{x_2}} - {{mean}})^2 \dot {{r_2}} + \ldots +
+            ({{x_n}} - {{mean}})^2 \dot {{r_n}} { {{n}} - 1}
+            = {{var}}$$
+{{/with_mean}}
+
+{{^with_mean}}
+    Ta có:
+    $$ \sum x_i^2 \dot r_i = {{sum_x2r}} $$
+    $$ \sum x_i \dot r_i = {{sum_xr}} $$
+    $$ s^2 = \dfrac{\sum x_i^2 \dot r_i - \dfrac{(\sum x_i \dot r_i)^2}{n}}{n-1}
+            = \dfrac{ {{sum_x2r}} - \dfrac{ {{sum_xr}}^2 }{ {{n}} } }{ {{n}} - 1 }
+            = {{var}} $$
+{{/with_mean}}
+
+Từ đó tính được: $s = \sqrt{s^2} = \sqrt{ {{var}} } = {{sd}}$
+&
+{{score}} đ
