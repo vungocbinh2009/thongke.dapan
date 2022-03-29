@@ -1,8 +1,8 @@
 Package: thongke.dapan
 Title: Tạo đáp án bài tập thống kê
-Version: 0.13
+Version: 0.14
 Authors@R: 
-    person("Vu Ngọc", "Bình", , "vungocbinh@protonmail.com", role = c("aut", "cre"),
+    person("Vũ Ngọc", "Bình", , "vungocbinh@protonmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "no Id"))
 Description: Gói lệnh tạo mẫu đáp án các câu hỏi thống kê dưới dạng mã nguồn latex để copy vào mẫu đáp án có sẵn
 Imports: thongke, whisker, xtable
