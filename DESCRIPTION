@@ -1,6 +1,6 @@
 Package: thongke.dapan
 Title: Tạo đáp án bài tập thống kê
-Version: 0.14
+Version: 0.15
 Authors@R: 
     person("Vũ Ngọc", "Bình", , "vungocbinh@protonmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "no Id"))
