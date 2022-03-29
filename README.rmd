@@ -36,9 +36,14 @@ devtools::install_github("vungocbinh2009/thongke_dapan")
 
 ```
 
+### Other features
+```{r, code = readLines("./tests/testthat/test_others.R"), results = FALSE}
+
+```
+
 # Note
 + If you want to set comma as decimal seperator, add this code
-```r
+```{r, results = FALSE}
 options(OutDec=",")
 ```
 + In latex, use ``icomma`` package to display number with comma as decimal seperator
