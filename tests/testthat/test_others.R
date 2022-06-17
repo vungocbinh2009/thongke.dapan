@@ -20,24 +20,18 @@ test_that("Test một số hàm trong file others.R", {
     cat() %>%
     print()
 
-  answer_1 <- generate_data(
-    linear_regression,
-    list(
-      x = c(400, 600, 500, 600, 400, 500),
-      y = c(44, 47, 48, 48, 43, 46)
-    )
+  answer_1 <- linear_regression(
+    x = c(400, 600, 500, 600, 400, 500),
+    y = c(44, 47, 48, 48, 43, 46)
   ) %>%
     answer_linear_regression(
       intro = "Gọi $X$ và $Y$ lần lượt là ..."
     )
   # Đáp số: y=0.02x + 36, giá trị sách 700 trang là 50 nghìn
-  answer_2 <- generate_data(
-    linear_regression_predict,
-    list(
-      x = c(400, 600, 500, 600, 400, 500),
-      y = c(44, 47, 48, 48, 43, 46),
-      value = 700
-    )
+  answer_2 <- linear_regression_predict(
+    x = c(400, 600, 500, 600, 400, 500),
+    y = c(44, 47, 48, 48, 43, 46),
+    value = 700
   ) %>%
     answer_linear_regression_predict(
       answer = "Giá sách là:",
