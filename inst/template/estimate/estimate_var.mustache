@@ -2,14 +2,14 @@
 {{!Các tham số: n, s, alpha, chi_sq_1, chi_sq_2, n_1, s2, bottom, top}}
 Ta có: $n = {{n}}, s = {{s}}$
 {{#two_side}}
-Vì $\alpha = {{alpha}}$ nên $\lambda^2_{\alpha / 2} = {{chi_sq_2_2}},
-\lambda^2_{1 - \alpha / 2} = {{chi_sq_1_2}}$
+Vì $\alpha = {{alpha}}$ nên $\lambda^2_{\alpha / 2} = {{chi_sq_1_div_2}},
+\lambda^2_{1 - \alpha / 2} = {{chi_sq_2_2}}$
 {{/two_side}}
 {{#max}}
-Vì $\alpha = {{alpha}}$ nên $\lambda^2_{1 - \alpha} = {{chi_sq_1}}$
+Vì $\alpha = {{alpha}}$ nên $\lambda^2_{1 - \alpha} = {{chi_sq_2}}$
 {{/max}}
 {{#min}}
-Vì $\alpha = {{alpha}}$ nên $\lambda^2_{\alpha} = {{chi_sq_2}}$
+Vì $\alpha = {{alpha}}$ nên $\lambda^2_{\alpha} = {{chi_sq_1}}$
 {{/min}}
 &
 {{score_1}} đ
@@ -19,8 +19,8 @@ Vì $\alpha = {{alpha}}$ nên $\lambda^2_{\alpha} = {{chi_sq_2}}$
 \begin{gather*}
     \sigma^2 \in \left( \dfrac{(n-1)s^2}{\lambda^2_{\alpha / 2}};
         \dfrac{(n-1)s^2}{\lambda^2_{1 - \alpha / 2}} \right)\\
-    \sigma^2 \in \left( \dfrac{ {{n_1}} \cdot {{s2}} }{ {{chi_sq_2_2}} };
-        \dfrac{ {{n_1}} \cdot {{s2}} }{ {{chi_sq_1_2}} } \right)\\
+    \sigma^2 \in \left( \dfrac{ {{n_1}} \cdot {{s2}} }{ {{chi_sq_1_div_2}} };
+        \dfrac{ {{n_1}} \cdot {{s2}} }{ {{chi_sq_2_div_2}} } \right)\\
     \sigma^2 \in ({{bottom}}, {{top}})
 \end{gather*}
 {{/two_side}}
@@ -28,7 +28,7 @@ Vì $\alpha = {{alpha}}$ nên $\lambda^2_{\alpha} = {{chi_sq_2}}$
 \begin{gather*}
     \sigma^2 \in \left( \dfrac{(n-1)s^2}{\lambda^2_{\alpha}};
         +\infty \right)\\
-    \sigma^2 \in \left( \dfrac{ {{n_1}} \cdot {{s2}} }{ {{chi_sq_2}} };
+    \sigma^2 \in \left( \dfrac{ {{n_1}} \cdot {{s2}} }{ {{chi_sq_1}} };
         +\infty \right)\\
     \sigma^2 \in ({{min_value}}, +\infty)
 \end{gather*}
@@ -38,7 +38,7 @@ Vì $\alpha = {{alpha}}$ nên $\lambda^2_{\alpha} = {{chi_sq_2}}$
     \sigma^2 \in \left( 0;
         \dfrac{(n-1)s^2}{\lambda^2_{1 - \alpha}} \right)\\
     \sigma^2 \in \left( 0;
-        \dfrac{ {{n_1}} \cdot {{s2}} }{ {{chi_sq_1}} } \right)\\
+        \dfrac{ {{n_1}} \cdot {{s2}} }{ {{chi_sq_2}} } \right)\\
     \sigma^2 \in (0, {{max_value}})
 \end{gather*}
 {{/max}}

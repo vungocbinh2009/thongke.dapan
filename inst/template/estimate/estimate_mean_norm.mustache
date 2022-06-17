@@ -3,7 +3,7 @@
 Ta có: $\overline{x} = {{mean}}, n = {{n}}, {{sd_symbol}} = {{s}}$
 
 {{#two_side}}
-Vì $\alpha = {{alpha}}$ nên $u_{\alpha / 2} = {{z_alpha_2}}$
+Vì $\alpha = {{alpha}}$ nên $u_{\alpha / 2} = {{z_alpha_div_2}}$
 {{/two_side}}
 {{#min}}
 Vì $\alpha = {{alpha}}$ nên $u_{\alpha} = {{z_alpha}}$
@@ -20,8 +20,8 @@ Vì $\alpha = {{alpha}}$ nên $u_{\alpha} = {{z_alpha}}$
 \begin{gather*}
     \mu \in \left( \overline{x} - u_{\alpha / 2} \dfrac{ {{sd_symbol}} }{\sqrt{n}};
         \overline{x} + u_{\alpha / 2} \dfrac{ {{sd_symbol}} }{\sqrt{n}} \right)\\
-    \mu \in \left( {{mean}} - {{z_alpha_2}} \dfrac{ {{s}} }{\sqrt{ {{n}} }};
-        {{mean}} + {{z_alpha_2}} \dfrac{ {{s}} }{\sqrt{ {{n}} }} \right)\\
+    \mu \in \left( {{mean}} - {{z_alpha_div_2}} \dfrac{ {{s}} }{\sqrt{ {{n}} }};
+        {{mean}} + {{z_alpha_div_2}} \dfrac{ {{s}} }{\sqrt{ {{n}} }} \right)\\
     \mu \in ({{bottom}}; {{top}})\\
 \end{gather*}
 {{/two_side}}
