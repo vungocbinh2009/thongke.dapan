@@ -5,22 +5,22 @@
 #' @export
 answer_test_mean_norm <- function(data, sd_symbol, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_mean_norm.mustache")
-  params <- data$params
-  result <- data$result
-  operator <- get_operator(params$mode)
+  input_data <- data$input_data
+  output_data <- data$output_data
+  operator <- get_operator(input_data$alternative)
   var_list <- list(
     intro = intro,
     operator = operator,
     sd_symbol = sd_symbol,
-    mean_0 = params$mean_0,
-    mean = round(params$mean, round_digits),
-    n = params$n,
-    sigma = round(params$sigma, round_digits),
-    test = round(result$test, round_digits),
-    alpha = params$alpha,
-    c = round(result$c, round_digits),
-    stat_conclusion = get_conclusion(result$rejected, params$mode),
-    conclusion = ifelse(result$rejected, conclusion_h1, conclusion_h0),
+    mean_0 = input_data$mean_0,
+    mean = round(input_data$mean, round_digits),
+    n = input_data$n,
+    sigma = round(input_data$sigma, round_digits),
+    test = round(output_data$test, round_digits),
+    alpha = input_data$alpha,
+    c = round(output_data$c, round_digits),
+    stat_conclusion = get_conclusion(output_data$rejected, input_data$alternative),
+    conclusion = ifelse(output_data$rejected, conclusion_h1, conclusion_h0),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]
@@ -35,21 +35,21 @@ answer_test_mean_norm <- function(data, sd_symbol, conclusion_h0, conclusion_h1,
 #' @export
 answer_test_mean_t <- function(data, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_mean_t.mustache")
-  params <- data$params
-  result <- data$result
-  operator <- get_operator(params$mode)
+  input_data <- data$input_data
+  output_data <- data$output_data
+  operator <- get_operator(input_data$alternative)
   var_list <- list(
     intro = intro,
     operator = operator,
-    mean_0 = params$mean_0,
-    mean = round(params$mean, round_digits),
-    n = params$n,
-    s = round(params$s, round_digits),
-    test = round(result$test, round_digits),
-    alpha = params$alpha,
-    c = round(result$c, round_digits),
-    stat_conclusion = get_conclusion(result$rejected, params$mode),
-    conclusion = ifelse(result$rejected, conclusion_h1, conclusion_h0),
+    mean_0 = input_data$mean_0,
+    mean = round(input_data$mean, round_digits),
+    n = input_data$n,
+    s = round(input_data$s, round_digits),
+    test = round(output_data$test, round_digits),
+    alpha = input_data$alpha,
+    c = round(output_data$c, round_digits),
+    stat_conclusion = get_conclusion(output_data$rejected, input_data$alternative),
+    conclusion = ifelse(output_data$rejected, conclusion_h1, conclusion_h0),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]
@@ -64,22 +64,22 @@ answer_test_mean_t <- function(data, conclusion_h0, conclusion_h1, intro = "", s
 #' @export
 answer_test_prop <- function(data, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_prop.mustache")
-  params <- data$params
-  result <- data$result
-  operator <- get_operator(params$mode)
+  input_data <- data$input_data
+  output_data <- data$output_data
+  operator <- get_operator(input_data$alternative)
   var_list <- list(
     intro = intro,
     operator = operator,
-    k = round(params$n * params$f, 0),
-    n = params$n,
-    f = round(params$f, round_digits),
-    p_0 = params$p_0,
-    g_0 = 1 - params$p_0,
-    test = round(result$test, round_digits),
-    alpha = params$alpha,
-    c = round(result$c, round_digits),
-    stat_conclusion = get_conclusion(result$rejected, params$mode),
-    conclusion = ifelse(result$rejected, conclusion_h1, conclusion_h0),
+    k = round(input_data$n * input_data$f, 0),
+    n = input_data$n,
+    f = round(input_data$f, round_digits),
+    p_0 = input_data$p_0,
+    g_0 = 1 - input_data$p_0,
+    test = round(output_data$test, round_digits),
+    alpha = input_data$alpha,
+    c = round(output_data$c, round_digits),
+    stat_conclusion = get_conclusion(output_data$rejected, input_data$alternative),
+    conclusion = ifelse(output_data$rejected, conclusion_h1, conclusion_h0),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]
@@ -95,28 +95,28 @@ answer_test_prop <- function(data, conclusion_h0, conclusion_h1, intro = "", sco
 #' @export
 answer_test_goodness_of_fit <- function(data, h0, col_names, conclusion_h0, conclusion_h1, score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_goodness_of_fit.mustache")
-  params <- data$params
-  result <- data$result
+  input_data <- data$input_data
+  output_data <- data$output_data
   col_names <- col_names
   row_names <- c("Tần số quan sát", "Tần số lý thuyết")
-  matrix <- matrix(c(params$actual, params$expected), nrow = 2,
+  matrix <- matrix(c(input_data$actual, input_data$expected), nrow = 2,
                    byrow = TRUE, dimnames = list(row_names, col_names))
   var_list <- list(
     h0 = h0,
     # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
     # in ra khi gọi hàm render_template, digits loại bỏ phần thập phân khi in bảng.
-    table = print(xtable(matrix, digits = 0), print.results = FALSE, floating = FALSE),
-    a_1 = params$actual[1],
-    a_2 = params$actual[2],
-    a_k = params$actual[length(params$actual)],
-    e_1 = params$expected[1],
-    e_2 = params$expected[2],
-    e_k = params$expected[length(params$expected)],
-    test = round(result$test, round_digits),
-    alpha = params$alpha,
-    c = round(result$c, round_digits),
-    stat_conclusion = get_conclusion(result$rejected, "greater"),
-    conclusion = ifelse(result$rejected, conclusion_h1, conclusion_h0),
+    table = print(xtable(matrix, digits = 0), print.output_datas = FALSE, floating = FALSE),
+    a_1 = input_data$actual[1],
+    a_2 = input_data$actual[2],
+    a_k = input_data$actual[length(input_data$actual)],
+    e_1 = input_data$expected[1],
+    e_2 = input_data$expected[2],
+    e_k = input_data$expected[length(input_data$expected)],
+    test = round(output_data$test, round_digits),
+    alpha = input_data$alpha,
+    c = round(output_data$c, round_digits),
+    stat_conclusion = get_conclusion(output_data$rejected, "greater"),
+    conclusion = ifelse(output_data$rejected, conclusion_h1, conclusion_h0),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]
@@ -131,24 +131,24 @@ answer_test_goodness_of_fit <- function(data, h0, col_names, conclusion_h0, conc
 #' @export
 answer_test_2_mean_norm <- function(data, sd_symbol, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_2_mean_norm.mustache")
-  params <- data$params
-  result <- data$result
-  operator <- get_operator(params$mode)
+  input_data <- data$input_data
+  output_data <- data$output_data
+  operator <- get_operator(input_data$alternative)
   var_list <- list(
     intro = intro,
     operator = operator,
     sd_symbol = sd_symbol,
-    mean1 = round(params$mean1, round_digits),
-    n1 = params$n1,
-    sigma1 = round(params$sigma1, round_digits),
-    mean2 = round(params$mean2, round_digits),
-    n2 = params$n2,
-    sigma2 = round(params$sigma2, round_digits),
-    test = round(result$test, round_digits),
-    alpha = params$alpha,
-    c = round(result$c, round_digits),
-    stat_conclusion = get_conclusion(result$rejected, params$mode),
-    conclusion = ifelse(result$rejected, conclusion_h1, conclusion_h0),
+    mean1 = round(input_data$mean[1], round_digits),
+    n1 = input_data$n1,
+    sigma1 = round(input_data$sigma[1], round_digits),
+    mean2 = round(input_data$mean[2], round_digits),
+    n2 = input_data$n2,
+    sigma2 = round(input_data$sigma[2], round_digits),
+    test = round(output_data$test, round_digits),
+    alpha = input_data$alpha,
+    c = round(output_data$c, round_digits),
+    stat_conclusion = get_conclusion(output_data$rejected, input_data$alternative),
+    conclusion = ifelse(output_data$rejected, conclusion_h1, conclusion_h0),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]
@@ -163,24 +163,24 @@ answer_test_2_mean_norm <- function(data, sd_symbol, conclusion_h0, conclusion_h
 #' @export
 answer_test_2_mean_t <- function(data, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_2_mean_t.mustache")
-  params <- data$params
-  result <- data$result
-  operator <- get_operator(params$mode)
+  input_data <- data$input_data
+  output_data <- data$output_data
+  operator <- get_operator(input_data$alternative)
   var_list <- list(
     intro = intro,
     operator = operator,
-    mean1 = round(params$mean1, round_digits),
-    n1 = params$n1,
-    s1 = round(params$s1, round_digits),
-    mean2 = round(params$mean2, round_digits),
-    n2 = params$n2,
-    s2 = round(params$s2, round_digits),
-    s = round(sqrt(result$s), round_digits),
-    test = round(result$test, round_digits),
-    alpha = params$alpha,
-    c = round(result$c, round_digits),
-    stat_conclusion = get_conclusion(result$rejected, params$mode),
-    conclusion = ifelse(result$rejected, conclusion_h1, conclusion_h0),
+    mean1 = round(input_data$mean[1], round_digits),
+    n1 = input_data$n[1],
+    s1 = round(input_data$s[1], round_digits),
+    mean2 = round(input_data$mean[2], round_digits),
+    n2 = input_data$n[2],
+    s2 = round(input_data$s[2], round_digits),
+    s = round(sqrt(output_data$s), round_digits),
+    test = round(output_data$test, round_digits),
+    alpha = input_data$alpha,
+    c = round(output_data$c, round_digits),
+    stat_conclusion = get_conclusion(output_data$rejected, input_data$alternative),
+    conclusion = ifelse(output_data$rejected, conclusion_h1, conclusion_h0),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]
@@ -195,25 +195,25 @@ answer_test_2_mean_t <- function(data, conclusion_h0, conclusion_h1, intro = "",
 #' @export
 answer_test_2_prop <- function(data, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_2_prop.mustache")
-  params <- data$params
-  result <- data$result
-  operator <- get_operator(params$mode)
+  input_data <- data$input_data
+  output_data <- data$output_data
+  operator <- get_operator(input_data$alternative)
   var_list <- list(
     intro = intro,
     operator = operator,
-    k1 = round(params$n1 * params$f1, 0),
-    n1 = params$n1,
-    f1 = round(params$f1, round_digits),
-    k2 = round(params$n2 * params$f2, 0),
-    n2 = params$n2,
-    f2 = round(params$f2, round_digits),
-    f = round(result$f, round_digits),
-    g = round(1 - result$f, round_digits),
-    test = round(result$test, round_digits),
-    alpha = params$alpha,
-    c = round(result$c, round_digits),
-    stat_conclusion = get_conclusion(result$rejected, params$mode),
-    conclusion = ifelse(result$rejected, conclusion_h1, conclusion_h0),
+    k1 = round(input_data$n[1] * input_data$f[1], 0),
+    n1 = input_data$n[1],
+    f1 = round(input_data$f[1], round_digits),
+    k2 = round(input_data$n[2] * input_data$f[2], 0),
+    n2 = input_data$n[2],
+    f2 = round(input_data$f[2], round_digits),
+    f = round(output_data$f, round_digits),
+    g = round(1 - output_data$f, round_digits),
+    test = round(output_data$test, round_digits),
+    alpha = input_data$alpha,
+    c = round(output_data$c, round_digits),
+    stat_conclusion = get_conclusion(output_data$rejected, input_data$alternative),
+    conclusion = ifelse(output_data$rejected, conclusion_h1, conclusion_h0),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]
@@ -229,30 +229,30 @@ answer_test_2_prop <- function(data, conclusion_h0, conclusion_h1, intro = "", s
 #' @export
 answer_test_k_prop <- function(data, h0, row_names, col_names, conclusion_h0, conclusion_h1, score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_k_prop.mustache")
-  params <- data$params
-  result <- data$result
+  input_data <- data$input_data
+  output_data <- data$output_data
   row_names_full <- c(row_names, "Tổng")
   col_names_full <- c(col_names, "Tổng")
-  l_i <- params$n_i - params$m_i
-  matrix <- matrix(c(params$m_i, result$sum_m_i, l_i, result$sum_l_i, params$n_i, result$sum_n_i), nrow = 3,
+  l_i <- input_data$n_i - input_data$m_i
+  matrix <- matrix(c(input_data$m_i, output_data$sum_m_i, l_i, output_data$sum_l_i, input_data$n_i, output_data$sum_n_i), nrow = 3,
                    byrow = TRUE, dimnames = list(row_names_full, col_names_full))
   var_list <- list(
     h0 = h0,
     # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
     # in ra khi gọi hàm render_template, digits loại bỏ phần thập phân khi in bảng.
-    table = print(xtable(matrix, digits = 0), print.results = FALSE, floating = FALSE),
-    sum_n_i = result$sum_n_i,
-    sum_m_i = result$sum_m_i,
-    sum_l_i = result$sum_l_i,
-    m_1 = params$m_i[1],
-    m_2 = params$m_i[2],
-    n_1 = params$n_i[1],
-    n_2 = params$n_i[2],
-    test = round(result$test, round_digits),
-    alpha = params$alpha,
-    c = round(result$c, round_digits),
-    stat_conclusion = get_conclusion(result$rejected, "greater"),
-    conclusion = ifelse(result$rejected, conclusion_h1, conclusion_h0),
+    table = print(xtable(matrix, digits = 0), print.output_datas = FALSE, floating = FALSE),
+    sum_n_i = output_data$sum_n_i,
+    sum_m_i = output_data$sum_m_i,
+    sum_l_i = output_data$sum_l_i,
+    m_1 = input_data$m_i[1],
+    m_2 = input_data$m_i[2],
+    n_1 = input_data$n_i[1],
+    n_2 = input_data$n_i[2],
+    test = round(output_data$test, round_digits),
+    alpha = input_data$alpha,
+    c = round(output_data$c, round_digits),
+    stat_conclusion = get_conclusion(output_data$rejected, "greater"),
+    conclusion = ifelse(output_data$rejected, conclusion_h1, conclusion_h0),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]
@@ -268,33 +268,33 @@ answer_test_k_prop <- function(data, h0, row_names, col_names, conclusion_h0, co
 #' @export
 answer_test_independent <- function(data, h0, row_names, col_names, conclusion_h0, conclusion_h1, score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_independent.mustache")
-  params <- data$params
-  result <- data$result
+  input_data <- data$input_data
+  output_data <- data$output_data
   row_names_full <- c(row_names, "Tổng")
   col_names_full <- c(col_names, "Tổng")
-  matrix_2 <- rbind(params$matrix, result$col_sums)
-  matrix_2 <- cbind(matrix_2, c(result$row_sums, result$n))
+  matrix_2 <- rbind(input_data$matrix, output_data$col_sums)
+  matrix_2 <- cbind(matrix_2, c(output_data$row_sums, output_data$n))
   colnames(matrix_2) <- col_names_full
   rownames(matrix_2) <- row_names_full
   var_list <- list(
     h0 = h0,
     # Khi truyền vào làm tham số, ta không in gì ra màn hình, nội dung bảng sẽ chỉ được
     # in ra khi gọi hàm render_template, digits loại bỏ phần thập phân khi in bảng.
-    table = print(xtable(matrix_2, digits = 0), print.results = FALSE, floating = FALSE),
-    n = result$n,
-    n_11 = params$matrix[1, 1],
-    n_10 = result$row_sums[1],
-    n_01 = result$col_sums[1],
-    n_12 = params$matrix[1, 2],
-    n_02 = result$col_sums[2],
-    n_rk = params$matrix[length(result$row_sums), length(result$col_sums)],
-    n_r0 = result$row_sums[length(result$row_sums)],
-    n_0k = result$col_sums[length(result$col_sums)],
-    test = round(result$test, round_digits),
-    alpha = params$alpha,
-    c = round(result$c, round_digits),
-    stat_conclusion = get_conclusion(result$rejected, "greater"),
-    conclusion = ifelse(result$rejected, conclusion_h1, conclusion_h0),
+    table = print(xtable(matrix_2, digits = 0), print.output_datas = FALSE, floating = FALSE),
+    n = output_data$n,
+    n_11 = input_data$matrix[1, 1],
+    n_10 = output_data$row_sums[1],
+    n_01 = output_data$col_sums[1],
+    n_12 = input_data$matrix[1, 2],
+    n_02 = output_data$col_sums[2],
+    n_rk = input_data$matrix[length(output_data$row_sums), length(output_data$col_sums)],
+    n_r0 = output_data$row_sums[length(output_data$row_sums)],
+    n_0k = output_data$col_sums[length(output_data$col_sums)],
+    test = round(output_data$test, round_digits),
+    alpha = input_data$alpha,
+    c = round(output_data$c, round_digits),
+    stat_conclusion = get_conclusion(output_data$rejected, "greater"),
+    conclusion = ifelse(output_data$rejected, conclusion_h1, conclusion_h0),
     score_1 = score[1],
     score_2 = score[2],
     score_3 = score[3]
@@ -302,10 +302,10 @@ answer_test_independent <- function(data, h0, row_names, col_names, conclusion_h
   render_template(file_name, var_list)
 }
 
-#' Hàm này dựa vào mode để chọn dấu thích hợp cho H1.
-get_operator <- function (mode) {
+#' Hàm này dựa vào alternative để chọn dấu thích hợp cho H1.
+get_operator <- function (alternative) {
   return(switch(
-    mode,
+    alternative,
     "neq" = "\\neq",
     "less" = "<",
     "greater" = ">"

@@ -14,12 +14,3 @@ get_file_path <- function (...) {
 return_list <- function (...) {
   return(list(...))
 }
-
-#' Hàm này dùng để gọi các hàm trong thư viện thongke, trả về các dữ liệu cần thiết
-#' cho việc tạo đáp án
-#' @export
-generate_data <- function (func, params) {
-  all_params <- c(params, silent = TRUE)
-  result <- do.call(func, all_params)
-  return_list(params = params, result = result)
-}

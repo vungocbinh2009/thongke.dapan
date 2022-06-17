@@ -1,6 +1,9 @@
 #' Tính giá trị trung bình
 #'
 #' Hàm in đáp án bài toán tính giá trị trung bình
+#' @param data: là 1 vector dữ liệu
+#' @param answer: câu trả lời của bài toán
+#' @param score: Đáp số cho câu hỏi này.
 #' @export
 answer_mean <- function(data, answer, score = 1, round_digits = 4) {
   file_name <- get_file_path("template", "descriptive", "mean.mustache")
@@ -25,6 +28,10 @@ answer_mean <- function(data, answer, score = 1, round_digits = 4) {
 #' Tính giá trị phương sai
 #'
 #' Hàm này in đáp án cho bài toán tính phương sai
+#' @param data: là 1 vector dữ liệu
+#' @param answer: câu trả lời của bài toán
+#' @param with_mean: Có tính phương sai dựa trên giá trị trung bình không?
+#' @param score: Đáp số cho câu hỏi này.
 #' @export
 answer_var <- function(data, answer, with_mean = TRUE, score = 1, round_digits = 4) {
   file_name <- get_file_path("template", "descriptive", "var.mustache")
@@ -62,7 +69,9 @@ answer_var <- function(data, answer, with_mean = TRUE, score = 1, round_digits =
 #' Tính giá trị độ lệch chuẩn
 #'
 #' Hàm này in đáp án cho bài toán tính giá trị độ lệch chuẩn
-#' @import whisker
+#' @param data: là 1 vector dữ liệu
+#' @param answer: câu trả lời của bài toán
+#' @param score: Đáp số cho câu hỏi này.
 #' @export
 answer_sd <- function(data, answer, with_mean = TRUE, score = 1, round_digits = 4) {
   file_name <- get_file_path("template", "descriptive", "sd.mustache")
