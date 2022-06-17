@@ -16,7 +16,7 @@ install.packages("devtools")
 # Install thongke before thongke_dapan
 devtools::install_github("vungocbinh2009/thongke")
 # Install thongke.dapan
-devtools::install_github("vungocbinh2009/thongke_dapan")
+devtools::install_github("vungocbinh2009/thongke.dapan")
 # Others package dependency: whisker, xtable
 ```
 # How to use
