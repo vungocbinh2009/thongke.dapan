@@ -6,6 +6,15 @@
 \usage{
 answer_var(data, answer, with_mean = TRUE, score = 1, round_digits = 4)
 }
+\arguments{
+\item{data:}{là 1 vector dữ liệu}
+
+\item{answer:}{câu trả lời của bài toán}
+
+\item{with_mean:}{Có tính phương sai dựa trên giá trị trung bình không?}
+
+\item{score:}{Đáp số cho câu hỏi này.}
+}
 \description{
 Hàm này in đáp án cho bài toán tính phương sai
 }

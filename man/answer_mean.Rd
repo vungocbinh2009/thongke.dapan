@@ -6,6 +6,13 @@
 \usage{
 answer_mean(data, answer, score = 1, round_digits = 4)
 }
+\arguments{
+\item{data:}{là 1 vector dữ liệu}
+
+\item{answer:}{câu trả lời của bài toán}
+
+\item{score:}{Đáp số cho câu hỏi này.}
+}
 \description{
 Hàm in đáp án bài toán tính giá trị trung bình
 }

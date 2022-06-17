@@ -6,6 +6,13 @@
 \usage{
 answer_sd(data, answer, with_mean = TRUE, score = 1, round_digits = 4)
 }
+\arguments{
+\item{data:}{là 1 vector dữ liệu}
+
+\item{answer:}{câu trả lời của bài toán}
+
+\item{score:}{Đáp số cho câu hỏi này.}
+}
 \description{
 Hàm này in đáp án cho bài toán tính giá trị độ lệch chuẩn
 }
