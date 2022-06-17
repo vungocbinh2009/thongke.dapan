@@ -1,3 +1,17 @@
+# Table of Contents
+
+  - [thongke.dapan](#thongke.dapan)
+  - [Install](#install)
+  - [How to use](#how-to-use)
+      - [Descriptive statistics](#descriptive-statistics)
+      - [Parameter estimation](#parameter-estimation)
+      - [Hypothesis testing](#hypothesis-testing)
+      - [Correlation and simple linear
+        regression](#correlation-and-simple-linear-regression)
+      - [Other features](#other-features)
+  - [Note](#note)
+  - [License](#license)
+
 # thongke.dapan
 
 My R package, generate latex code to add to my exam template :)
@@ -16,7 +30,7 @@ devtools::install_github("vungocbinh2009/thongke.dapan")
 
 # How to use
 
-### Descriptive statistics
+## Descriptive statistics
 
 ``` r
 library(thongke)
@@ -43,7 +57,7 @@ test_that("Test một số hàm trong file descriptive.R", {
 })
 ```
 
-### Parameter estimation
+## Parameter estimation
 
 ``` r
 library(thongke)
@@ -177,7 +191,7 @@ test_that("Test các hàm answer_estimate_*, answer_sample_*", {
 })
 ```
 
-### Hypothesis testing
+## Hypothesis testing
 
 ``` r
 library(thongke)
@@ -308,7 +322,7 @@ test_that("Test các hàm answer_test_*", {
 })
 ```
 
-### Correlation and simple linear regression
+## Correlation and simple linear regression
 
 ``` r
 library(thongke)
@@ -362,7 +376,7 @@ test_that("Test 2 hàm trong file regression.R", {
 })
 ```
 
-### Other features
+## Other features
 
 ``` r
 library(thongke)

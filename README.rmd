@@ -4,6 +4,17 @@ output:
   md_document:
     variant: gfm
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+devtools::source_gist("c83e078bf8c81b035e32c3fc0cf04ee8",
+                      filename = 'render_toc.R')
+```
+
+# Table of Contents
+
+```{r toc, echo=FALSE}
+render_toc("README.rmd", toc_depth=2)
+```
 
 # thongke.dapan
 
@@ -19,29 +30,30 @@ devtools::install_github("vungocbinh2009/thongke")
 devtools::install_github("vungocbinh2009/thongke.dapan")
 # Others package dependency: whisker, xtable
 ```
+
 # How to use
 
-### Descriptive statistics
+## Descriptive statistics
 ```{r, code = readLines("./tests/testthat/test_descriptive.R"), results = FALSE}
 
 ```
 
-### Parameter estimation
+## Parameter estimation
 ```{r, code = readLines("./tests/testthat/test_estimate.R"), results = FALSE}
 
 ```
 
-### Hypothesis testing
+## Hypothesis testing
 ```{r, code = readLines("./tests/testthat/test_hypothesis.R"), results = FALSE}
 
 ```
 
-### Correlation and simple linear regression
+## Correlation and simple linear regression
 ```{r, code = readLines("./tests/testthat/test_regression.R"), results = FALSE}
 
 ```
 
-### Other features
+## Other features
 ```{r, code = readLines("./tests/testthat/test_others.R"), results = FALSE}
 
 ```
