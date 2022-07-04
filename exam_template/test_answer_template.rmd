@@ -5,75 +5,52 @@ date: "14/03/2022"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-set.seed(123)
-options(OutDec=",")
-```
-
 ## Mục đích viết file này
 
 File này được viết ra để tự động hóa việc xây dựng đáp án của một đề thi môn xác suất thống kê, sử dụng thongke.dapan và mẫu đáp án hiện có trên github. Ưu điểm của việc này là giúp giảm bớt sai số trong tính toán và tiết kiệm được nhiều công sức
 
-## Nội dung đề thi
-
-Trước khi thực hiện tạo đáp án, hãy viết lại nội dung đề thi vào mục này và dùng thư viện thongke để giải thử. Lưu ý.
-- Muốn thay đổi cách máy tính random, hãy thay đổi lại seed trong hàm `set.seed()` ở phía trên.
-- Nếu đã ưng ý với dữ liệu và đáp án của đề thi thì hãy tiếp tục :smile:
-
-## Cách sử dụng
-
-0. Tải về các thư viện cần thiết và import:
-Lưu ý: Đoạn code dưới đây có thể chạy trong RStudio nhưng không chạy được trong PyCharm. Để chạy, đặt eval = TRUE
-```{r, eval = FALSE}
-# Install devtools
-install.packages("devtools")
-# Install thongke before thongke_dapan
-library(devtools)
-devtools::install_github("vungocbinh2009/thongke")
-# Install thongke.dapan
-devtools::install_github("vungocbinh2009/thongke_dapan")
-# 2 thư viện này có dependency là whisker, nên không cần tải whisker nữa.
-# install.packages("magrittr")
-# install.packages("stringr")
-```
-
+## Các thư viện cần thiết
 ```{r}
+# Để cài 2 thư viện thongke và thongke.dapan, chạy câu lệnh sau (cần có devtool - cài tử CRAN)
+# devtools::install_github("vungocbinh2009/thongke")
+# devtools::install_github("vungocbinh2009/thongke_dapan")
 library(thongke.dapan)
 library(thongke)
+# 3 thư viện còn lại có thể tải từ CRAN
 library(whisker)
 library(magrittr)
 library(stringr)
 ```
+## Một số tùy chọn quan trọng
+```{r}
+# Cài đặt seed random để có thể tái tạo lại đề khi cần.
+set.seed(123)
+# Biến này sẽ được chỉnh sửa sau.
+generate_pdf_file <- FALSE
+```
 
-1. Lấy đề thi và dùng thư viện thongke.dapan để giải (Có thể copy câu lệnh của thongke vào đây luôn cho tiện theo dõi)
+## Nhập nội dung đề thi và giải đề.
+Sau khi đã setup xong các packages, Các bạn hãy thực hiện các công việc sau tại mục này.
+- Nhập nội dung để thi
+- Sử dụng thư viện thongke để giải đề thi và knit xem đã đạt yêu chưa.
+- Sử dụng thư viện thongke.dapan để tạo đáp án. Mỗi đáp án cần gán vào 1 biến.
+
+## Đặt tên các câu hỏi và thêm các biến chứa câu trả lời.
+
 ```{r}
 # Đặt tên các câu hỏi ở đây
-questions <- c("Câu 1", "Câu 2") %>% sprintf("\\textbf{%s}", .)
-
-# Tạo lời giải cho câu hỏi
-answer_1 <- estimate_mean_norm(sigma = 3, n = 36, alpha = 0.05, mean = 66, mode = "two.side") %>%
-  answer_estimate_mean_norm(
-    sd_symbol = "\\sigma",
-    answer = "Khoảng tin cậy 95\\% là:",
-  )
-
-answer_2 <- test_mean_norm(sigma = 5.2, alpha = 0.05, n = 100, mean = 27.56, mean_0 = 26, mode = "neq") %>%
-  answer_test_mean_norm(
-    sd_symbol = "\\sigma",
-    conclusion_h0 = "Chưa đủ cơ sở để cho rằng ...",
-    conclusion_h1 = "Có thể cho rằng ..."
-  )
+questions <- c("Câu 1", "Câu 2") %>%
+         sprintf("\\textbf{%s}", .)
 
 # Thêm câu trả lời vào biến answer, theo đúng thứ tự câu hỏi trong biến question.
 answers <- c(answer_1, answer_2)
 ```
 
-2. Đặt tên file tex ở đây
+## Đặt tên file tex ở đây
 ```{r}
 output_file <- "output.tex"
 ```
 3. Đặt tiêu đề cho phần đáp án của đề kiểm tra.
-Lưu ý: Đoạn code dưới đây dùng raw string trong R và yêu cầu tối thiểu R 4.0.0
 
 ```{r}
 answer_title <- r"[
@@ -84,9 +61,12 @@ answer_title <- r"[
 \end{center}
 ]"
 ```
-4. Bấm nút knit (phím tắt Ctrl + Shift + K) để đoạn code dưới đây làm nốt những công việc còn lại và tạo ra file tex (mọi thứ có thể hơi lâu một chút, vì cần tải khá nhiều gói lệnh)
 
-```{r}
+## Quay lên mục "Một số tùy chọn quan trọng" và đặt biến generated_pdf_file <- TRUE
+
+## Bấm nút knit (phím tắt Ctrl + Shift + K) để đoạn code dưới đây làm nốt những công việc còn lại và tạo ra file tex (mọi thứ có thể hơi lâu một chút, vì cần tải khá nhiều gói lệnh)
+
+```{r, eval = generated_pdf_file}
 answer_list_template <- readLines("https://raw.githubusercontent.com/vungocbinh2009/thongke.dapan/master/exam_template/answer_list_template.mustache")
 answer_template <- readLines("https://raw.githubusercontent.com/vungocbinh2009/thongke.dapan/master/exam_template/answer_template.mustache")
 rendered_answer_list <- NULL
