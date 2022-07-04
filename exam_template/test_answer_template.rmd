@@ -24,6 +24,8 @@ library(stringr)
 ## Một số tùy chọn quan trọng
 ```{r}
 # Cài đặt seed random để có thể tái tạo lại đề khi cần.
+# Để lấy 1 số ngẫu nhiên làm seed, ta chạy hàm sau:
+# sample(x = 2147483647, size = 1)
 set.seed(123)
 # Biến này sẽ được chỉnh sửa sau.
 generate_pdf_file <- FALSE
@@ -37,7 +39,7 @@ Sau khi đã setup xong các packages, Các bạn hãy thực hiện các công 
 
 ## Đặt tên các câu hỏi và thêm các biến chứa câu trả lời.
 
-```{r}
+```{r, eval = generate_pdf_file}
 # Đặt tên các câu hỏi ở đây
 questions <- c("Câu 1", "Câu 2") %>%
          sprintf("\\textbf{%s}", .)
@@ -47,12 +49,12 @@ answers <- c(answer_1, answer_2)
 ```
 
 ## Đặt tên file tex ở đây
-```{r}
+```{r, eval = generate_pdf_file}
 output_file <- "output.tex"
 ```
 3. Đặt tiêu đề cho phần đáp án của đề kiểm tra.
 
-```{r}
+```{r, eval = generate_pdf_file}
 answer_title <- r"[
 \begin{center}
     \textbf{\large Đáp án đề thi một môn học nào đó}
@@ -66,7 +68,7 @@ answer_title <- r"[
 
 ## Bấm nút knit (phím tắt Ctrl + Shift + K) để đoạn code dưới đây làm nốt những công việc còn lại và tạo ra file tex (mọi thứ có thể hơi lâu một chút, vì cần tải khá nhiều gói lệnh)
 
-```{r, eval = generated_pdf_file}
+```{r, eval = generate_pdf_file}
 answer_list_template <- readLines("https://raw.githubusercontent.com/vungocbinh2009/thongke.dapan/master/exam_template/answer_list_template.mustache")
 answer_template <- readLines("https://raw.githubusercontent.com/vungocbinh2009/thongke.dapan/master/exam_template/answer_template.mustache")
 rendered_answer_list <- NULL
