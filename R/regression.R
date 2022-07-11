@@ -7,13 +7,13 @@ answer_correlation <- function(data, score = 1, round_digits = 4) {
   file_name <- get_file_path("template", "regression", "correlation.mustache")
   input_data <- data$input_data
   output_data <- data$output_data
-  sum <- calculate_sum(input_data$x, input_data$y)
+  sum_data <- calculate_sum(input_data$x, input_data$y)$output_data
   var_list <- list(
-    sum_xy = sum$sum_xy,
-    sum_x = sum$sum_x,
-    sum_y = sum$sum_y,
-    sum_x2 = sum$sum_x2,
-    sum_y2 = sum$sum_y2,
+    sum_xy = sum_data$sum_xy,
+    sum_x = sum_data$sum_x,
+    sum_y = sum_data$sum_y,
+    sum_x2 = sum_data$sum_x2,
+    sum_y2 = sum_data$sum_y2,
     n = length(input_data$x),
     cor = round(output_data$cor, round_digits),
     score = score
@@ -29,14 +29,14 @@ answer_correlation <- function(data, score = 1, round_digits = 4) {
 answer_linear_regression <- function(data, intro = "", score=c(1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "regression", "linear_regression.mustache")
   input_data <- data$input_data
-  sum <- calculate_sum(input_data$x, input_data$y)
+  sum_data <- calculate_sum(input_data$x, input_data$y)$output_data
   output_data <- data$output_data
   var_list <- list(
     intro = intro,
-    sum_xy = sum$sum_xy,
-    sum_x = sum$sum_x,
-    sum_y = sum$sum_y,
-    sum_x2 = sum$sum_x2,
+    sum_xy = sum_data$sum_xy,
+    sum_x = sum_data$sum_x,
+    sum_y = sum_data$sum_y,
+    sum_x2 = sum_data$sum_x2,
     n = length(input_data$x),
     a = round(output_data$a, round_digits),
     b = round(output_data$b, round_digits),
