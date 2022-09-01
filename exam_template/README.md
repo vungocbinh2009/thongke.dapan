@@ -2,8 +2,11 @@
 
 Đây là folder chứa các file cần thiết để xây dựng đáp án đề thi từ thư viện thongke.dapan :smile:
 
-# Cách sử dụng folder này.
+## Mẫu tạo 1 đề thi
+- Sử dụng hàm `init_template()` để tạo file RMarkdown soạn đề thi
 
-1. Tải file test_answer_template.Rmd về máy
-2. Chỉnh sửa lại nội dung trong file theo hướng dẫn trong file
-3. Biên dịch file: File này sẽ tự động tải 2 file còn lại từ trang github này và tạo đáp án đề thi.
+## Mẫu tạo nhiều đề thi
+Tải file `multi_answer_template.R` và chỉnh sửa theo hướng dẫn để tạo nhiều đề thi. 
+
+## Mẫu đáp án bài tập xác suất
+Mở file `prob_template.R` Và copy hàm phù hợp.
