@@ -17,6 +17,8 @@ init_template <- function() {
   print("Done")
 }
 
+#' Hàm này dùng để tạo script tạo nhiều đề thi bằng thongke.dapan
+#' @export
 init_multiple_template <- function() {
   print("Init multiple template")
   exam_name <- readline(prompt = "Exam name: ")
