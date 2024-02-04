@@ -6,9 +6,9 @@
 \usage{
 answer_test_2_mean_norm(
   data,
-  sd_symbol,
-  conclusion_h0,
-  conclusion_h1,
+  sd_symbol = "\\\\sigma",
+  conclusion_h0 = "",
+  conclusion_h1 = "",
   intro = "",
   score = c(0.5, 1, 0.5),
   round_digits = 4

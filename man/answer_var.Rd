@@ -4,7 +4,13 @@
 \alias{answer_var}
 \title{Tính giá trị phương sai}
 \usage{
-answer_var(data, answer, with_mean = TRUE, score = 1, round_digits = 4)
+answer_var(
+  data,
+  answer = "Giá trị phương sai là: ",
+  with_mean = TRUE,
+  score = 1,
+  round_digits = 4
+)
 }
 \arguments{
 \item{data:}{là 1 vector dữ liệu}

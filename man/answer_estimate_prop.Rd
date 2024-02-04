@@ -4,7 +4,12 @@
 \alias{answer_estimate_prop}
 \title{Trình bày bài toán ước lượng cho tỷ lệ.}
 \usage{
-answer_estimate_prop(data, answer, score = c(0.5, 1.5), round_digits = 4)
+answer_estimate_prop(
+  data,
+  answer = "Khoảng tin cậy cần tìm là:",
+  score = c(0.5, 1.5),
+  round_digits = 4
+)
 }
 \description{
 Hàm này in ra đáp án cho bài toán ước lượng cho tỷ lệ

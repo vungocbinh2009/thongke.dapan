@@ -5,7 +5,7 @@
 #' @param answer: câu trả lời của bài toán
 #' @param score: Đáp số cho câu hỏi này.
 #' @export
-answer_mean <- function(data, answer, score = 1, round_digits = 4) {
+answer_mean <- function(data, answer = "Giá trị trung bình là: ", score = 1, round_digits = 4) {
   file_name <- get_file_path("template", "descriptive", "mean.mustache")
   freq_table <- table(data)
   value <- as.numeric(names(freq_table))
@@ -33,7 +33,7 @@ answer_mean <- function(data, answer, score = 1, round_digits = 4) {
 #' @param with_mean: Có tính phương sai dựa trên giá trị trung bình không?
 #' @param score: Đáp số cho câu hỏi này.
 #' @export
-answer_var <- function(data, answer, with_mean = TRUE, score = 1, round_digits = 4) {
+answer_var <- function(data, answer = "Giá trị phương sai là: ", with_mean = TRUE, score = 1, round_digits = 4) {
   file_name <- get_file_path("template", "descriptive", "var.mustache")
   freq_table <- table(data)
   value <- as.numeric(names(freq_table))
@@ -73,7 +73,7 @@ answer_var <- function(data, answer, with_mean = TRUE, score = 1, round_digits =
 #' @param answer: câu trả lời của bài toán
 #' @param score: Đáp số cho câu hỏi này.
 #' @export
-answer_sd <- function(data, answer, with_mean = TRUE, score = 1, round_digits = 4) {
+answer_sd <- function(data, answer = "Giá trị độ lệch chuẩn là: ", with_mean = TRUE, score = 1, round_digits = 4) {
   file_name <- get_file_path("template", "descriptive", "sd.mustache")
   freq_table <- table(data)
   value <- as.numeric(names(freq_table))

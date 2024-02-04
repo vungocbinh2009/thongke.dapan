@@ -3,7 +3,7 @@
 #' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố chuẩn)
 #' @import thongke
 #' @export
-answer_test_mean_norm <- function(data, sd_symbol, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_mean_norm <- function(data, sd_symbol="\\sigma", conclusion_h0 = "", conclusion_h1 = "", intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_mean_norm.mustache")
   input_data <- data$input_data
   output_data <- data$output_data
@@ -33,7 +33,7 @@ answer_test_mean_norm <- function(data, sd_symbol, conclusion_h0, conclusion_h1,
 #' Hàm này in ra đáp án cho bài toán KĐGT về giá trị trung bình (phân bố Student)
 #' @import thongke
 #' @export
-answer_test_mean_t <- function(data, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_mean_t <- function(data, conclusion_h0 = "", conclusion_h1 = "", intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_mean_t.mustache")
   input_data <- data$input_data
   output_data <- data$output_data
@@ -62,7 +62,7 @@ answer_test_mean_t <- function(data, conclusion_h0, conclusion_h1, intro = "", s
 #' Hàm này in ra đáp án cho bài toán KĐGT về tỷ lệ
 #' @import thongke
 #' @export
-answer_test_prop <- function(data, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_prop <- function(data, conclusion_h0 = "", conclusion_h1 = "", intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_prop.mustache")
   input_data <- data$input_data
   output_data <- data$output_data
@@ -93,7 +93,7 @@ answer_test_prop <- function(data, conclusion_h0, conclusion_h1, intro = "", sco
 #' @import thongke
 #' @import xtable
 #' @export
-answer_test_goodness_of_fit <- function(data, h0, col_names, conclusion_h0, conclusion_h1, score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_goodness_of_fit <- function(data, h0, col_names, conclusion_h0 = "", conclusion_h1 = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_goodness_of_fit.mustache")
   input_data <- data$input_data
   output_data <- data$output_data
@@ -129,7 +129,7 @@ answer_test_goodness_of_fit <- function(data, h0, col_names, conclusion_h0, conc
 #' Hàm này in ra đáp án cho bài toán KĐGT về so sánh 2 giá trị trung bình (phân bố chuẩn)
 #' @import thongke
 #' @export
-answer_test_2_mean_norm <- function(data, sd_symbol, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_2_mean_norm <- function(data, sd_symbol = "\\sigma", conclusion_h0 = "", conclusion_h1 = "", intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_2_mean_norm.mustache")
   input_data <- data$input_data
   output_data <- data$output_data
@@ -161,7 +161,7 @@ answer_test_2_mean_norm <- function(data, sd_symbol, conclusion_h0, conclusion_h
 #' Hàm này in ra đáp án cho bài toán KĐGT về so sánh 2 giá trị trung bình (phân bố Student)
 #' @import thongke
 #' @export
-answer_test_2_mean_t <- function(data, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_2_mean_t <- function(data, conclusion_h0 = "", conclusion_h1 = "", intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_2_mean_t.mustache")
   input_data <- data$input_data
   output_data <- data$output_data
@@ -193,7 +193,7 @@ answer_test_2_mean_t <- function(data, conclusion_h0, conclusion_h1, intro = "",
 #' Hàm này in ra đáp án cho bài toán KĐGT về so sánh 2 tỷ lệ.
 #' @import thongke
 #' @export
-answer_test_2_prop <- function(data, conclusion_h0, conclusion_h1, intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_2_prop <- function(data, conclusion_h0 = "", conclusion_h1 = "", intro = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_2_prop.mustache")
   input_data <- data$input_data
   output_data <- data$output_data
@@ -227,7 +227,7 @@ answer_test_2_prop <- function(data, conclusion_h0, conclusion_h1, intro = "", s
 #' @import thongke
 #' @import xtable
 #' @export
-answer_test_k_prop <- function(data, h0, row_names, col_names, conclusion_h0, conclusion_h1, score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_k_prop <- function(data, h0, row_names, col_names, conclusion_h0 = "", conclusion_h1 = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_k_prop.mustache")
   input_data <- data$input_data
   output_data <- data$output_data
@@ -266,7 +266,7 @@ answer_test_k_prop <- function(data, h0, row_names, col_names, conclusion_h0, co
 #' @import thongke
 #' @import xtable
 #' @export
-answer_test_independent <- function(data, h0, row_names, col_names, conclusion_h0, conclusion_h1, score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_test_independent <- function(data, h0, row_names, col_names, conclusion_h0 = "", conclusion_h1 = "", score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "hypothesis_test", "test_independent.mustache")
   input_data <- data$input_data
   output_data <- data$output_data

@@ -6,8 +6,8 @@
 \usage{
 answer_estimate_mean_norm(
   data,
-  sd_symbol,
-  answer,
+  sd_symbol = "\\\\sigma",
+  answer = "Khoảng tin cậy cần tìm là:",
   score = c(0.5, 1.5),
   round_digits = 4
 )

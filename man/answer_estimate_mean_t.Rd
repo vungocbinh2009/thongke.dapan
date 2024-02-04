@@ -4,7 +4,12 @@
 \alias{answer_estimate_mean_t}
 \title{Trình bày bài toán ước lượng khoảng cho trung bình (phân bố Student)}
 \usage{
-answer_estimate_mean_t(data, answer, score = c(0.5, 1.5), round_digits = 4)
+answer_estimate_mean_t(
+  data,
+  answer = "Khoảng tin cậy cần tìm là:",
+  score = c(0.5, 1.5),
+  round_digits = 4
+)
 }
 \description{
 Hàm này in ra đáp án cho bài toán ước lượng giá trị trung bình (dùng phân bố Student)

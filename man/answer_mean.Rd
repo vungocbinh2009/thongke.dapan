@@ -4,7 +4,12 @@
 \alias{answer_mean}
 \title{Tính giá trị trung bình}
 \usage{
-answer_mean(data, answer, score = 1, round_digits = 4)
+answer_mean(
+  data,
+  answer = "Giá trị trung bình là: ",
+  score = 1,
+  round_digits = 4
+)
 }
 \arguments{
 \item{data:}{là 1 vector dữ liệu}

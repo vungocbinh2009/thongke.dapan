@@ -9,8 +9,8 @@ answer_test_k_prop(
   h0,
   row_names,
   col_names,
-  conclusion_h0,
-  conclusion_h1,
+  conclusion_h0 = "",
+  conclusion_h1 = "",
   score = c(0.5, 1, 0.5),
   round_digits = 4
 )

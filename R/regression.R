@@ -51,7 +51,7 @@ answer_linear_regression <- function(data, intro = "", score=c(1, 0.5), round_di
 #' Hàm này in ra đáp án cho bài toán tìm giá trị dự báo của Y dựa trên mô hình hồi quy tuyến tính.
 #' @import thongke
 #' @export
-answer_linear_regression_predict <- function(data, answer, value_unit, score = 0.5, round_digits = 4) {
+answer_linear_regression_predict <- function(data, answer = "Giá trị cần dự đoán là:", value_unit = "", score = 0.5, round_digits = 4) {
   file_name <- get_file_path("template", "regression", "linear_regression_predict.mustache")
   input_data <- data$input_data
   output_data <- data$output_data
@@ -63,7 +63,7 @@ answer_linear_regression_predict <- function(data, answer, value_unit, score = 0
     answer = answer,
     value = input_data$value,
     predict_value = round(output_data$predict_value, round_digits),
-    value_unit = value_unit,
+    value_unit = ifelse(value_unit == "", "", sprintf("(%s)", value_unit)),
     score = score
   )
   render_template(file_name, var_list)

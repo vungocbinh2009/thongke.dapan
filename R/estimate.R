@@ -4,7 +4,7 @@
 #' answer là lời giải của bài toán.
 #' @import thongke
 #' @export
-answer_estimate_mean_norm <- function(data, sd_symbol, answer, score=c(0.5, 1.5), round_digits = 4) {
+answer_estimate_mean_norm <- function(data, sd_symbol = "\\sigma", answer = "Khoảng tin cậy cần tìm là:", score=c(0.5, 1.5), round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "estimate_mean_norm.mustache")
   input_data <- data$input_data
   output_data <- data$output_data
@@ -36,7 +36,7 @@ answer_estimate_mean_norm <- function(data, sd_symbol, answer, score=c(0.5, 1.5)
 #' answer là lời giải của bài toán.
 #' @import thongke
 #' @export
-answer_estimate_mean_t <- function(data, answer, score=c(0.5, 1.5), round_digits = 4) {
+answer_estimate_mean_t <- function(data, answer = "Khoảng tin cậy cần tìm là:", score=c(0.5, 1.5), round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "estimate_mean_t.mustache")
   input_data <- data$input_data
   output_data <- data$output_data
@@ -67,7 +67,7 @@ answer_estimate_mean_t <- function(data, answer, score=c(0.5, 1.5), round_digits
 #' answer là lời giải của bài toán.
 #' @import thongke
 #' @export
-answer_estimate_var <- function(data, answer, score=c(0.5, 1.5), round_digits = 4) {
+answer_estimate_var <- function(data, answer = "Khoảng tin cậy cần tìm là:", score=c(0.5, 1.5), round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "estimate_var.mustache")
   input_data <- data$input_data
   output_data <- data$output_data
@@ -101,7 +101,7 @@ answer_estimate_var <- function(data, answer, score=c(0.5, 1.5), round_digits = 
 #' answer là lời giải của bài toán.
 #' @import thongke
 #' @export
-answer_estimate_prop <- function(data, answer, score=c(0.5, 1.5), round_digits = 4) {
+answer_estimate_prop <- function(data, answer = "Khoảng tin cậy cần tìm là:", score=c(0.5, 1.5), round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "estimate_prop.mustache")
   input_data <- data$input_data
   output_data <- data$output_data
@@ -132,7 +132,7 @@ answer_estimate_prop <- function(data, answer, score=c(0.5, 1.5), round_digits =
 #' conclusion là một hàm in ra kết quả cuối cùng của bài toán, với 1 tham số chính là kết quả của phép tính.
 #' @import thongke
 #' @export
-answer_sample_size_mean <- function(data, sd_symbol, conclusion = function (value) {return(sprintf("%d", value))}, score=c(0.5, 1, 0.5), round_digits = 4) {
+answer_sample_size_mean <- function(data, sd_symbol = "\\sigma", conclusion = function (value) {return(sprintf("%d", value))}, score=c(0.5, 1, 0.5), round_digits = 4) {
   file_name <- get_file_path("template", "estimate", "sample_size_mean.mustache")
   input_data <- data$input_data
   output_data <- data$output_data

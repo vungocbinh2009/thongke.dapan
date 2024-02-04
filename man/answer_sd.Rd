@@ -4,7 +4,13 @@
 \alias{answer_sd}
 \title{Tính giá trị độ lệch chuẩn}
 \usage{
-answer_sd(data, answer, with_mean = TRUE, score = 1, round_digits = 4)
+answer_sd(
+  data,
+  answer = "Giá trị độ lệch chuẩn là: ",
+  with_mean = TRUE,
+  score = 1,
+  round_digits = 4
+)
 }
 \arguments{
 \item{data:}{là 1 vector dữ liệu}

@@ -6,7 +6,7 @@
 \usage{
 answer_sample_size_mean(
   data,
-  sd_symbol,
+  sd_symbol = "\\\\sigma",
   conclusion = function(value) {     return(sprintf("\%d", value)) },
   score = c(0.5, 1, 0.5),
   round_digits = 4
