@@ -14,11 +14,19 @@
 
 # thongke.dapan
 
+![r-universe](https://vungocbinh2009.r-universe.dev/badges/thongke.dapan)
+
 My R package, generate latex code to add to my exam template :)
 
 # Install
 
-``` r
+Using r-universe:
+```{r, eval=FALSE}
+install.packages("thongke.dapan", repos = "https://vungocbinh2009.r-universe.dev")
+```
+
+Using devtools
+``` {r, eval=FALSE}
 # Install devtools
 install.packages("devtools")
 # Install thongke before thongke_dapan
